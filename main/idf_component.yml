@@ -17,3 +17,4 @@ dependencies:
   espressif/esp_wifi_remote: '*'
   espressif/esp_hosted: '*'
   espressif/arduino-esp32: ^3.3.2
+  h2zero/esp-nimble-cpp: ^2.3.2
