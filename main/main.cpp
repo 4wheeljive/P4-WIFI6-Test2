@@ -1,18 +1,3 @@
-/*//#include "Arduino.h"
-#include "NimBLEDevice.h"
-
-extern "C" void app_main()
-{
-    initArduino();
-    pinMode(4, OUTPUT);
-    digitalWrite(4, HIGH);
-    // Do your own thing
-
-}
-*/
-
-
-
 
 /**
  *  NimBLE_Server Demo:
@@ -140,7 +125,7 @@ extern "C" void app_main(void) {
     printf("Starting NimBLE Server\n");
 
     /** Initialize NimBLE and set the device name */
-    NimBLEDevice::init("NimBLE");
+    NimBLEDevice::init("ESP32-P4-WIFI6");
 
     /**
      * Set the IO capabilities of the device, each option will trigger a different pairing method.
