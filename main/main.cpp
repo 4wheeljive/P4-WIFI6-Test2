@@ -9,6 +9,12 @@
  */
 
 #include <NimBLEDevice.h>
+#include <FastLED.h>
+
+// FastLED test configuration
+#define NUM_LEDS 10
+#define DATA_PIN 3
+CRGB leds[NUM_LEDS];
 
 static NimBLEServer* pServer;
 
@@ -123,6 +129,12 @@ class DescriptorCallbacks : public NimBLEDescriptorCallbacks {
 
 extern "C" void app_main(void) {
     printf("Starting NimBLE Server\n");
+
+    // Initialize FastLED
+    printf("Initializing FastLED...\n");
+    FastLED.addLeds<WS2812, DATA_PIN, GRB>(leds, NUM_LEDS);
+    FastLED.setBrightness(50);
+    printf("FastLED initialized successfully!\n");
 
     /** Initialize NimBLE and set the device name */
     NimBLEDevice::init("ESP32-P4-WIFI6");

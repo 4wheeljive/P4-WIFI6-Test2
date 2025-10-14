@@ -1,4 +1,11 @@
 dependencies:
+  bblanchon/arduinojson:
+    component_hash: b1c2f0b0bc26969af19809cee80b220fb882481d59cc75f8e79ebceecdc69f06
+    dependencies: []
+    source:
+      registry_url: https://components.espressif.com/
+      type: service
+    version: 7.4.2
   chmorgan/esp-libhelix-mp3:
     component_hash: cbb76089dc2c5749f7b470e2e70aedc44c9da519e04eb9a67d4c7ec275229e53
     dependencies:
@@ -206,7 +213,7 @@ dependencies:
       type: service
     version: 2.1.5
   espressif/esp_hosted:
-    component_hash: d8248c815ac163c62145e5f2032aae4204117c420ec934bb0f7bc2f3546622fc
+    component_hash: fb945443a7e96633637ce035505f93445681b218752b255726646aaf13d6a78e
     dependencies:
     - name: idf
       require: private
@@ -214,9 +221,9 @@ dependencies:
     source:
       registry_url: https://components.espressif.com/
       type: service
-    version: 2.5.11
+    version: 2.5.12
   espressif/esp_modem:
-    component_hash: b541c3f5765d3ba062c0d004b9ca6da6d0af908293421c2dbe046c537fb2a011
+    component_hash: dca5a8d8cf80dd88dc91bb22cbea52956950f1e80488996c5b41168d3cdefbb6
     dependencies:
     - name: idf
       require: private
@@ -224,7 +231,7 @@ dependencies:
     source:
       registry_url: https://components.espressif.com
       type: service
-    version: 1.4.0
+    version: 1.4.1
   espressif/esp_serial_slave_link:
     component_hash: 7cd3bae703cc6136b578ef521b2f9df3171d029775a3558f0efdb200a3b04f57
     dependencies:
@@ -351,11 +358,12 @@ dependencies:
       type: service
     version: 1.20.1
 direct_dependencies:
+- bblanchon/arduinojson
 - espressif/arduino-esp32
 - espressif/esp_hosted
 - espressif/esp_wifi_remote
 - h2zero/esp-nimble-cpp
 - idf
-manifest_hash: cc5e0c49b6a137a6be3c2cafb4da0f9b7764dd928f5895483fa40460c61a7b8a
+manifest_hash: dbcde24d7a708e5b967e8e9db1128d6caf41982c8ebd67e656a96535a32babcf
 target: esp32p4
 version: 2.0.0
