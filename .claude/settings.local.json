@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/Jeff/esp/v5.5.1/esp-idf/components/driver/deprecated/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
