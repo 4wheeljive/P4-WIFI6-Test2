@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BLE Test - Aurora Portal</title>
+</head>
+<body>
+    <h1>BLE Connection Test</h1>
+    <button id="connect">Connect</button>
+    <div id="status"></div>
+    <div id="log"></div>
+
+    <script>
+        const log = document.getElementById('log');
+        const status = document.getElementById('status');
+
+        function logMessage(msg) {
+            log.innerHTML += `<div>${new Date().toLocaleTimeString()}: ${msg}</div>`;
+            console.log(msg);
+        }
+
+        document.getElementById('connect').addEventListener('click', async () => {
+            try {
+                logMessage('Requesting device with acceptAllDevices...');
+
+                // Use acceptAllDevices to see ALL BLE devices
+                const device = await navigator.bluetooth.requestDevice({
+                    acceptAllDevices: true,
+                    optionalServices: ['19b10000-e8f2-537e-4f6c-d104768a1214']
+                });
+
+                logMessage(`Found device: ${device.name} (ID: ${device.id})`);
+                status.textContent = `Connected to: ${device.name}`;
+
+                logMessage('Connecting to GATT server...');
+                const server = await device.gatt.connect();
+                logMessage('✅ GATT connected!');
+
+                const service = await server.getPrimaryService('19b10000-e8f2-537e-4f6c-d104768a1214');
+                logMessage('✅ Service found!');
+
+            } catch (error) {
+                logMessage(`❌ Error: ${error.message}`);
+                status.textContent = `Error: ${error.message}`;
+            }
+        });
+
+        // Check Web Bluetooth support
+        if (navigator.bluetooth) {
+            logMessage('✅ Web Bluetooth supported');
+        } else {
+            logMessage('❌ Web Bluetooth NOT supported');
+        }
+    </script>
+</body>
+</html>

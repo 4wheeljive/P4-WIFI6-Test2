@@ -32,10 +32,10 @@ who has been of tremendous help on numerous levels!
 
 #include <Arduino.h>
 
-//#undef DISABLE_BLE
+#undef DISABLE_BLE
 
 #define FASTLED_ESP32_LCD_RGB_DRIVER
-#define DISABLE_BLE
+//#define DISABLE_BLE
 
 #include <FastLED.h>
 
@@ -307,9 +307,9 @@ void setup() {
 			//Serial.println(SPEED);
 		}
 
-		#ifndef DISABLE_BLE
+		//#ifndef DISABLE_BLE
 			bleSetup();
-		#endif
+		//#endif
 
 		if (!LittleFS.begin(true)) {
         	Serial.println("LittleFS mount failed!");
@@ -366,9 +366,9 @@ void updateSettings_mode(uint8_t newMode){
 void loop() {
 
 	if (debug) {
-		thisLoopStart = micros(); 
+		thisLoopStart = micros();
 		loopTime = thisLoopStart - lastLoopStart;
-		lastLoopStart = thisLoopStart;  
+		lastLoopStart = thisLoopStart;
 		uint8_t fps = 1000000 / loopTime;           // frames per second
 		uint8_t kpps = (fps * NUM_LEDS) / 1000; 	// kilopixels per second
 		EVERY_N_SECONDS(1) {
@@ -496,14 +496,16 @@ void loop() {
 		
 	FastLED.show();
 
-	/*
+	
+	
 	// upon BLE disconnect
 	if (!deviceConnected && wasConnected) {
 		if (debug) {Serial.println("Device disconnected.");}
 		delay(500); // give the bluetooth stack the chance to get things ready
-		pServer->startAdvertising();
+		pAdvertising->start();
 		if (debug) {Serial.println("Start advertising");}
 		wasConnected = false;
 	}
-	*/
+	
+
 } // loop()
