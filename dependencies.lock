@@ -364,6 +364,6 @@ direct_dependencies:
 - espressif/esp_wifi_remote
 - h2zero/esp-nimble-cpp
 - idf
-manifest_hash: dbcde24d7a708e5b967e8e9db1128d6caf41982c8ebd67e656a96535a32babcf
+manifest_hash: 8307c83518296a90494d4a3aeb9700777a58249654b72abbb4a781d8464d8ed0
 target: esp32p4
 version: 2.0.0
