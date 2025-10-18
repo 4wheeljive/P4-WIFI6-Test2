@@ -1,0 +1,544 @@
+...
+D (11489) MSPI DQS: set to best phase: 0
+D (11493) MSPI DQS: set to best phase: 0
+D (11496) MSPI DQS: set to best phase: 0
+D (11500) MSPI DQS: set to best phase: 0
+D (11503) MSPI DQS: set to best phase: 0
+D (11507) MSPI DQS: set to best phase: 0
+D (11511) MSPI DQS: set to best phase: 0
+D (11514) MSPI DQS: set to best phase: 0
+D (11518) MSPI DQS: set to best phase: 0
+D (11522) MSPI DQS: set to best phase: 0
+D (11525) MSPI Timing: test nums: 100, test result: [id][good/bad][good_times]:
+D (11532) MSPI Timing: [0][good][100] 
+D (11536) MSPI Timing: [1][good][100]
+D (11539) MSPI Timing: [2][good][100]
+D (11543) MSPI Timing: [3][good][100]
+D (11546) MSPI Timing: [4][good][100]
+D (11550) MSPI Timing: [5][good][100] 
+D (11553) MSPI Timing: [6][good][100]
+D (11557) MSPI Timing: [7][good][100]
+D (11560) MSPI Timing: [8][good][100]
+D (11564) MSPI Timing: [9][good][100]
+D (11567) MSPI Timing: [10][good][100] 
+D (11571) MSPI Timing: [11][good][100]
+D (11574) MSPI Timing: [12][good][100]
+D (11578) MSPI Timing: [13][good][100]
+D (11581) MSPI Timing: [14][good][100]
+D (11585) MSPI Timing: [15][good][100] 
+D (11588) MSPI Timing: [16][good][100]
+D (11592) MSPI Timing: [17][good][100]
+D (11596) MSPI Timing: [18][good][100]
+D (11599) MSPI Timing: [19][good][100] 
+D (11603) MSPI Timing: [20][good][100]
+D (11606) MSPI Timing: [21][good][100]
+D (11610) MSPI Timing: [22][good][100]
+D (11613) MSPI Timing: [23][good][100] 
+D (11617) MSPI Timing: [24][good][100]
+D (11620) MSPI Timing: [25][good][100]
+D (11624) MSPI Timing: [26][good][100]
+D (11628) MSPI Timing: [27][good][100] 
+D (11631) MSPI Timing: [28][good][100]
+D (11635) MSPI Timing: [29][good][100]
+D (11638) MSPI Timing: [30][good][100]
+I (11642) MSPI DQS: tuning success, best delayline id is 15
+D (11647) MSPI Timing: psram_freq_mhz: 80 mhz, bus clock div: 4
+D (11653) Flash Delay: spi0_usr_dummy: 1, spi0_extra_dummy: 0, spi1_usr_dummy: 7, spi1_extra_dummy: 0
+I (11662) esp_psram: Found 32MB PSRAM device
+I (11666) esp_psram: Speed: 80MHz
+I (11669) hex_psram: psram CS IO is dedicated
+I (11673) cpu_start: Multicore app
+D (11676) cpu_start: Pro cpu up
+D (11679) cpu_start: Starting app cpu, entry point is 0x4ff0032c
+--- 0x4ff0032c: call_start_cpu1 at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_system/port/cpu_start.c:197
+D (0) cpu_start: App cpu up
+I (12970) esp_psram: SPI SRAM memory test OK
+D (12980) clk: RTC_SLOW_CLK calibration value: 4427341
+D (1055) cpu_start: calling init function: 0x40000262 on core: 0
+--- 0x40000262: __esp_system_init_fn_init_efuse_check at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/efuse/src/esp_efuse_startup.c:37
+D (1055) cpu_start: calling init function: 0x400009ba on core: 0
+--- 0x400009ba: __esp_system_init_fn_init_show_cpu_freq at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_system/startup_funcs.c:64
+I (1055) cpu_start: Pro cpu start user code
+I (1059) cpu_start: cpu freq: 360000000 Hz
+D (1063) cpu_start: calling init function: 0x400000f4 on core: 0
+--- 0x400000f4: __esp_system_init_fn_init_show_app_info at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_app_format/esp_app_desc.c:123
+I (1068) app_init: Application information:
+I (1072) app_init: Project name:     P4-WIFI6-Test2
+I (1077) app_init: App version:      d407c41-dirty
+I (1081) app_init: Compile time:     Oct 17 2025 20:39:58
+I (1087) app_init: ELF file SHA256:  7e6926c66...
+I (1091) app_init: ESP-IDF:          v5.5.1-dirty
+D (1095) cpu_start: calling init function: 0x4000027a on core: 0
+--- 0x4000027a: __esp_system_init_fn_init_efuse_show_app_info at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/efuse/src/esp_efuse_startup.c:47
+I (1101) efuse_init: Min chip rev:     v0.1
+I (1105) efuse_init: Max chip rev:     v1.99
+I (1109) efuse_init: Chip rev:         v1.0
+D (1113) cpu_start: calling init function: 0x40029734 on core: 0
+--- 0x40029734: __esp_system_init_fn_init_psram_new at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/espressif__arduino-esp32/cores/esp32/esp32-hal-misc.c:263
+D (1119) cpu_start: calling init function: 0x400036b2 on core: 0
+--- 0x400036b2: __esp_system_init_fn_init_heap at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/heap/heap_caps_init.c:26
+D (1124) memory_layout: Checking 8 reserved memory ranges:
+D (1130) memory_layout: Reserved memory range 0x30100000 - 0x30100084
+--- 0x30100000: rtc_clk_mpll_enable at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_hw_support/port/esp32p4/rtc_clk.c:591
+D (1136) memory_layout: Reserved memory range 0x48000000 - 0x4c000000
+D (1142) memory_layout: Reserved memory range 0x4ff00000 - 0x4ff16f80
+--- 0x4ff00000: _vector_table at ??:?
+D (1148) memory_layout: Reserved memory range 0x4ff16f80 - 0x4ff296c0
+D (1154) memory_layout: Reserved memory range 0x4ff3fbb0 - 0x4ff40000
+D (1160) memory_layout: Reserved memory range 0x4ff40000 - 0x4ff45460
+D (1167) memory_layout: Reserved memory range 0x50108000 - 0x50108018
+D (1173) memory_layout: Reserved memory range 0x50108018 - 0x501080a0
+D (1179) memory_layout: Building list of available memory regions:
+D (1185) memory_layout: Available memory region 0x4ff296c0 - 0x4ff3afc0
+D (1191) memory_layout: Available memory region 0x4ff3afc0 - 0x4ff3fbb0
+D (1198) memory_layout: Available memory region 0x4ff45460 - 0x4ffa0000
+D (1204) memory_layout: Available memory region 0x501080a0 - 0x50110000
+D (1210) memory_layout: Available memory region 0x30100084 - 0x30102000
+I (1217) heap_init: Initializing. RAM available for dynamic allocation:
+D (1223) heap_init: New heap initialised at 0x4ff296c0
+I (1228) heap_init: At 4FF296C0 len 00011900 (70 KiB): RAM
+I (1233) heap_init: At 4FF3AFC0 len 00004BF0 (18 KiB): RAM
+I (1238) heap_init: At 4FF45460 len 0005ABA0 (362 KiB): RAM
+D (1244) heap_init: New heap initialised at 0x501080a0
+I (1248) heap_init: At 501080A0 len 00007F60 (31 KiB): RTCRAM
+D (1254) heap_init: New heap initialised at 0x30100084
+I (1259) heap_init: At 30100084 len 00001F7C (7 KiB): TCM
+D (1264) cpu_start: calling init function: 0x4000959a on core: 0
+--- 0x4000959a: __esp_system_init_fn_esp_timer_init_nonos at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_timer/src/esp_timer_init.c:28
+D (1270) cpu_start: calling init function: 0x4000834c on core: 0
+--- 0x4000834c: __esp_system_init_fn_init_libc at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/newlib/src/init.c:12
+D (1275) cpu_start: calling init function: 0x40011268 on core: 0
+--- 0x40011268: __esp_system_init_fn_add_psram_to_heap at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_psram/system_layer/esp_psram.c:115
+I (1281) esp_psram: Adding pool of 32768K of PSRAM memory to heap allocator
+D (1288) cpu_start: calling init function: 0x40000a38 on core: 0
+--- 0x40000a38: __esp_system_init_fn_init_brownout at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_system/startup_funcs.c:79
+D (1294) intr_alloc: Connected src 8 to int 0 (cpu 0)
+D (1298) cpu_start: calling init function: 0x40000a62 on core: 0
+--- 0x40000a62: __esp_system_init_fn_init_newlib_time at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_system/startup_funcs.c:104
+D (1304) cpu_start: calling init function: 0x4000aa10 on core: 0
+--- 0x4000aa10: __esp_system_init_fn_init_vfs_uart at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_driver_uart/src/uart_vfs.c:1148
+D (1310) cpu_start: calling init function: 0x4000f2da on core: 0
+--- 0x4000f2da: __esp_system_init_fn_init_vfs_usj_sec at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_driver_usb_serial_jtag/src/usb_serial_jtag_vfs.c:657
+D (1315) cpu_start: calling init function: 0x40010d0e on core: 0
+--- 0x40010d0e: __esp_system_init_fn_init_vfs_nullfs at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/vfs/nullfs.c:322
+D (1321) cpu_start: calling init function: 0x4000f694 on core: 0
+--- 0x4000f694: __esp_system_init_fn_init_vfs_console at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_vfs_console/vfs_console.c:271
+D (1327) cpu_start: calling init function: 0x40008360 on core: 0
+--- 0x40008360: __esp_system_init_fn_init_libc_stdio at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/newlib/src/init.c:18
+D (1333) cpu_start: calling init function: 0x40000a78 on core: 0
+--- 0x40000a78: __esp_system_init_fn_init_flash at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_system/startup_funcs.c:111
+D (1338) spi_flash: trying chip: gd
+I (1341) spi_flash: detected chip: gd
+I (1345) spi_flash: flash io: dio
+W (1348) spi_flash: Detected size(32768k) larger than the size in the binary image header(16384k). Using the size in the binary image header.
+D (1360) cpu_start: calling init function: 0x40000366 on core: 0
+--- 0x40000366: __esp_system_init_fn_init_efuse at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/efuse/src/esp_efuse_startup.c:158
+D (1366) cpu_start: calling init function: 0x400bae5e
+--- 0x400bae5e: _GLOBAL__sub_I__ZN9__gnu_cxx9__freeresEv at /builds/idf/crosstool-NG/.build/riscv32-esp-elf/src/gcc/libstdc++-v3/libsupc++/eh_alloc.cc:462
+D (1371) C++ init: Setting C++ exception emergency pool to 0.
+D (1376) cpu_start: calling init function: 0x400b9f0e
+--- 0x400b9f0e: _GLOBAL__sub_I__ZN17__eh_globals_init7_S_initE at /builds/idf/crosstool-NG/.build/riscv32-esp-elf/build/build-cc-gcc-final/riscv32-esp-elf/rv32imafc_zicsr_zifencei/ilp32f/no-rtti/libstdc++-v3/include/riscv32-esp-elf/bits/gthr-default.h:721
+--- (inlined by) __eh_globals_init::__eh_globals_init() at /builds/idf/crosstool-NG/.build/riscv32-esp-elf/src/gcc/libstdc++-v3/libsupc++/eh_globals.cc:105
+--- (inlined by) __static_initialization_and_destruction_0 at /builds/idf/crosstool-NG/.build/riscv32-esp-elf/src/gcc/libstdc++-v3/libsupc++/eh_globals.cc:126
+--- (inlined by) _GLOBAL__sub_I__ZN17__eh_globals_init7_S_initE at /builds/idf/crosstool-NG/.build/riscv32-esp-elf/src/gcc/libstdc++-v3/libsupc++/eh_globals.cc:162
+D (1381) cpu_start: calling init function: 0x400b9cfe
+--- 0x400b9cfe: esp_ds_conn_lock at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/mbedtls/port/esp_ds/esp_ds_common.c:55
+D (1386) cpu_start: calling init function: 0x400ab120
+--- 0x400ab120: adc_hw_calibration at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_adc/adc_common.c:59
+D (1391) efuse: BLK2 REG4 [0-9], len=10 bits
+D (1395) efuse: BLK10 REG1 [8-11], len=4 bits
+D (1399) efuse: BLK10 REG1 [12-15], len=4 bits
+D (1403) efuse: BLK10 REG1 [16-19], len=4 bits
+D (1407) efuse: BLK10 REG1 [20-23], len=4 bits
+D (1411) efuse: BLK10 REG1 [24-27], len=4 bits
+D (1415) efuse: BLK10 REG1 [28-31], len=4 bits
+D (1419) efuse: BLK10 REG2 [0-3], len=4 bits
+D (1423) efuse: BLK10 REG2 [4-7], len=4 bits
+D (1427) efuse: BLK2 REG4 [10-19], len=10 bits
+D (1432) efuse: BLK10 REG1 [8-11], len=4 bits
+D (1436) efuse: BLK10 REG1 [12-15], len=4 bits
+D (1440) efuse: BLK10 REG1 [16-19], len=4 bits
+D (1444) efuse: BLK10 REG1 [20-23], len=4 bits
+D (1448) efuse: BLK10 REG1 [24-27], len=4 bits
+D (1452) efuse: BLK10 REG1 [28-31], len=4 bits
+D (1457) efuse: BLK10 REG2 [0-3], len=4 bits
+D (1461) efuse: BLK10 REG2 [4-7], len=4 bits
+D (1465) efuse: BLK2 REG4 [20-29], len=10 bits
+D (1469) efuse: BLK10 REG1 [8-11], len=4 bits
+D (1473) efuse: BLK10 REG1 [12-15], len=4 bits
+D (1477) efuse: BLK10 REG1 [16-19], len=4 bits
+D (1481) efuse: BLK10 REG1 [20-23], len=4 bits
+D (1485) efuse: BLK10 REG1 [24-27], len=4 bits
+D (1489) efuse: BLK10 REG1 [28-31], len=4 bits
+D (1494) efuse: BLK10 REG2 [0-3], len=4 bits
+D (1498) efuse: BLK10 REG2 [4-7], len=4 bits
+D (1502) efuse: BLK2 REG4 [30-31], len=2 bits
+D (1506) efuse: BLK2 REG5 [0-7], len=8 bits
+D (1510) efuse: BLK10 REG1 [8-11], len=4 bits
+D (1514) efuse: BLK10 REG1 [12-15], len=4 bits
+D (1518) efuse: BLK10 REG1 [16-19], len=4 bits
+D (1522) efuse: BLK10 REG1 [20-23], len=4 bits
+D (1526) efuse: BLK10 REG1 [24-27], len=4 bits
+D (1530) efuse: BLK10 REG1 [28-31], len=4 bits
+D (1534) efuse: BLK10 REG2 [0-3], len=4 bits
+D (1538) efuse: BLK10 REG2 [4-7], len=4 bits
+D (1542) efuse: BLK2 REG5 [8-17], len=10 bits
+D (1547) efuse: BLK10 REG2 [8-11], len=4 bits
+D (1551) efuse: BLK10 REG2 [12-15], len=4 bits
+D (1555) efuse: BLK10 REG2 [16-19], len=4 bits
+D (1559) efuse: BLK10 REG2 [20-23], len=4 bits
+D (1563) efuse: BLK10 REG2 [24-27], len=4 bits
+D (1567) efuse: BLK10 REG2 [28-31], len=4 bits
+D (1571) efuse: BLK2 REG5 [18-27], len=10 bits
+D (1576) efuse: BLK10 REG2 [8-11], len=4 bits
+D (1580) efuse: BLK10 REG2 [12-15], len=4 bits
+D (1584) efuse: BLK10 REG2 [16-19], len=4 bits
+D (1588) efuse: BLK10 REG2 [20-23], len=4 bits
+D (1592) efuse: BLK10 REG2 [24-27], len=4 bits
+D (1596) efuse: BLK10 REG2 [28-31], len=4 bits
+D (1601) efuse: BLK2 REG5 [28-31], len=4 bits
+D (1605) efuse: BLK2 REG6 [0-5], len=6 bits
+D (1609) efuse: BLK10 REG2 [8-11], len=4 bits
+D (1613) efuse: BLK10 REG2 [12-15], len=4 bits
+D (1617) efuse: BLK10 REG2 [16-19], len=4 bits
+D (1621) efuse: BLK10 REG2 [20-23], len=4 bits
+D (1625) efuse: BLK10 REG2 [24-27], len=4 bits
+D (1629) efuse: BLK10 REG2 [28-31], len=4 bits
+D (1633) efuse: BLK2 REG6 [6-15], len=10 bits
+D (1637) efuse: BLK10 REG2 [8-11], len=4 bits
+D (1642) efuse: BLK10 REG2 [12-15], len=4 bits
+D (1646) efuse: BLK10 REG2 [16-19], len=4 bits
+D (1650) efuse: BLK10 REG2 [20-23], len=4 bits
+D (1654) efuse: BLK10 REG2 [24-27], len=4 bits
+D (1658) efuse: BLK10 REG2 [28-31], len=4 bits
+D (1662) cpu_start: calling init function: 0x4006ff32
+--- 0x4006ff32: esp_ipc_init at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_system/esp_ipc.c:107
+D (1667) cpu_start: calling init function: 0x40061076
+--- 0x40061076: _GLOBAL__sub_I__ZN12LittleFSImplC2Ev at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/espressif__arduino-esp32/libraries/LittleFS/src/LittleFS.cpp:126
+D (1672) cpu_start: calling init function: 0x400603e4
+--- 0x400603e4: _GLOBAL__sub_I__ZN12NimBLEClientC2ERK13NimBLEAddress at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/h2zero__esp-nimble-cpp/src/NimBLEClient.cpp:1320
+D (1677) cpu_start: calling init function: 0x4005eeb8
+--- 0x4005eeb8: _GLOBAL__sub_I__ZN12NimBLEServerC2Ev at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/h2zero__esp-nimble-cpp/src/NimBLEServer.cpp:1033
+D (1682) cpu_start: calling init function: 0x4005e078
+--- 0x4005e078: _GLOBAL__sub_I__ZN10NimBLEScanC2Ev at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/h2zero__esp-nimble-cpp/src/NimBLEScan.cpp:561
+D (1686) cpu_start: calling init function: 0x4005dfb4
+--- 0x4005dfb4: _GLOBAL__sub_I__ZN12NimBLEDevice22defaultDeviceCallbacksE at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/h2zero__esp-nimble-cpp/src/NimBLEDevice.cpp:1348
+D (1691) cpu_start: calling init function: 0x4005da10
+--- 0x4005da10: _GLOBAL__sub_I__ZN16NimBLEDescriptorC2EPKcttP20NimBLECharacteristic at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/h2zero__esp-nimble-cpp/src/NimBLEDescriptor.cpp:148
+D (1696) cpu_start: calling init function: 0x4005d97a
+--- 0x4005d97a: _GLOBAL__sub_I__ZN20NimBLECharacteristicC2EPKcttP13NimBLEService at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/h2zero__esp-nimble-cpp/src/NimBLECharacteristic.cpp:422
+D (1701) cpu_start: calling init function: 0x4004d2e6
+--- 0x4004d2e6: _GLOBAL__sub_I__Z19cled_contoller_sizev at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/components/FastLED/src/FastLED.cpp:423
+D (1706) cpu_start: calling init function: 0x4004cd8e
+--- 0x4004cd8e: _GLOBAL__sub_I_ib_jul01_gp at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/main/main.cpp:561
+D (1711) cpu_start: calling init function: 0x4002ebfa
+--- 0x4002ebfa: _GLOBAL__sub_I__ZN6StringC2EPKc at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/espressif__arduino-esp32/cores/esp32/WString.cpp:927
+D (1715) cpu_start: calling init function: 0x4002dbc8
+--- 0x4002dbc8: _GLOBAL__sub_I_Serial0 at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/espressif__arduino-esp32/cores/esp32/HardwareSerial.cpp:662
+D (1720) cpu_start: calling init function: 0x4002d104
+--- 0x4002d104: _GLOBAL__sub_I__Zli4_kHzy at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/espressif__arduino-esp32/cores/esp32/Esp.cpp:588
+D (1725) cpu_start: calling init function: 0x40026796
+--- 0x40026796: esp_hosted_host_init at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/espressif__esp_hosted/host/port/esp/freertos/src/port_esp_hosted_host_init.c:18
+I (1729) host_init: ESP Hosted : Host chip_ip[18]
+I (1734) H_API: ESP-Hosted starting. Hosted_Tasks: prio:23, stack: 5120 RPC_task_stack: 5120
+I (1742) H_API: ** add_esp_wifi_remote_channels **
+D (1746) transport: Adding channel IF[1]: S[0] Tx[0x4ff3cb2c] Rx[0x400288fc]
+--- 0x400288fc: esp_wifi_remote_channel_rx at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/espressif__esp_wifi_remote/esp_wifi_remote_net.c:19
+I (1753) transport: Add ESP-Hosted channel IF[1]: S[0] Tx[0x40011dd4] Rx[0x400288fc]
+--- 0x40011dd4: transport_drv_sta_tx at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/espressif__esp_hosted/host/drivers/transport/transport_drv.c:245
+--- 0x400288fc: esp_wifi_remote_channel_rx at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/espressif__esp_wifi_remote/esp_wifi_remote_net.c:19
+D (1761) transport: Adding channel IF[2]: S[0] Tx[0x4ff3cb2c] Rx[0x400288fc]
+--- 0x400288fc: esp_wifi_remote_channel_rx at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/espressif__esp_wifi_remote/esp_wifi_remote_net.c:19
+I (1768) transport: Add ESP-Hosted channel IF[2]: S[0] Tx[0x40011d12] Rx[0x400288fc]
+--- 0x40011d12: transport_drv_ap_tx at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/espressif__esp_hosted/host/drivers/transport/transport_drv.c:275
+--- 0x400288fc: esp_wifi_remote_channel_rx at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/espressif__esp_wifi_remote/esp_wifi_remote_net.c:19
+sdio_mempool_create free:33646512 min-free:33646512 lfb-def:33030144 lfb-8bit:33030144
+
+D (1783) sdmmc_periph: peripheral version 5342270a, hardware config 03c44c83
+D (1790) intr_alloc: Connected src 23 to int 1 (cpu 0)
+D (1794) sdmmc_periph: using GPIO18 as clk pin
+D (1799) sdmmc_periph: using GPIO19 as cmd pin
+D (1803) sdmmc_periph: using GPIO14 as d0 pin
+D (1807) sdmmc_periph: using GPIO15 as d1 pin
+D (1811) sdmmc_periph: using GPIO16 as d2 pin
+D (1815) gpio: GPIO[17]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0
+D (1824) sdmmc_periph: Slot 1 is not initialized yet, skipping sdmmc_host_change_to_slot
+D (1831) sdmmc_periph: clk_src_freq_hz: 160000000 hz
+D (1836) sdmmc_periph: slot=1 clk_src=8 host_div=10 card_div=20 freq=400kHz (max 400kHz)
+D (1844) sdmmc_periph: Slot 1 is not initialized yet, skipping sdmmc_host_change_to_slot
+D (1852) sdmmc_periph: Slot 1 is not initialized yet, skipping sdmmc_host_change_to_slot
+D (1859) sdmmc_periph: slot=1 width=1
+D (1863) H_SDIO_DRV: sdio bus init done
+D (1866) transport: Bus handle: 0x4ff1bd2c
+D (1870) RPC_WRAP: rpc_init
+D (1873) rpc_api: rpc_slaveif_init
+D (1876) cpu_start: calling init function: 0x4ff07bfe
+--- 0x4ff07bfe: enable_timer_group0_for_calibration at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_hw_support/port/esp32p4/rtc_time.c:230
+DD  (1(1881051))  cpcupu__ststarart:t: c caalllilningg i niniti t ffunucncttioino:n :0 0x4x40007003286ccc 8o on nc corore:e :0 1
+D
+ (1892) intr_alloc: Connected src 55 to int 2 (cpu 0)
+D (1897) cpu_start: calling init function: 0x400026c8 on core: 0
+--- 0x400026c8: __esp_system_init_fn_esp_hw_stack_guard_init at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_system/hw_stack_guard.c:15
+D (1902) cpu_start: calling init function: 0x40003d54 on core: 0
+--- 0x40003d54: __esp_system_init_fn_esp_security_init at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_security/src/init.c:42
+D (1908) cpu_start: calling init function: 0x400ce8a4 on core: 0
+--- 0x400ce8a4: __esp_system_init_fn_sleep_clock_startup_init at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_hw_support/lowpower/port/esp32p4/sleep_clock.c:64
+D (1914) cpu_start: calling init function: 0x4000e96e on core: 0
+--- 0x4000e96e: __esp_system_init_fn_usb_serial_jtag_conn_status_init at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_driver_usb_serial_jtag/src/usb_serial_jtag_connection_monitor.c:75
+D (1920) cpu_start: calling init function: 0x40000ad0 on core: 0
+--- 0x40000ad0: __esp_system_init_fn_init_disable_rtc_wdt at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_system/startup_funcs.c:179
+D (1926) intr_alloc: Connected src 79 to int 3 (cpu 0)
+D (1930) app_start: Starting scheduler on CPU0
+D (1934) intr_alloc: Connected src 53 to int 4 (cpu 0)
+D (1934) intr_alloc: Connected src 80 to int 0 (cpu 1)
+D (1939) app_start: Starting scheduler on CPU1
+D (1943) intr_alloc: Connected src 54 to int 1 (cpu 1)
+I (1934) H_SDIO_DRV: sdio_data_to_rx_buf_task started
+I (1953) main_task: Started on CPU0
+D (1956) heap_init: New heap initialised at 0x4ff3afc0
+D (1961) heap_init: New heap initialised at 0x4ff45460
+I (1966) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations
+D (1974) esp_psram: Allocating block of size 32768 bytes
+D (1979) intr_alloc: Connected src 48 to int 5 (cpu 0)
+I (1983) main_task: Calling app_main()
+I (1994) main_D (1999) nvs: nvs_open_from_partition settings 0
+D (2000) nvs: nvs_get brightness 1
+D (2000) nvs: nvs_get program 1
+D (2000) nvs: nvs_get mode 1
+D (2001) nvs: nvs_close 1
+I (2006) FastLED_LCD_P4: Chipset: WS2812
+I (2007) FastLED_LCD_P4: Target timing: T1=350 ns, T2=700 ns, T3=600 ns
+I (2014) FastLED_LCD_P4: Optimized PCLK: 2000000 Hz (2 MHz)
+I (2019) FastLED_LCD_P4: Pixel duration: 500 ns
+I (2023) FastLED_LCD_P4: Pixels per bit: 4
+I (2027) FastLED_LCD_P4: Actual timing: T1=500 ns, T1+T2=1000 ns, T3=500 ns
+I (2034) FastLED_LCD_P4: Buffer size: 99424 bytes (97 KB)
+I (2039) FastLED_LCD_P4: Frame time (estimated): 24856 us
+I (2047) FastLED_LCD_P4: Allocated 2 buffers at 0x48004e40, 0x4801d300
+D (2051) intr_alloc: Connected src 36 to int 3 (cpu 1)
+D (2055) gdma: new group (1) at 0x4ff3defc
+D (2059) gdma: new pair (1,0) at 0x4ff3df88
+D (2063) gdma: new tx channel (1,0) at 0x4ff3dec4
+D (2067) intr_alloc: Connected src 65 to int 4 (cpu 1)
+D (2072) gdma: install interrupt service for tx channel (1,0)
+D (2080) gdma-link: new link list @0x4ff3dfc8, items @0x4ff3e000
+D (2083) lcd_panel.rgb: new rgb panel(0) @0x4ff3dd04, num_fbs=1, fb_size=98304, bb0 @0x0, bb1 @0x0, bb_size=0
+D (2093) lcd_panel.rgb: fb[0] @0x480357c0
+D (2097) lcd_hal: n=40,a=2,b=0,mo=2
+D (2100) lcd_panel.rgb: rgb panel(0) start, pclk=2000000Hz
+I (2105) FastLED_LCD_P4: RGB LCD driver initialized successfully
+I (2116) FastLED_LCD_P4: First frame: buffer_size=99424, width=49712 pixels
+I (2118) FastLED_LCD_P4: First 8 bytes of buffer: ff ff 00 00 00 00 00 00
+Hardware test: Setting all LEDs to RED...
+D (2935) rpc_core: rpc_tx_thread:518 rpc lib not ready
+D (3935) rpc_core: rpc_tx_thread:518 rpc lib not ready
+Hardware test: Setting all LEDs to GREEN...
+D (4935) rpc_core: rpc_tx_thread:518 rpc lib not ready
+D (5935) rpc_core: rpc_tx_thread:518 rpc lib not ready
+Hardware test: Setting all LEDs to BLUE...
+D (6935) rpc_core: rpc_tx_thread:518 rpc lib not ready
+D (7935) rpc_core: rpc_tx_thread:518 rpc lib not ready
+Hardware test complete. Starting normal operation...
+I (8181) transport: Attempt connection with slave: retry[0]
+W (8182) H_SDIO_DRV: Reset slave using GPIO[54]
+I (8182) os_wrapper_esp: GPIO [54] configured
+D (8184) gpio: GPIO[54]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0
+D (8935) rpc_core: rpc_tx_thread:518 rpc lib not ready
+I (9395) sdio_wrapper: SDIO master: Slot 1, Data-Lines: 4-bit Freq(KHz)[40000 KHz]
+I (9395) sdio_wrapper: GPIOs: CLK[18] CMD[19] D0[14] D1[15] D2[16] D3[17] Slave_Reset[54]
+I (9399) sdio_wrapper: Queues: Tx[20] Rx[20] SDIO-Rx-Mode[1]
+D (9406) sdmmc_req: process_command_response: error 0x107  (status=00000100)
+D (9433) sdmmc_req: process_command_response: error 0x107  (status=00000100)
+D (9433) sdmmc_sd: CMD8 timeout; not an SD v2.00 card
+D (9434) sdmmc_io: sdmmc_init_io: IO-only card
+D (9437) sdmmc_io: sdmmc_init_io: number of IO functions: 2
+D (9453) sdmmc_periph: using GPIO15 as d1 pin
+D (9454) sdmmc_init: sdmmc_card_init: card type is SDIO
+D (9455) sdmmc_io: sdmmc_io_enable_hs_mode: CCCR_HIGHSPEED=0x03
+D (9458) sdmmc_io: IO card capabilities byte: 17
+D (9462) sdmmc_common: sdmmc_init_host_bus_width: using 4-bit bus
+D (9468) sdmmc_periph: using GPIO17 as d3 pin
+D (9472) sdmmc_periph: slot=1 width=4
+D (9475) sdmmc_periph: clk_src_freq_hz: 160000000 hz
+D (9480) sdmmc_periph: slot=1 clk_src=8 host_div=4 card_div=0 freq=40000kHz (max 40000kHz)
+Name:
+Type: SDIO
+Speed: 40.00 MHz (limit: 40.00 MHz)
+Size: 0MB
+CSD: ver=1, sector_size=0, capacity=0 read_bl_len=0
+SCR: sd_spec=0, bus_width=0
+D (9501) CIS: 0x4ff3d510   01 03 d9 01 ff 20 04 92  00 66 66 21 02 0c 00 22  |..... ...ff!..."|
+D (9509) CIS: 0x4ff3d520   04 00 00 02 32 1a 05 01  01 00 02 07 1b 08 c1 41  |....2..........A|
+D (9518) CIS: 0x4ff3d530   30 30 ff ff ff ff ff                              |00.....|
+TUPLE: DEVICE, size: 3: D9 01 FF
+TUPLE: MANFID, size: 4
+  MANF: 0092, CARD: 6666
+TUPLE: FUNCID, size: 2: 0C 00
+TUPLE: FUNCE, size: 4: 00 00 02 32 
+TUPLE: CONFIG, size: 5: 01 01 00 02 07
+TUPLE: CFTABLE_ENTRY, size: 8
+  INDX: C1, Intface: 1, Default: 1, Conf-Entry-Num: 1
+  IF: 41
+  FS: 30, misc: 0, mem_space: 1, irq: 1, io_space: 0, timing: 0, power: 0
+  IR: 30, mask: 1,   IRQ: FF FF
+  LEN: FFFF
+TUPLE: END
+D (9562) sdio_wrapper: IOE: 0x00
+D (9565) sdio_wrapper: IOR: 0x02
+D (9568) sdio_wrapper: IOE: 0x02
+D (9571) sdio_wrapper: IOE: 0x02
+D (9574) sdio_wrapper: IOR: 0x02
+D (9577) sdio_wrapper: IE: 0x00
+D (9580) sdio_wrapper: IE: 0x03
+D (9583) sdio_wrapper: BUS_WIDTH: 0x42
+I (9586) sdio_wrapper: Function 0 Blocksize: 512
+I (9590) sdio_wrapper: Function 1 Blocksize: 512
+I (9595) H_SDIO_DRV: Card init success, TRANSPORT_RX_ACTIVE
+I (9600) transport: set_transport_state: 1
+I (9604) transport: Waiting for esp_hosted slave to be ready
+I (9635) H_SDIO_DRV: SDIO Host operating in STREAMING MODE
+I (9635) H_SDIO_DRV: Open data path at slave
+I (9635) H_SDIO_DRV: Starting SDIO process rx task
+D (9635) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (9641) H_SDIO_DRV: --- SDIO intr received ---
+D (9646) H_SDIO_DRV: len_from_slave: 26
+D (9649) H_SDIO_DRV: buf 0 size: 512
+D (9653) H_SDIO_DRV: --- Wait for SDIO intr ---
+I (9653) H_SDIO_DRV: Received ESP_PRIV_IF type message
+I (9662) transport: Received INIT event from ESP32 peripheral
+D (9667) transport: Slave_init_evt: buf_len[12], print_len[12]
+D (9673) Slave_init_evt: 0x4ff3590e   12 01 0d 11 01 0d 13 01  00 14 01 14              |............|
+D (9682) transport: Init event length: 12
+I (9685) transport: EVENT: 12
+I (9688) transport: Identified slave [esp32c6]
+I (9692) transport: EVENT: 11
+I (9695) transport: capabilities: 0xd
+I (9698) transport: Features supported are:
+I (9702) transport:      * WLAN
+I (9705) transport:        - HCI over SDIO
+D (9706) H_SDIO_DRV: --- SDIO intr received ---
+I (9708) transport:        - BLE only
+D (9713) H_SDIO_DRV: len_from_slave: 32
+I (9716) transport: EVENT: 13
+D (9719) H_SDIO_DRV: buf 1 size: 512
+D (9722) transport: slave rx queue size: 20
+D (9725) H_SDIO_DRV: --- Wait for SDIO intr ---
+W (9729) transport: === ESP-Hosted Version Warning ===
+Version on Host is NEWER than version on co-processor
+RPC requests sent by host may encounter timeout errors
+or may not be supported by co-processor
+W (9752) transport: === ESP-Hosted Version Warning ===
+I (9756) transport: ESP board type is : 13 
+
+I (9761) transport: Base transport is set-up, TRANSPORT_TX_ACTIVE
+I (9766) H_API: Transport active
+I (9769) transport: Slave chip Id[12]
+I (9773) transport: raw_tp_dir[-], flow_ctrl: low[60] high[80]
+I (9778) transport: transport_delayed_init
+D (9782) RPC_WRAP: rpc_start
+D (9785) rpc_api: rpc_slaveif_start
+I (9788) esp_cli: Remove any existing deep_sleep cmd in cli
+I (9793) esp_cli: Registering command: crash
+I (9797) esp_cli: Registering command: reboot
+I (9801) esp_cli: Registering command: mem-dump
+I (9806) esp_cli: Registering command: task-dump
+I (9810) esp_cli: Registering command: cpu-dump
+I (9814) esp_cli: Registering command: heap-trace
+I (9819) esp_cli: Registering command: sock-dump
+I (9823) esp_cli: Registering command: host-power-save
+I (9828) vhci_drv: Host BT Support: Enabled
+I (9832) vhci_drv:      BT Transport Type: VHCI
+I (9836) H_SDIO_DRV: Received INIT event
+I (9839) H_SDIO_DRV: Event type: 0x22
+I (9843) H_SDIO_DRV: Write thread started
+D (9857) H_SDIO_DRV: --- SDIO intr received ---
+D (9857) H_SDIO_DRV: len_from_slave: 19
+D (9857) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (9867) H_SDIO_DRV: --- SDIO intr received ---
+D (9868) H_SDIO_DRV: len_from_slave: 27
+D (9868) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (9871) H_SDIO_DRV: --- SDIO intr received ---
+D (9875) H_SDIO_DRV: len_from_slave: 83
+D (9878) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (9883) H_SDIO_DRV: --- SDIO intr received ---
+D (9887) H_SDIO_DRV: len_from_slave: 27
+D (9890) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (9895) H_SDIO_DRV: --- SDIO intr received ---
+D (9899) H_SDIO_DRV: len_from_slave: 19
+D (9903) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (9907) H_SDIO_DRV: --- SDIO intr received ---
+D (9911) H_SDIO_DRV: len_from_slave: 19
+D (9915) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (9919) H_SDIO_DRV: --- SDIO intr received ---
+D (9923) H_SDIO_DRV: len_from_slave: 22
+D (9927) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (9931) H_SDIO_DRV: --- SDIO intr received ---
+D (9936) rpc_core: Received Event [0x301]
+D (9935) rpc_core: rpc_tx_thread:518 rpc lib not ready
+D (9936) H_SDIO_DRV: len_from_slave: 27
+I (9939) rpc_evt: EVENT: ESP INIT
+
+D (9947) H_SDIO_DRV: --- Wait for SDIO intr ---
+I (9950) RPC_WRAP: --- ESP Event: Slave ESP Init ---
+D (9955) H_SDIO_DRV: --- SDIO intr received ---
+D (9964) H_SDIO_DRV: len_from_slave: 25
+D (9967) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (9972) H_SDIO_DRV: --- SDIO intr received ---
+D (9976) H_SDIO_DRV: len_from_slave: 27
+D (9979) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (9984) H_SDIO_DRV: --- SDIO intr received ---
+D (9988) H_SDIO_DRV: len_from_slave: 27
+D (9991) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (9996) H_SDIO_DRV: --- SDIO intr received ---
+D (10000) H_SDIO_DRV: len_from_slave: 19
+D (10004) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (10008) H_SDIO_DRV: --- SDIO intr received ---
+D (10012) H_SDIO_DRV: len_from_slave: 19
+D (10016) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (10020) H_SDIO_DRV: --- SDIO intr received ---
+D (10025) H_SDIO_DRV: len_from_slave: 19
+D (10028) H_SDIO_DRV: --- Wait for SDIO intr ---
+I (10033) NimBLE: GAP procedure initiated: stop advertising.
+
+D (10038) H_SDIO_DRV: --- SDIO intr received ---
+D (10042) H_SDIO_DRV: len_from_slave: 19
+D (10046) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (10051) H_SDIO_DRV: --- SDIO intr received ---
+D (10055) H_SDIO_DRV: len_from_slave: 19
+D (10058) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (10063) H_SDIO_DRV: --- SDIO intr received ---
+D (10067) H_SDIO_DRV: len_from_slave: 19
+D (10071) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (10076) H_SDIO_DRV: --- SDIO intr received ---
+D (10079) H_SDIO_DRV: len_from_slave: 27
+D (10083) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (10088) H_SDIO_DRV: --- SDIO intr received ---
+D (10092) H_SDIO_DRV: len_from_slave: 19
+D (10095) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (10103) H_SDIO_DRV: --- SDIO intr received ---
+D (10104) H_SDIO_DRV: len_from_slave: 19
+D (10108) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (10112) H_SDIO_DRV: --- SDIO intr received ---
+D (10116) H_SDIO_DRV: len_from_slave: 19
+D (10120) H_SDIO_DRV: --- Wait for SDIO intr ---
+I (10120) NimBLE: GAP procedure initiated: advertise;
+I (10129) NimBLE: disc_mode=2
+I (10132) NimBLE:  adv_channel_map=0 own_addr_type=0 adv_filter_policy=0 adv_itvl_min=0 adv_itvl_max=0
+I (10141) NimBLE:
+
+D (10143) H_SDIO_DRV: --- SDIO intr received ---
+D (10147) H_SDIO_DRV: len_from_slave: 19
+D (10151) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (10155) H_SDIO_DRV: --- SDIO intr received ---
+D (10160) H_SDIO_DRV: len_from_slave: 19
+D (10163) H_SDIO_DRV: --- WLait for SDIO intr ---
+ittleFS mounted successfully.
+main.cpp(432): 2 fps
+main.cpp(432): 18 fps
+D (15374) FastLED_LCD_P4: Frame 100 sent successfully
+main.cpp(432): 18 fps
+D (20827) FastLED_LCD_P4: Frame 200 sent successfully
+main.cpp(432): 18 fps
+main.cpp(432): 18 fps
+D (26288) FastLED_LCD_P4: Frame 300 sent successfully
+main.cpp(432): 18 fps

@@ -30,7 +30,7 @@ who has been of tremendous help on numerous levels!
 //*********************************************************************************************************************************************
 //*********************************************************************************************************************************************
 
-#define FASTLED_ESP32_LCD_RGB_DRIVER
+//#define FASTLED_ESP32_LCD_RGB_DRIVER
 
 #include <Arduino.h>
 
@@ -67,12 +67,19 @@ bool debug = false;
 //#undef BIG_BOARD
 
 #define PIN0 50
+#define HEIGHT 8 
+#define WIDTH 64
+#define NUM_STRIPS 1
+#define NUM_LEDS_PER_STRIP 512
+#include "matrixMap_8x64_1pin.h" 
+
 
 //*********************************************
 
 #ifdef BIG_BOARD 
 	
 	
+	/*
 	#include "matrixMap_48x64_6pin.h" 
 	#define PIN1 49
     #define PIN2 5
@@ -83,7 +90,7 @@ bool debug = false;
     #define WIDTH 64
     #define NUM_STRIPS 6
     #define NUM_LEDS_PER_STRIP 512
-	
+	*/
 
 	
 	/*
@@ -173,10 +180,10 @@ uint8_t savedMode;
 
 // MAPPINGS **********************************************************************************
 
-extern const uint16_t progTopDown[NUM_LEDS] PROGMEM;
-extern const uint16_t progBottomUp[NUM_LEDS] PROGMEM;
-extern const uint16_t serpTopDown[NUM_LEDS] PROGMEM;
-extern const uint16_t serpBottomUp[NUM_LEDS] PROGMEM;
+//extern const uint16_t progTopDown[NUM_LEDS] PROGMEM;
+//extern const uint16_t progBottomUp[NUM_LEDS] PROGMEM;
+//extern const uint16_t serpTopDown[NUM_LEDS] PROGMEM;
+//extern const uint16_t serpBottomUp[NUM_LEDS] PROGMEM;
 //extern const uint16_t vProgTopDown[NUM_LEDS] PROGMEM;
 //extern const uint16_t vSerpTopDown[NUM_LEDS] PROGMEM;
 
@@ -277,7 +284,9 @@ bool animartrixFirstRun = true;
 //**************************************************************************************************************************
 
 void setup() {
-		
+
+		Serial.begin(115200);
+	
 		preferences.begin("settings", true); // true == read only mode
 			savedBrightness  = preferences.getUChar("brightness");
 			//savedSpeed  = preferences.getUChar("speed");
@@ -294,14 +303,17 @@ void setup() {
 		PROGRAM = savedProgram;
 		MODE = savedMode;
 		
+		// TEMPORARY: Test with ONLY strip 0 to isolate the issue
 		FastLED.addLeds<WS2812B, PIN0, GRB>(leds, 0, NUM_LEDS_PER_STRIP)
 			.setCorrection(TypicalLEDStrip);
 
+		// COMMENTED OUT FOR TESTING
+		/*
 		#ifdef PIN1
 			FastLED.addLeds<WS2812B, PIN1, GRB>(leds, NUM_LEDS_PER_STRIP, NUM_LEDS_PER_STRIP)
 				.setCorrection(TypicalLEDStrip);
 		#endif
-		
+
 		#ifdef PIN2
 			FastLED.addLeds<WS2812B, PIN2, GRB>(leds, NUM_LEDS_PER_STRIP * 2, NUM_LEDS_PER_STRIP)
 				.setCorrection(TypicalLEDStrip);
@@ -321,6 +333,7 @@ void setup() {
 			FastLED.addLeds<WS2812B, PIN5, GRB>(leds, NUM_LEDS_PER_STRIP * 5, NUM_LEDS_PER_STRIP)
 				.setCorrection(TypicalLEDStrip);
 		#endif
+		*/
 		
 		#ifndef BIG_BOARD
 			FastLED.setMaxPowerInVoltsAndMilliamps(5, 750);
@@ -328,6 +341,39 @@ void setup() {
 		
 		FastLED.setBrightness(BRIGHTNESS);
 
+		FastLED.clear();
+		FastLED.show();
+
+		// Hardware test: Flash RED for 2 seconds to verify LCD driver is working
+		Serial.println("Hardware test: Setting all LEDs to RED...");
+		Serial.printf("First 3 LEDs before fill_solid: [0]=%d,%d,%d [1]=%d,%d,%d [2]=%d,%d,%d\n",
+			leds[0].r, leds[0].g, leds[0].b,
+			leds[1].r, leds[1].g, leds[1].b,
+			leds[2].r, leds[2].g, leds[2].b);
+		fill_solid(leds, NUM_LEDS, CRGB::Red);
+		Serial.printf("First 3 LEDs after fill_solid RED: [0]=%d,%d,%d [1]=%d,%d,%d [2]=%d,%d,%d\n",
+			leds[0].r, leds[0].g, leds[0].b,
+			leds[1].r, leds[1].g, leds[1].b,
+			leds[2].r, leds[2].g, leds[2].b);
+		Serial.println("Calling FastLED.show()...");
+		FastLED.show();
+		Serial.println("FastLED.show() returned");
+		delay(2000);
+
+		// Test GREEN
+		Serial.println("Hardware test: Setting all LEDs to GREEN...");
+		fill_solid(leds, NUM_LEDS, CRGB::Green);
+		FastLED.show();
+		delay(2000);
+
+		// Test BLUE
+		Serial.println("Hardware test: Setting all LEDs to BLUE...");
+		fill_solid(leds, NUM_LEDS, CRGB::Blue);
+		FastLED.show();
+		delay(2000);
+
+		// Clear
+		Serial.println("Hardware test complete. Starting normal operation...");
 		FastLED.clear();
 		FastLED.show();
 
@@ -422,7 +468,7 @@ void loop() {
 	}
 	
 	if (!displayOn){
-		FastLED.clear();
+		//FastLED.clear();
 	}
 	
 	else {

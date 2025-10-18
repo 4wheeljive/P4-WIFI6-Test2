@@ -1,0 +1,989 @@
+D (9933) MSPI DQS: set to best phase: 0
+D (9937) MSPI DQS: set to best phase: 0
+D (9940) MSPI DQS: set to best phase: 0
+D (9944) MSPI DQS: set to best phase: 0
+D (9947) MSPI DQS: set to best phase: 0
+D (9951) MSPI DQS: set to best phase: 0
+D (9955) MSPI DQS: set to best phase: 0
+D (9958) MSPI DQS: set to best phase: 0
+D (9962) MSPI DQS: set to best phase: 0
+D (9965) MSPI DQS: set to best phase: 0
+D (9969) MSPI DQS: set to best phase: 0
+D (9972) MSPI DQS: set to best phase: 0
+D (9976) MSPI DQS: set to best phase: 0
+D (9979) MSPI DQS: set to best phase: 0
+D (9983) MSPI DQS: set to best phase: 0
+D (9987) MSPI DQS: set to best phase: 0
+D (9990) MSPI DQS: set to best phase: 0
+D (9994) MSPI DQS: set to best phase: 0
+D (9997) MSPI DQS: set to best phase: 0
+D (10001) MSPI DQS: set to best phase: 0
+D (10004) MSPI DQS: set to best phase: 0
+D (10008) MSPI DQS: set to best phase: 0
+D (10012) MSPI DQS: set to best phase: 0
+D (10015) MSPI DQS: set to best phase: 0
+D (10019) MSPI DQS: set to best phase: 0
+D (10023) MSPI DQS: set to best phase: 0
+D (10026) MSPI DQS: set to best phase: 0
+D (10030) MSPI DQS: set to best phase: 0
+D (10034) MSPI DQS: set to best phase: 0
+D (10037) MSPI DQS: set to best phase: 0
+D (10041) MSPI DQS: set to best phase: 0
+D (10045) MSPI DQS: set to best phase: 0
+D (10048) MSPI DQS: set to best phase: 0
+D (10052) MSPI DQS: set to best phase: 0
+D (10055) MSPI DQS: set to best phase: 0
+D (10059) MSPI DQS: set to best phase: 0
+D (10063) MSPI DQS: set to best phase: 0
+D (10066) MSPI DQS: set to best phase: 0
+D (10070) MSPI DQS: set to best phase: 0
+D (10074) MSPI DQS: set to best phase: 0
+D (10077) MSPI DQS: set to best phase: 0
+D (10081) MSPI DQS: set to best phase: 0
+D (10085) MSPI DQS: set to best phase: 0
+D (10088) MSPI DQS: set to best phase: 0
+D (10092) MSPI DQS: set to best phase: 0
+D (10096) MSPI DQS: set to best phase: 0
+D (10099) MSPI DQS: set to best phase: 0
+D (10103) MSPI DQS: set to best phase: 0
+D (10107) MSPI DQS: set to best phase: 0
+D (10110) MSPI DQS: set to best phase: 0
+D (10114) MSPI DQS: set to best phase: 0
+D (10117) MSPI DQS: set to best phase: 0
+D (10121) MSPI DQS: set to best phase: 0
+D (10125) MSPI DQS: set to best phase: 0
+D (10128) MSPI DQS: set to best phase: 0
+D (10132) MSPI DQS: set to best phase: 0
+D (10136) MSPI DQS: set to best phase: 0
+D (10139) MSPI DQS: set to best phase: 0
+D (10143) MSPI DQS: set to best phase: 0
+D (10147) MSPI DQS: set to best phase: 0
+D (10150) MSPI DQS: set to best phase: 0
+D (10154) MSPI DQS: set to best phase: 0
+D (10158) MSPI DQS: set to best phase: 0
+D (10161) MSPI DQS: set to best phase: 0
+D (10165) MSPI DQS: set to best phase: 0
+D (10168) MSPI DQS: set to best phase: 0
+D (10172) MSPI DQS: set to best phase: 0
+D (10176) MSPI DQS: set to best phase: 0
+D (10179) MSPI DQS: set to best phase: 0
+D (10183) MSPI DQS: set to best phase: 0
+D (10187) MSPI DQS: set to best phase: 0
+D (10190) MSPI DQS: set to best phase: 0
+D (10194) MSPI DQS: set to best phase: 0
+D (10198) MSPI DQS: set to best phase: 0
+D (10201) MSPI DQS: set to best phase: 0
+D (10205) MSPI DQS: set to best phase: 0
+D (10209) MSPI DQS: set to best phase: 0
+D (10212) MSPI DQS: set to best phase: 0
+D (10216) MSPI DQS: set to best phase: 0
+D (10220) MSPI DQS: set to best phase: 0
+D (10223) MSPI DQS: set to best phase: 0
+D (10227) MSPI DQS: set to best phase: 0
+D (10230) MSPI DQS: set to best phase: 0
+D (10234) MSPI DQS: set to best phase: 0
+D (10238) MSPI DQS: set to best phase: 0
+D (10241) MSPI DQS: set to best phase: 0
+D (10245) MSPI DQS: set to best phase: 0
+D (10249) MSPI DQS: set to best phase: 0
+D (10252) MSPI DQS: set to best phase: 0
+D (10256) MSPI DQS: set to best phase: 0
+D (10260) MSPI DQS: set to best phase: 0
+D (10263) MSPI DQS: set to best phase: 0
+D (10267) MSPI DQS: set to best phase: 0
+D (10271) MSPI DQS: set to best phase: 0
+D (10274) MSPI DQS: set to best phase: 0
+D (10278) MSPI DQS: set to best phase: 0
+D (10282) MSPI DQS: set to best phase: 0
+D (10285) MSPI DQS: set to best phase: 0
+D (10289) MSPI DQS: set to best phase: 0
+D (10292) MSPI DQS: set to best phase: 0
+D (10296) MSPI DQS: set to best phase: 0
+D (10300) MSPI DQS: set to best phase: 0
+D (10303) MSPI DQS: set to best phase: 0
+D (10307) MSPI DQS: set to best phase: 0
+D (10311) MSPI DQS: set to best phase: 0
+D (10314) MSPI DQS: set to best phase: 0
+D (10318) MSPI DQS: set to best phase: 0
+D (10322) MSPI DQS: set to best phase: 0
+D (10325) MSPI DQS: set to best phase: 0
+D (10329) MSPI DQS: set to best phase: 0
+D (10333) MSPI DQS: set to best phase: 0
+D (10336) MSPI DQS: set to best phase: 0
+D (10340) MSPI DQS: set to best phase: 0
+D (10343) MSPI DQS: set to best phase: 0
+D (10347) MSPI DQS: set to best phase: 0
+D (10351) MSPI DQS: set to best phase: 0
+D (10354) MSPI DQS: set to best phase: 0
+D (10358) MSPI DQS: set to best phase: 0
+D (10362) MSPI DQS: set to best phase: 0
+D (10365) MSPI DQS: set to best phase: 0
+D (10369) MSPI DQS: set to best phase: 0
+D (10373) MSPI DQS: set to best phase: 0
+D (10376) MSPI DQS: set to best phase: 0
+D (10380) MSPI DQS: set to best phase: 0
+D (10384) MSPI DQS: set to best phase: 0
+D (10387) MSPI DQS: set to best phase: 0
+D (10391) MSPI DQS: set to best phase: 0
+D (10395) MSPI DQS: set to best phase: 0
+D (10398) MSPI DQS: set to best phase: 0
+D (10402) MSPI DQS: set to best phase: 0
+D (10405) MSPI DQS: set to best phase: 0
+D (10409) MSPI DQS: set to best phase: 0
+D (10413) MSPI DQS: set to best phase: 0
+D (10416) MSPI DQS: set to best phase: 0
+D (10420) MSPI DQS: set to best phase: 0
+D (10424) MSPI DQS: set to best phase: 0
+D (10427) MSPI DQS: set to best phase: 0
+D (10431) MSPI DQS: set to best phase: 0
+D (10435) MSPI DQS: set to best phase: 0
+D (10438) MSPI DQS: set to best phase: 0
+D (10442) MSPI DQS: set to best phase: 0
+D (10446) MSPI DQS: set to best phase: 0
+D (10449) MSPI DQS: set to best phase: 0
+D (10453) MSPI DQS: set to best phase: 0
+D (10456) MSPI DQS: set to best phase: 0
+D (10460) MSPI DQS: set to best phase: 0
+D (10464) MSPI DQS: set to best phase: 0
+D (10467) MSPI DQS: set to best phase: 0
+D (10471) MSPI DQS: set to best phase: 0
+D (10475) MSPI DQS: set to best phase: 0
+D (10478) MSPI DQS: set to best phase: 0
+D (10482) MSPI DQS: set to best phase: 0
+D (10486) MSPI DQS: set to best phase: 0
+D (10489) MSPI DQS: set to best phase: 0
+D (10493) MSPI DQS: set to best phase: 0
+D (10497) MSPI DQS: set to best phase: 0
+D (10500) MSPI DQS: set to best phase: 0
+D (10504) MSPI DQS: set to best phase: 0
+D (10508) MSPI DQS: set to best phase: 0
+D (10511) MSPI DQS: set to best phase: 0
+D (10515) MSPI DQS: set to best phase: 0
+D (10518) MSPI DQS: set to best phase: 0
+D (10522) MSPI DQS: set to best phase: 0
+D (10526) MSPI DQS: set to best phase: 0
+D (10529) MSPI DQS: set to best phase: 0
+D (10533) MSPI DQS: set to best phase: 0
+D (10537) MSPI DQS: set to best phase: 0
+D (10540) MSPI DQS: set to best phase: 0
+D (10544) MSPI DQS: set to best phase: 0
+D (10548) MSPI DQS: set to best phase: 0
+D (10551) MSPI DQS: set to best phase: 0
+D (10555) MSPI DQS: set to best phase: 0
+D (10559) MSPI DQS: set to best phase: 0
+D (10562) MSPI DQS: set to best phase: 0
+D (10566) MSPI DQS: set to best phase: 0
+D (10569) MSPI DQS: set to best phase: 0
+D (10573) MSPI DQS: set to best phase: 0
+D (10577) MSPI DQS: set to best phase: 0
+D (10580) MSPI DQS: set to best phase: 0
+D (10584) MSPI DQS: set to best phase: 0
+D (10588) MSPI DQS: set to best phase: 0
+D (10591) MSPI DQS: set to best phase: 0
+D (10595) MSPI DQS: set to best phase: 0
+D (10599) MSPI DQS: set to best phase: 0
+D (10602) MSPI DQS: set to best phase: 0
+D (10606) MSPI DQS: set to best phase: 0
+D (10610) MSPI DQS: set to best phase: 0
+D (10613) MSPI DQS: set to best phase: 0
+D (10617) MSPI DQS: set to best phase: 0
+D (10621) MSPI DQS: set to best phase: 0
+D (10624) MSPI DQS: set to best phase: 0
+D (10628) MSPI DQS: set to best phase: 0
+D (10631) MSPI DQS: set to best phase: 0
+D (10635) MSPI DQS: set to best phase: 0
+D (10639) MSPI DQS: set to best phase: 0
+D (10642) MSPI DQS: set to best phase: 0
+D (10646) MSPI DQS: set to best phase: 0
+D (10650) MSPI DQS: set to best phase: 0
+D (10653) MSPI DQS: set to best phase: 0
+D (10657) MSPI DQS: set to best phase: 0
+D (10661) MSPI DQS: set to best phase: 0
+D (10664) MSPI DQS: set to best phase: 0
+D (10668) MSPI DQS: set to best phase: 0
+D (10672) MSPI DQS: set to best phase: 0
+D (10675) MSPI DQS: set to best phase: 0
+D (10679) MSPI DQS: set to best phase: 0
+D (10683) MSPI DQS: set to best phase: 0
+D (10686) MSPI DQS: set to best phase: 0
+D (10690) MSPI DQS: set to best phase: 0
+D (10693) MSPI DQS: set to best phase: 0
+D (10697) MSPI DQS: set to best phase: 0
+D (10701) MSPI DQS: set to best phase: 0
+D (10704) MSPI DQS: set to best phase: 0
+D (10708) MSPI DQS: set to best phase: 0
+D (10712) MSPI DQS: set to best phase: 0
+D (10715) MSPI DQS: set to best phase: 0
+D (10719) MSPI DQS: set to best phase: 0
+D (10723) MSPI DQS: set to best phase: 0
+D (10726) MSPI DQS: set to best phase: 0
+D (10730) MSPI DQS: set to best phase: 0
+D (10734) MSPI DQS: set to best phase: 0
+D (10737) MSPI DQS: set to best phase: 0
+D (10741) MSPI DQS: set to best phase: 0
+D (10744) MSPI DQS: set to best phase: 0
+D (10748) MSPI DQS: set to best phase: 0
+D (10752) MSPI DQS: set to best phase: 0
+D (10755) MSPI DQS: set to best phase: 0
+D (10759) MSPI DQS: set to best phase: 0
+D (10763) MSPI DQS: set to best phase: 0
+D (10766) MSPI DQS: set to best phase: 0
+D (10770) MSPI DQS: set to best phase: 0
+D (10774) MSPI DQS: set to best phase: 0
+D (10777) MSPI DQS: set to best phase: 0
+D (10781) MSPI DQS: set to best phase: 0
+D (10785) MSPI DQS: set to best phase: 0
+D (10788) MSPI DQS: set to best phase: 0
+D (10792) MSPI DQS: set to best phase: 0
+D (10796) MSPI DQS: set to best phase: 0
+D (10799) MSPI DQS: set to best phase: 0
+D (10803) MSPI DQS: set to best phase: 0
+D (10806) MSPI DQS: set to best phase: 0
+D (10810) MSPI DQS: set to best phase: 0
+D (10814) MSPI DQS: set to best phase: 0
+D (10817) MSPI DQS: set to best phase: 0
+D (10821) MSPI DQS: set to best phase: 0
+D (10825) MSPI DQS: set to best phase: 0
+D (10828) MSPI DQS: set to best phase: 0
+D (10832) MSPI DQS: set to best phase: 0
+D (10836) MSPI DQS: set to best phase: 0
+D (10839) MSPI DQS: set to best phase: 0
+D (10843) MSPI DQS: set to best phase: 0
+D (10847) MSPI DQS: set to best phase: 0
+D (10850) MSPI DQS: set to best phase: 0
+D (10854) MSPI DQS: set to best phase: 0
+D (10857) MSPI DQS: set to best phase: 0
+D (10861) MSPI DQS: set to best phase: 0
+D (10865) MSPI DQS: set to best phase: 0
+D (10868) MSPI DQS: set to best phase: 0
+D (10872) MSPI DQS: set to best phase: 0
+D (10876) MSPI DQS: set to best phase: 0
+D (10879) MSPI DQS: set to best phase: 0
+D (10883) MSPI DQS: set to best phase: 0
+D (10887) MSPI DQS: set to best phase: 0
+D (10890) MSPI DQS: set to best phase: 0
+D (10894) MSPI DQS: set to best phase: 0
+D (10898) MSPI DQS: set to best phase: 0
+D (10901) MSPI DQS: set to best phase: 0
+D (10905) MSPI DQS: set to best phase: 0
+D (10909) MSPI DQS: set to best phase: 0
+D (10912) MSPI DQS: set to best phase: 0
+D (10916) MSPI DQS: set to best phase: 0
+D (10919) MSPI DQS: set to best phase: 0
+D (10923) MSPI DQS: set to best phase: 0
+D (10927) MSPI DQS: set to best phase: 0
+D (10930) MSPI DQS: set to best phase: 0
+D (10934) MSPI DQS: set to best phase: 0
+D (10938) MSPI DQS: set to best phase: 0
+D (10941) MSPI DQS: set to best phase: 0
+D (10945) MSPI DQS: set to best phase: 0
+D (10949) MSPI DQS: set to best phase: 0
+D (10952) MSPI DQS: set to best phase: 0
+D (10956) MSPI DQS: set to best phase: 0
+D (10960) MSPI DQS: set to best phase: 0
+D (10963) MSPI DQS: set to best phase: 0
+D (10967) MSPI DQS: set to best phase: 0
+D (10970) MSPI DQS: set to best phase: 0
+D (10974) MSPI DQS: set to best phase: 0
+D (10978) MSPI DQS: set to best phase: 0
+D (10981) MSPI DQS: set to best phase: 0
+D (10985) MSPI DQS: set to best phase: 0
+D (10989) MSPI DQS: set to best phase: 0
+D (10992) MSPI DQS: set to best phase: 0
+D (10996) MSPI DQS: set to best phase: 0
+D (11000) MSPI DQS: set to best phase: 0
+D (11003) MSPI DQS: set to best phase: 0
+D (11007) MSPI DQS: set to best phase: 0
+D (11011) MSPI DQS: set to best phase: 0
+D (11014) MSPI DQS: set to best phase: 0
+D (11018) MSPI DQS: set to best phase: 0
+D (11022) MSPI DQS: set to best phase: 0
+D (11025) MSPI DQS: set to best phase: 0
+D (11029) MSPI DQS: set to best phase: 0
+D (11032) MSPI DQS: set to best phase: 0
+D (11036) MSPI DQS: set to best phase: 0
+D (11040) MSPI DQS: set to best phase: 0
+D (11043) MSPI DQS: set to best phase: 0
+D (11047) MSPI DQS: set to best phase: 0
+D (11051) MSPI DQS: set to best phase: 0
+D (11054) MSPI DQS: set to best phase: 0
+D (11058) MSPI DQS: set to best phase: 0
+D (11062) MSPI DQS: set to best phase: 0
+D (11065) MSPI DQS: set to best phase: 0
+D (11069) MSPI DQS: set to best phase: 0
+D (11073) MSPI DQS: set to best phase: 0
+D (11076) MSPI DQS: set to best phase: 0
+D (11080) MSPI DQS: set to best phase: 0
+D (11084) MSPI DQS: set to best phase: 0
+D (11087) MSPI DQS: set to best phase: 0
+D (11091) MSPI DQS: set to best phase: 0
+D (11094) MSPI DQS: set to best phase: 0
+D (11098) MSPI DQS: set to best phase: 0
+D (11102) MSPI DQS: set to best phase: 0
+D (11105) MSPI DQS: set to best phase: 0
+D (11109) MSPI DQS: set to best phase: 0
+D (11113) MSPI DQS: set to best phase: 0
+D (11116) MSPI DQS: set to best phase: 0
+D (11120) MSPI DQS: set to best phase: 0
+D (11124) MSPI DQS: set to best phase: 0
+D (11127) MSPI DQS: set to best phase: 0
+D (11131) MSPI DQS: set to best phase: 0
+D (11135) MSPI DQS: set to best phase: 0
+D (11138) MSPI DQS: set to best phase: 0
+D (11142) MSPI DQS: set to best phase: 0
+D (11145) MSPI DQS: set to best phase: 0
+D (11149) MSPI DQS: set to best phase: 0
+D (11153) MSPI DQS: set to best phase: 0
+D (11156) MSPI DQS: set to best phase: 0
+D (11160) MSPI DQS: set to best phase: 0
+D (11164) MSPI DQS: set to best phase: 0
+D (11167) MSPI DQS: set to best phase: 0
+D (11171) MSPI DQS: set to best phase: 0
+D (11175) MSPI DQS: set to best phase: 0
+D (11178) MSPI DQS: set to best phase: 0
+D (11182) MSPI DQS: set to best phase: 0
+D (11186) MSPI DQS: set to best phase: 0
+D (11189) MSPI DQS: set to best phase: 0
+D (11193) MSPI DQS: set to best phase: 0
+D (11197) MSPI DQS: set to best phase: 0
+D (11200) MSPI DQS: set to best phase: 0
+D (11204) MSPI DQS: set to best phase: 0
+D (11207) MSPI DQS: set to best phase: 0
+D (11211) MSPI DQS: set to best phase: 0
+D (11215) MSPI DQS: set to best phase: 0
+D (11218) MSPI DQS: set to best phase: 0
+D (11222) MSPI DQS: set to best phase: 0
+D (11226) MSPI DQS: set to best phase: 0
+D (11229) MSPI DQS: set to best phase: 0
+D (11233) MSPI DQS: set to best phase: 0
+D (11237) MSPI DQS: set to best phase: 0
+D (11240) MSPI DQS: set to best phase: 0
+D (11244) MSPI DQS: set to best phase: 0
+D (11248) MSPI DQS: set to best phase: 0
+D (11251) MSPI DQS: set to best phase: 0
+D (11255) MSPI DQS: set to best phase: 0
+D (11258) MSPI DQS: set to best phase: 0
+D (11262) MSPI DQS: set to best phase: 0
+D (11266) MSPI DQS: set to best phase: 0
+D (11269) MSPI DQS: set to best phase: 0
+D (11273) MSPI DQS: set to best phase: 0
+D (11277) MSPI DQS: set to best phase: 0
+D (11280) MSPI DQS: set to best phase: 0
+D (11284) MSPI DQS: set to best phase: 0
+D (11288) MSPI DQS: set to best phase: 0
+D (11291) MSPI DQS: set to best phase: 0
+D (11295) MSPI DQS: set to best phase: 0
+D (11299) MSPI DQS: set to best phase: 0
+D (11302) MSPI DQS: set to best phase: 0
+D (11306) MSPI DQS: set to best phase: 0
+D (11310) MSPI DQS: set to best phase: 0
+D (11313) MSPI DQS: set to best phase: 0
+D (11317) MSPI DQS: set to best phase: 0
+D (11320) MSPI DQS: set to best phase: 0
+D (11324) MSPI DQS: set to best phase: 0
+D (11328) MSPI DQS: set to best phase: 0
+D (11331) MSPI DQS: set to best phase: 0
+D (11335) MSPI DQS: set to best phase: 0
+D (11339) MSPI DQS: set to best phase: 0
+D (11342) MSPI DQS: set to best phase: 0
+D (11346) MSPI DQS: set to best phase: 0
+D (11350) MSPI DQS: set to best phase: 0
+D (11353) MSPI DQS: set to best phase: 0
+D (11357) MSPI DQS: set to best phase: 0
+D (11361) MSPI DQS: set to best phase: 0
+D (11364) MSPI DQS: set to best phase: 0
+D (11368) MSPI DQS: set to best phase: 0
+D (11371) MSPI DQS: set to best phase: 0
+D (11375) MSPI DQS: set to best phase: 0
+D (11379) MSPI DQS: set to best phase: 0
+D (11382) MSPI DQS: set to best phase: 0
+D (11386) MSPI DQS: set to best phase: 0
+D (11390) MSPI DQS: set to best phase: 0
+D (11393) MSPI DQS: set to best phase: 0
+D (11397) MSPI DQS: set to best phase: 0
+D (11401) MSPI DQS: set to best phase: 0
+D (11404) MSPI DQS: set to best phase: 0
+D (11408) MSPI DQS: set to best phase: 0
+D (11412) MSPI DQS: set to best phase: 0
+D (11415) MSPI DQS: set to best phase: 0
+D (11419) MSPI DQS: set to best phase: 0
+D (11423) MSPI DQS: set to best phase: 0
+D (11426) MSPI DQS: set to best phase: 0
+D (11430) MSPI DQS: set to best phase: 0
+D (11433) MSPI DQS: set to best phase: 0
+D (11437) MSPI DQS: set to best phase: 0
+D (11441) MSPI DQS: set to best phase: 0
+D (11444) MSPI DQS: set to best phase: 0
+D (11448) MSPI DQS: set to best phase: 0
+D (11452) MSPI DQS: set to best phase: 0
+D (11455) MSPI DQS: set to best phase: 0
+D (11459) MSPI DQS: set to best phase: 0
+D (11463) MSPI DQS: set to best phase: 0
+D (11466) MSPI DQS: set to best phase: 0
+D (11470) MSPI DQS: set to best phase: 0
+D (11474) MSPI DQS: set to best phase: 0
+D (11477) MSPI DQS: set to best phase: 0
+D (11481) MSPI DQS: set to best phase: 0
+D (11485) MSPI DQS: set to best phase: 0
+D (11488) MSPI DQS: set to best phase: 0
+D (11492) MSPI DQS: set to best phase: 0
+D (11495) MSPI DQS: set to best phase: 0
+D (11499) MSPI DQS: set to best phase: 0
+D (11503) MSPI DQS: set to best phase: 0
+D (11506) MSPI DQS: set to best phase: 0
+D (11510) MSPI DQS: set to best phase: 0
+D (11514) MSPI DQS: set to best phase: 0
+D (11517) MSPI Timing: test nums: 100, test result: [id][good/bad][good_times]:
+D (11524) MSPI Timing: [0][good][100]
+D (11528) MSPI Timing: [1][good][100]
+D (11531) MSPI Timing: [2][good][100] 
+D (11535) MSPI Timing: [3][good][100]
+D (11538) MSPI Timing: [4][good][100]
+D (11542) MSPI Timing: [5][good][100]
+D (11545) MSPI Timing: [6][good][100]
+D (11549) MSPI Timing: [7][good][100] 
+D (11552) MSPI Timing: [8][good][100]
+D (11556) MSPI Timing: [9][good][100]
+D (11559) MSPI Timing: [10][good][100]
+D (11563) MSPI Timing: [11][good][100] 
+D (11566) MSPI Timing: [12][good][100]
+D (11570) MSPI Timing: [13][good][100]
+D (11573) MSPI Timing: [14][good][100]
+D (11577) MSPI Timing: [15][good][100]
+D (11580) MSPI Timing: [16][good][100] 
+D (11584) MSPI Timing: [17][good][100]
+D (11587) MSPI Timing: [18][good][100]
+D (11591) MSPI Timing: [19][good][100]
+D (11595) MSPI Timing: [20][good][100] 
+D (11598) MSPI Timing: [21][good][100]
+D (11602) MSPI Timing: [22][good][100]
+D (11605) MSPI Timing: [23][good][100]
+D (11609) MSPI Timing: [24][good][100] 
+D (11612) MSPI Timing: [25][good][100]
+D (11616) MSPI Timing: [26][good][100]
+D (11620) MSPI Timing: [27][good][100]
+D (11623) MSPI Timing: [28][good][100]
+D (11627) MSPI Timing: [29][good][100] 
+D (11630) MSPI Timing: [30][good][100]
+I (11634) MSPI DQS: tuning success, best delayline id is 15
+D (11639) MSPI Timing: psram_freq_mhz: 80 mhz, bus clock div: 4
+D (11645) Flash Delay: spi0_usr_dummy: 1, spi0_extra_dummy: 0, spi1_usr_dummy: 7, spi1_extra_dummy: 0
+I (11654) esp_psram: Found 32MB PSRAM device
+I (11658) esp_psram: Speed: 80MHz
+I (11661) hex_psram: psram CS IO is dedicated
+I (11665) cpu_start: Multicore app
+D (11668) cpu_start: Pro cpu up
+D (11671) cpu_start: Starting app cpu, entry point is 0x4ff0032c
+--- 0x4ff0032c: call_start_cpu1 at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_system/port/cpu_start.c:197
+D (0) cpu_start: App cpu up
+I (12963) esp_psram: SPI SRAM memory test OK
+D (12973) clk: RTC_SLOW_CLK calibration value: 4424538
+D (1047) cpu_start: calling init function: 0x40000262 on core: 0
+--- 0x40000262: __esp_system_init_fn_init_efuse_check at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/efuse/src/esp_efuse_startup.c:37
+D (1048) cpu_start: calling init function: 0x400009ba on core: 0
+--- 0x400009ba: __esp_system_init_fn_init_show_cpu_freq at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_system/startup_funcs.c:64
+I (1048) cpu_start: Pro cpu start user code
+I (1052) cpu_start: cpu freq: 360000000 Hz
+D (1055) cpu_start: calling init function: 0x400000f4 on core: 0
+--- 0x400000f4: __esp_system_init_fn_init_show_app_info at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_app_format/esp_app_desc.c:123
+I (1061) app_init: Application information:
+I (1065) app_init: Project name:     P4-WIFI6-Test2
+I (1070) app_init: App version:      d407c41-dirty
+I (1074) app_init: Compile time:     Oct 17 2025 20:39:58
+I (1079) app_init: ELF file SHA256:  76636500f...
+I (1084) app_init: ESP-IDF:          v5.5.1-dirty
+D (1088) cpu_start: calling init function: 0x4000027a on core: 0
+--- 0x4000027a: __esp_system_init_fn_init_efuse_show_app_info at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/efuse/src/esp_efuse_startup.c:47
+I (1094) efuse_init: Min chip rev:     v0.1
+I (1098) efuse_init: Max chip rev:     v1.99
+I (1102) efuse_init: Chip rev:         v1.0
+D (1106) cpu_start: calling init function: 0x40029734 on core: 0
+--- 0x40029734: __esp_system_init_fn_init_psram_new at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/espressif__arduino-esp32/cores/esp32/esp32-hal-misc.c:263
+D (1112) cpu_start: calling init function: 0x400036b2 on core: 0
+--- 0x400036b2: __esp_system_init_fn_init_heap at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/heap/heap_caps_init.c:26
+D (1117) memory_layout: Checking 8 reserved memory ranges:
+D (1122) memory_layout: Reserved memory range 0x30100000 - 0x30100084
+--- 0x30100000: rtc_clk_mpll_enable at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_hw_support/port/esp32p4/rtc_clk.c:591
+D (1129) memory_layout: Reserved memory range 0x48000000 - 0x4c000000
+D (1135) memory_layout: Reserved memory range 0x4ff00000 - 0x4ff16f80
+--- 0x4ff00000: _vector_table at ??:?
+D (1141) memory_layout: Reserved memory range 0x4ff16f80 - 0x4ff22220
+D (1147) memory_layout: Reserved memory range 0x4ff3fbb0 - 0x4ff40000
+D (1153) memory_layout: Reserved memory range 0x4ff40000 - 0x4ff40000
+D (1159) memory_layout: Reserved memory range 0x50108000 - 0x50108018
+D (1166) memory_layout: Reserved memory range 0x50108018 - 0x501080a0
+D (1172) memory_layout: Building list of available memory regions:
+D (1178) memory_layout: Available memory region 0x4ff22220 - 0x4ff3afc0
+D (1184) memory_layout: Available memory region 0x4ff3afc0 - 0x4ff3fbb0
+D (1190) memory_layout: Available memory region 0x4ff40000 - 0x4ffa0000
+D (1197) memory_layout: Available memory region 0x501080a0 - 0x50110000
+D (1203) memory_layout: Available memory region 0x30100084 - 0x30102000
+I (1209) heap_init: Initializing. RAM available for dynamic allocation:
+D (1216) heap_init: New heap initialised at 0x4ff22220
+I (1221) heap_init: At 4FF22220 len 00018DA0 (99 KiB): RAM
+I (1226) heap_init: At 4FF3AFC0 len 00004BF0 (18 KiB): RAM
+I (1231) heap_init: At 4FF40000 len 00060000 (384 KiB): RAM
+D (1237) heap_init: New heap initialised at 0x501080a0
+I (1241) heap_init: At 501080A0 len 00007F60 (31 KiB): RTCRAM
+D (1247) heap_init: New heap initialised at 0x30100084
+I (1251) heap_init: At 30100084 len 00001F7C (7 KiB): TCM
+D (1257) cpu_start: calling init function: 0x4000959a on core: 0
+--- 0x4000959a: __esp_system_init_fn_esp_timer_init_nonos at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_timer/src/esp_timer_init.c:28
+D (1262) cpu_start: calling init function: 0x4000834c on core: 0
+--- 0x4000834c: __esp_system_init_fn_init_libc at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/newlib/src/init.c:12
+D (1268) cpu_start: calling init function: 0x40011268 on core: 0
+--- 0x40011268: __esp_system_init_fn_add_psram_to_heap at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_psram/system_layer/esp_psram.c:115
+I (1274) esp_psram: Adding pool of 32768K of PSRAM memory to heap allocator
+D (1280) cpu_start: calling init function: 0x40000a38 on core: 0
+--- 0x40000a38: __esp_system_init_fn_init_brownout at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_system/startup_funcs.c:79
+D (1286) intr_alloc: Connected src 8 to int 0 (cpu 0)
+D (1291) cpu_start: calling init function: 0x40000a62 on core: 0
+--- 0x40000a62: __esp_system_init_fn_init_newlib_time at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_system/startup_funcs.c:104
+D (1297) cpu_start: calling init function: 0x4000aa10 on core: 0
+--- 0x4000aa10: __esp_system_init_fn_init_vfs_uart at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_driver_uart/src/uart_vfs.c:1148
+D (1302) cpu_start: calling init function: 0x4000f2da on core: 0
+--- 0x4000f2da: __esp_system_init_fn_init_vfs_usj_sec at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_driver_usb_serial_jtag/src/usb_serial_jtag_vfs.c:657
+D (1308) cpu_start: calling init function: 0x40010d0e on core: 0
+--- 0x40010d0e: __esp_system_init_fn_init_vfs_nullfs at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/vfs/nullfs.c:322
+D (1314) cpu_start: calling init function: 0x4000f694 on core: 0
+--- 0x4000f694: __esp_system_init_fn_init_vfs_console at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_vfs_console/vfs_console.c:271
+D (1320) cpu_start: calling init function: 0x40008360 on core: 0
+--- 0x40008360: __esp_system_init_fn_init_libc_stdio at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/newlib/src/init.c:18
+D (1326) cpu_start: calling init function: 0x40000a78 on core: 0
+--- 0x40000a78: __esp_system_init_fn_init_flash at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_system/startup_funcs.c:111
+D (1331) spi_flash: trying chip: gd
+I (1334) spi_flash: detected chip: gd
+I (1338) spi_flash: flash io: dio
+W (1341) spi_flash: Detected size(32768k) larger than the size in the binary image header(16384k). Using the size in the binary image header.
+D (1353) cpu_start: calling init function: 0x40000366 on core: 0
+--- 0x40000366: __esp_system_init_fn_init_efuse at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/efuse/src/esp_efuse_startup.c:158
+D (1359) cpu_start: calling init function: 0x400ba292
+--- 0x400ba292: _GLOBAL__sub_I__ZN9__gnu_cxx9__freeresEv at /builds/idf/crosstool-NG/.build/riscv32-esp-elf/src/gcc/libstdc++-v3/libsupc++/eh_alloc.cc:462
+D (1364) C++ init: Setting C++ exception emergency pool to 0.
+D (1369) cpu_start: calling init function: 0x400b9342
+--- 0x400b9342: _GLOBAL__sub_I__ZN17__eh_globals_init7_S_initE at /builds/idf/crosstool-NG/.build/riscv32-esp-elf/build/build-cc-gcc-final/riscv32-esp-elf/rv32imafc_zicsr_zifencei/ilp32f/no-rtti/libstdc++-v3/include/riscv32-esp-elf/bits/gthr-default.h:721   
+--- (inlined by) __eh_globals_init::__eh_globals_init() at /builds/idf/crosstool-NG/.build/riscv32-esp-elf/src/gcc/libstdc++-v3/libsupc++/eh_globals.cc:105
+--- (inlined by) __static_initialization_and_destruction_0 at /builds/idf/crosstool-NG/.build/riscv32-esp-elf/src/gcc/libstdc++-v3/libsupc++/eh_globals.cc:126
+--- (inlined by) _GLOBAL__sub_I__ZN17__eh_globals_init7_S_initE at /builds/idf/crosstool-NG/.build/riscv32-esp-elf/src/gcc/libstdc++-v3/libsupc++/eh_globals.cc:162
+D (1374) cpu_start: calling init function: 0x400b9132
+--- 0x400b9132: esp_ds_conn_lock at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/mbedtls/port/esp_ds/esp_ds_common.c:55
+D (1379) cpu_start: calling init function: 0x400aa554
+--- 0x400aa554: adc_hw_calibration at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_adc/adc_common.c:59
+D (1384) efuse: BLK2 REG4 [0-9], len=10 bits
+D (1387) efuse: BLK10 REG1 [8-11], len=4 bits
+D (1391) efuse: BLK10 REG1 [12-15], len=4 bits
+D (1396) efuse: BLK10 REG1 [16-19], len=4 bits
+D (1400) efuse: BLK10 REG1 [20-23], len=4 bits
+D (1404) efuse: BLK10 REG1 [24-27], len=4 bits
+D (1408) efuse: BLK10 REG1 [28-31], len=4 bits
+D (1412) efuse: BLK10 REG2 [0-3], len=4 bits
+D (1416) efuse: BLK10 REG2 [4-7], len=4 bits
+D (1420) efuse: BLK2 REG4 [10-19], len=10 bits
+D (1424) efuse: BLK10 REG1 [8-11], len=4 bits
+D (1428) efuse: BLK10 REG1 [12-15], len=4 bits
+D (1433) efuse: BLK10 REG1 [16-19], len=4 bits
+D (1437) efuse: BLK10 REG1 [20-23], len=4 bits
+D (1441) efuse: BLK10 REG1 [24-27], len=4 bits
+D (1445) efuse: BLK10 REG1 [28-31], len=4 bits
+D (1449) efuse: BLK10 REG2 [0-3], len=4 bits
+D (1453) efuse: BLK10 REG2 [4-7], len=4 bits
+D (1457) efuse: BLK2 REG4 [20-29], len=10 bits
+D (1461) efuse: BLK10 REG1 [8-11], len=4 bits
+D (1466) efuse: BLK10 REG1 [12-15], len=4 bits
+D (1470) efuse: BLK10 REG1 [16-19], len=4 bits
+D (1474) efuse: BLK10 REG1 [20-23], len=4 bits
+D (1478) efuse: BLK10 REG1 [24-27], len=4 bits
+D (1482) efuse: BLK10 REG1 [28-31], len=4 bits
+D (1486) efuse: BLK10 REG2 [0-3], len=4 bits
+D (1490) efuse: BLK10 REG2 [4-7], len=4 bits
+D (1494) efuse: BLK2 REG4 [30-31], len=2 bits
+D (1498) efuse: BLK2 REG5 [0-7], len=8 bits
+D (1502) efuse: BLK10 REG1 [8-11], len=4 bits
+D (1506) efuse: BLK10 REG1 [12-15], len=4 bits
+D (1511) efuse: BLK10 REG1 [16-19], len=4 bits
+D (1515) efuse: BLK10 REG1 [20-23], len=4 bits
+D (1519) efuse: BLK10 REG1 [24-27], len=4 bits
+D (1523) efuse: BLK10 REG1 [28-31], len=4 bits
+D (1527) efuse: BLK10 REG2 [0-3], len=4 bits
+D (1531) efuse: BLK10 REG2 [4-7], len=4 bits
+D (1535) efuse: BLK2 REG5 [8-17], len=10 bits
+D (1539) efuse: BLK10 REG2 [8-11], len=4 bits
+D (1543) efuse: BLK10 REG2 [12-15], len=4 bits
+D (1548) efuse: BLK10 REG2 [16-19], len=4 bits
+D (1552) efuse: BLK10 REG2 [20-23], len=4 bits
+D (1556) efuse: BLK10 REG2 [24-27], len=4 bits
+D (1560) efuse: BLK10 REG2 [28-31], len=4 bits
+D (1564) efuse: BLK2 REG5 [18-27], len=10 bits
+D (1568) efuse: BLK10 REG2 [8-11], len=4 bits
+D (1572) efuse: BLK10 REG2 [12-15], len=4 bits
+D (1577) efuse: BLK10 REG2 [16-19], len=4 bits
+D (1581) efuse: BLK10 REG2 [20-23], len=4 bits
+D (1585) efuse: BLK10 REG2 [24-27], len=4 bits
+D (1589) efuse: BLK10 REG2 [28-31], len=4 bits
+D (1593) efuse: BLK2 REG5 [28-31], len=4 bits
+D (1597) efuse: BLK2 REG6 [0-5], len=6 bits
+D (1601) efuse: BLK10 REG2 [8-11], len=4 bits
+D (1605) efuse: BLK10 REG2 [12-15], len=4 bits
+D (1610) efuse: BLK10 REG2 [16-19], len=4 bits
+D (1614) efuse: BLK10 REG2 [20-23], len=4 bits
+D (1618) efuse: BLK10 REG2 [24-27], len=4 bits
+D (1622) efuse: BLK10 REG2 [28-31], len=4 bits
+D (1626) efuse: BLK2 REG6 [6-15], len=10 bits
+D (1630) efuse: BLK10 REG2 [8-11], len=4 bits
+D (1634) efuse: BLK10 REG2 [12-15], len=4 bits
+D (1639) efuse: BLK10 REG2 [16-19], len=4 bits
+D (1643) efuse: BLK10 REG2 [20-23], len=4 bits
+D (1647) efuse: BLK10 REG2 [24-27], len=4 bits
+D (1651) efuse: BLK10 REG2 [28-31], len=4 bits
+D (1655) cpu_start: calling init function: 0x4006f366
+--- 0x4006f366: esp_ipc_init at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_system/esp_ipc.c:107
+D (1660) cpu_start: calling init function: 0x400604aa
+--- 0x400604aa: _GLOBAL__sub_I__ZN12LittleFSImplC2Ev at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/espressif__arduino-esp32/libraries/LittleFS/src/LittleFS.cpp:126
+D (1665) cpu_start: calling init function: 0x4005f818
+--- 0x4005f818: _GLOBAL__sub_I__ZN12NimBLEClientC2ERK13NimBLEAddress at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/h2zero__esp-nimble-cpp/src/NimBLEClient.cpp:1320
+D (1670) cpu_start: calling init function: 0x4005e2ec
+--- 0x4005e2ec: _GLOBAL__sub_I__ZN12NimBLEServerC2Ev at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/h2zero__esp-nimble-cpp/src/NimBLEServer.cpp:1033
+D (1674) cpu_start: calling init function: 0x4005d4ac
+--- 0x4005d4ac: _GLOBAL__sub_I__ZN10NimBLEScanC2Ev at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/h2zero__esp-nimble-cpp/src/NimBLEScan.cpp:561
+D (1679) cpu_start: calling init function: 0x4005d3e8
+--- 0x4005d3e8: _GLOBAL__sub_I__ZN12NimBLEDevice22defaultDeviceCallbacksE at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/h2zero__esp-nimble-cpp/src/NimBLEDevice.cpp:1348
+D (1684) cpu_start: calling init function: 0x4005ce44
+--- 0x4005ce44: _GLOBAL__sub_I__ZN16NimBLEDescriptorC2EPKcttP20NimBLECharacteristic at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/h2zero__esp-nimble-cpp/src/NimBLEDescriptor.cpp:148
+D (1689) cpu_start: calling init function: 0x4005cdae
+--- 0x4005cdae: _GLOBAL__sub_I__ZN20NimBLECharacteristicC2EPKcttP13NimBLEService at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/h2zero__esp-nimble-cpp/src/NimBLECharacteristic.cpp:422
+D (1694) cpu_start: calling init function: 0x4004c5c2
+--- 0x4004c5c2: _GLOBAL__sub_I__Z19cled_contoller_sizev at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/components/FastLED/src/FastLED.cpp:423
+D (1698) cpu_start: calling init function: 0x4004c06a
+--- 0x4004c06a: _GLOBAL__sub_I_ib_jul01_gp at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/main/main.cpp:582
+D (1703) cpu_start: calling init function: 0x4002ecbc
+--- 0x4002ecbc: _GLOBAL__sub_I__ZN6StringC2EPKc at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/espressif__arduino-esp32/cores/esp32/WString.cpp:927
+D (1708) cpu_start: calling init function: 0x4002dbc8
+--- 0x4002dbc8: _GLOBAL__sub_I_Serial0 at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/espressif__arduino-esp32/cores/esp32/HardwareSerial.cpp:662
+D (1713) cpu_start: calling init function: 0x4002d104
+--- 0x4002d104: _GLOBAL__sub_I__Zli4_kHzy at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/espressif__arduino-esp32/cores/esp32/Esp.cpp:588
+D (1717) cpu_start: calling init function: 0x40026796
+--- 0x40026796: esp_hosted_host_init at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/espressif__esp_hosted/host/port/esp/freertos/src/port_esp_hosted_host_init.c:18
+I (1722) host_init: ESP Hosted : Host chip_ip[18]
+I (1727) H_API: ESP-Hosted starting. Hosted_Tasks: prio:23, stack: 5120 RPC_task_stack: 5120
+I (1735) H_API: ** add_esp_wifi_remote_channels **
+D (1739) transport: Adding channel IF[1]: S[0] Tx[0x4ff3cb2c] Rx[0x400288fc]
+--- 0x400288fc: esp_wifi_remote_channel_rx at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/espressif__esp_wifi_remote/esp_wifi_remote_net.c:19
+I (1746) transport: Add ESP-Hosted channel IF[1]: S[0] Tx[0x40011dd4] Rx[0x400288fc]
+--- 0x40011dd4: transport_drv_sta_tx at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/espressif__esp_hosted/host/drivers/transport/transport_drv.c:245
+--- 0x400288fc: esp_wifi_remote_channel_rx at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/espressif__esp_wifi_remote/esp_wifi_remote_net.c:19
+D (1754) transport: Adding channel IF[2]: S[0] Tx[0x4ff3cb2c] Rx[0x400288fc]
+--- 0x400288fc: esp_wifi_remote_channel_rx at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/espressif__esp_wifi_remote/esp_wifi_remote_net.c:19
+I (1760) transport: Add ESP-Hosted channel IF[2]: S[0] Tx[0x40011d12] Rx[0x400288fc]
+--- 0x40011d12: transport_drv_ap_tx at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/espressif__esp_hosted/host/drivers/transport/transport_drv.c:275
+--- 0x400288fc: esp_wifi_remote_channel_rx at C:/Users/Jeff/Documents/ESP-IDF/P4-WIFI6-Test2/managed_components/espressif__esp_wifi_remote/esp_wifi_remote_net.c:19
+sdio_mempool_create free:33681488 min-free:33681488 lfb-def:33030144 lfb-8bit:33030144
+
+D (1776) sdmmc_periph: peripheral version 5342270a, hardware config 03c44c83
+D (1782) intr_alloc: Connected src 23 to int 1 (cpu 0)
+D (1787) sdmmc_periph: using GPIO18 as clk pin
+D (1791) sdmmc_periph: using GPIO19 as cmd pin
+D (1796) sdmmc_periph: using GPIO14 as d0 pin
+D (1800) sdmmc_periph: using GPIO15 as d1 pin
+D (1804) sdmmc_periph: using GPIO16 as d2 pin
+D (1808) gpio: GPIO[17]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0
+D (1816) sdmmc_periph: Slot 1 is not initialized yet, skipping sdmmc_host_change_to_slot
+D (1824) sdmmc_periph: clk_src_freq_hz: 160000000 hz
+D (1829) sdmmc_periph: slot=1 clk_src=8 host_div=10 card_div=20 freq=400kHz (max 400kHz)
+D (1837) sdmmc_periph: Slot 1 is not initialized yet, skipping sdmmc_host_change_to_slot
+D (1844) sdmmc_periph: Slot 1 is not initialized yet, skipping sdmmc_host_change_to_slot
+D (1852) sdmmc_periph: slot=1 width=1
+D (1856) H_SDIO_DRV: sdio bus init done
+D (1859) transport: Bus handle: 0x4ff1bd2c
+D (1863) RPC_WRAP: rpc_init
+D (1865) rpc_api: rpc_slaveif_init
+D (1869) cpu_start: calling init function: 0x4ff07bfe
+--- 0x4ff07bfe: enable_timer_group0_for_calibration at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_hw_support/port/esp32p4/rtc_time.c:230
+1 D ((1811753)1)  ccppuu_s_tsatrart:t: c aclalllinign gi inniitt f funucnctitoionn: : 0x04x40000702d2600c 8 onon c coorere:: 0   
+
+D (1885) intr_alloc: Connected src 55 to int 2 (cpu 0)
+D (1889) cpu_start: calling init function: 0x400026c8 on core: 0
+--- 0x400026c8: __esp_system_init_fn_esp_hw_stack_guard_init at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_system/hw_stack_guard.c:15
+D (1895) cpu_start: calling init function: 0x40003d54 on core: 0
+--- 0x40003d54: __esp_system_init_fn_esp_security_init at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_security/src/init.c:42
+D (1901) cpu_start: calling init function: 0x400cdcd8 on core: 0
+--- 0x400cdcd8: __esp_system_init_fn_sleep_clock_startup_init at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_hw_support/lowpower/port/esp32p4/sleep_clock.c:64
+D (1907) cpu_start: calling init function: 0x4000e96e on core: 0
+--- 0x4000e96e: __esp_system_init_fn_usb_serial_jtag_conn_status_init at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_driver_usb_serial_jtag/src/usb_serial_jtag_connection_monitor.c:75
+D (1912) cpu_start: calling init function: 0x40000ad0 on core: 0
+--- 0x40000ad0: __esp_system_init_fn_init_disable_rtc_wdt at C:/Users/Jeff/esp/v5.5.1/esp-idf/components/esp_system/startup_funcs.c:179
+D (1918) intr_alloc: Connected src 79 to int 3 (cpu 0)
+D (1923) app_start: Starting scheduler on CPU0
+D (1927) intr_alloc: Connected src 53 to int 4 (cpu 0)
+D (1927) intr_alloc: Connected src 80 to int 0 (cpu 1)
+D (1932) app_start: Starting scheduler on CPU1
+D (1936) intr_alloc: Connected src 54 to int 1 (cpu 1)
+I (1927) H_SDIO_DRV: sdio_data_to_rx_buf_task started
+I (1946) main_task: Started on CPU0
+D (1950) heap_init: New heap initialised at 0x4ff3afc0
+D (1954) heap_init: New heap initialised at 0x4ff40000
+I (1959) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations
+D (1967) esp_psram: Allocating block of size 32768 bytes
+D (1972) intr_alloc: Connected src 48 to int 5 (cpu 0)
+I (1976) main_task: Calling app_main()
+I (1987) main_tD (1993) nvs: nvs_open_from_partition settings 0
+D (1993) nvs: nvs_get brightness 1
+D (1993) nvs: nvs_get program 1
+D (1993) nvs: nvs_get mode 1
+D (1995) nvs: nvs_close 1
+I (1997) FastLED_LCD_P4: beginShowLeds() called! begin_count=1, datapin=50, nleds=512
+I (2005) FastLED_LCD_P4: showPixels() called! call_count=1, data_pin=50
+I (2011) FastLED_LCD_P4: endShowLeds() called! end_count=1
+I (2016) FastLED_LCD_P4: Chipset: WS2812
+I (2019) FastLED_LCD_P4: Target timing: T1=350 ns, T2=700 ns, T3=600 ns
+I (2026) FastLED_LCD_P4: Optimized PCLK: 2000000 Hz (2 MHz)
+I (2031) FastLED_LCD_P4: Pixel duration: 500 ns
+I (2035) FastLED_LCD_P4: Pixels per bit: 4
+I (2039) FastLED_LCD_P4: Actual timing: T1=500 ns, T1+T2=1000 ns, T3=500 ns
+I (2046) FastLED_LCD_P4: Buffer size: 99424 bytes (97 KB)
+I (2051) FastLED_LCD_P4: Frame time (estimated): 24856 us
+I (2059) FastLED_LCD_P4: Allocated 2 buffers at 0x48001c00, 0x4801a0c0
+D (2063) intr_alloc: Connected src 36 to int 3 (cpu 1)
+D (2067) gdma: new group (1) at 0x4ff3defc
+D (2071) gdma: new pair (1,0) at 0x4ff3df88
+D (2075) gdma: new tx channel (1,0) at 0x4ff3dec4
+D (2080) intr_alloc: Connected src 65 to int 4 (cpu 1)
+D (2084) gdma: install interrupt service for tx channel (1,0)
+D (2092) gdma-link: new link list @0x4ff3dfc8, items @0x4ff3e000
+D (2096) lcd_panel.rgb: new rgb panel(0) @0x4ff3dd04, num_fbs=1, fb_size=98304, bb0 @0x0, bb1 @0x0, bb_size=0
+D (2105) lcd_panel.rgb: fb[0] @0x48032580
+D (2109) lcd_hal: n=40,a=2,b=0,mo=2
+D (2112) lcd_panel.rgb: rgb panel(0) start, pclk=2000000Hz
+I (2117) FastLED_LCD_P4: RGB LCD driver initialized successfully
+I (2123) FastLED_LCD_P4: Strip 0 first LED: R=0 G=0 B=0
+I (2128) FastLED_LCD_P4: attachStrips() complete, calling show()
+I (2139) FastLED_LCD_P4: First frame: buffer_size=99424, width=49712 pixels
+I (2140) FastLED_LCD_P4: First 8 bytes of buffer: ff ff 00 00 00 00 00 00
+Hardware test: Setting all LEDs to RED...
+First 3 LEDs before fill_solid: [0]=0,0,0 [1]=0,0,0 [2]=0,0,0
+First 3 LEDs after fill_solid RED: [0]=255,0,0 [1]=255,0,0 [2]=255,0,0
+Calling FastLED.show()...
+I (2171) FastLED_LCD_P4: beginShowLeds() called! begin_count=2, datapin=50, nleds=512
+I (2172) FastLED_LCD_P4: showPixels() called! call_count=2, data_pin=50
+I (2179) FastLED_LCD_P4: endShowLeds() called! end_count=2
+FastLED.show() returned
+D (2928) rpc_core: rpc_tx_thread:518 rpc lib not ready
+D (3928) rpc_core: rpc_tx_thread:518 rpc lib not ready
+Hardware test: Setting all LEDs to GREEN...
+I (4192) FastLED_LCD_P4: beginShowLeds() called! begin_count=3, datapin=50, nleds=512
+I (4193) FastLED_LCD_P4: showPixels() called! call_count=3, data_pin=50
+I (4199) FastLED_LCD_P4: endShowLeds() called! end_count=3
+D (4928) rpc_core: rpc_tx_thread:518 rpc lib not ready
+D (5928) rpc_core: rpc_tx_thread:518 rpc lib not ready
+Hardware test: Setting all LEDs to BLUE...
+I (6212) FastLED_LCD_P4: beginShowLeds() called! begin_count=4, datapin=50, nleds=512
+I (6213) FastLED_LCD_P4: showPixels() called! call_count=4, data_pin=50
+I (6219) FastLED_LCD_P4: endShowLeds() called! end_count=4
+D (6928) rpc_core: rpc_tx_thread:518 rpc lib not ready
+D (7928) rpc_core: rpc_tx_thread:518 rpc lib not ready
+Hardware test complete. Starting normal operation...
+I (8232) FastLED_LCD_P4: beginShowLeds() called! begin_count=5, datapin=50, nleds=512
+I (8233) FastLED_LCD_P4: showPixels() called! call_count=5, data_pin=50
+I (8240) FastLED_LCD_P4: endShowLeds() called! end_count=5
+I (8254) transport: Attempt connection with slave: retry[0]
+W (8254) H_SDIO_DRV: Reset slave using GPIO[54]
+I (8254) os_wrapper_esp: GPIO [54] configured
+D (8259) gpio: GPIO[54]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0
+D (8928) rpc_core: rpc_tx_thread:518 rpc lib not ready
+I (9469) sdio_wrapper: SDIO master: Slot 1, Data-Lines: 4-bit Freq(KHz)[40000 KHz]
+I (9469) sdio_wrapper: GPIOs: CLK[18] CMD[19] D0[14] D1[15] D2[16] D3[17] Slave_Reset[54]
+I (9473) sdio_wrapper: Queues: Tx[20] Rx[20] SDIO-Rx-Mode[1]
+D (9480) sdmmc_req: process_command_response: error 0x107  (status=00000100)
+D (9507) sdmmc_req: process_command_response: error 0x107  (status=00000100)
+D (9507) sdmmc_sd: CMD8 timeout; not an SD v2.00 card
+D (9508) sdmmc_io: sdmmc_init_io: IO-only card
+D (9511) sdmmc_io: sdmmc_init_io: number of IO functions: 2
+D (9527) sdmmc_periph: using GPIO15 as d1 pin
+D (9528) sdmmc_init: sdmmc_card_init: card type is SDIO
+D (9529) sdmmc_io: sdmmc_io_enable_hs_mode: CCCR_HIGHSPEED=0x03
+D (9532) sdmmc_io: IO card capabilities byte: 17
+D (9536) sdmmc_common: sdmmc_init_host_bus_width: using 4-bit bus
+D (9542) sdmmc_periph: using GPIO17 as d3 pin
+D (9546) sdmmc_periph: slot=1 width=4
+D (9549) sdmmc_periph: clk_src_freq_hz: 160000000 hz
+D (9554) sdmmc_periph: slot=1 clk_src=8 host_div=4 card_div=0 freq=40000kHz (max 40000kHz)
+Name:
+Type: SDIO
+Speed: 40.00 MHz (limit: 40.00 MHz)
+Size: 0MB
+CSD: ver=1, sector_size=0, capacity=0 read_bl_len=0
+SCR: sd_spec=0, bus_width=0
+D (9575) CIS: 0x4ff3d500   01 03 d9 01 ff 20 04 92  00 66 66 21 02 0c 00 22  |..... ...ff!..."|
+D (9583) CIS: 0x4ff3d510   04 00 00 02 32 1a 05 01  01 00 02 07 1b 08 c1 41  |....2..........A|
+D (9592) CIS: 0x4ff3d520   30 30 ff ff ff ff ff                              |00.....|
+TUPLE: DEVICE, size: 3: D9 01 FF 
+TUPLE: MANFID, size: 4
+  MANF: 0092, CARD: 6666
+TUPLE: FUNCID, size: 2: 0C 00
+TUPLE: FUNCE, size: 4: 00 00 02 32
+TUPLE: CONFIG, size: 5: 01 01 00 02 07
+TUPLE: CFTABLE_ENTRY, size: 8
+  INDX: C1, Intface: 1, Default: 1, Conf-Entry-Num: 1
+  IF: 41
+  FS: 30, misc: 0, mem_space: 1, irq: 1, io_space: 0, timing: 0, power: 0
+  IR: 30, mask: 1,   IRQ: FF FF
+  LEN: FFFF
+TUPLE: END
+D (9636) sdio_wrapper: IOE: 0x00
+D (9639) sdio_wrapper: IOR: 0x02
+D (9642) sdio_wrapper: IOE: 0x02
+D (9645) sdio_wrapper: IOE: 0x02
+D (9648) sdio_wrapper: IOR: 0x02
+D (9651) sdio_wrapper: IE: 0x00
+D (9654) sdio_wrapper: IE: 0x03
+D (9656) sdio_wrapper: BUS_WIDTH: 0x42
+I (9660) sdio_wrapper: Function 0 Blocksize: 512
+I (9664) sdio_wrapper: Function 1 Blocksize: 512
+I (9669) H_SDIO_DRV: Card init success, TRANSPORT_RX_ACTIVE
+I (9674) transport: set_transport_state: 1
+I (9678) transport: Waiting for esp_hosted slave to be ready
+I (9728) H_SDIO_DRV: SDIO Host operating in STREAMING MODE
+I (9728) H_SDIO_DRV: Open data path at slave
+I (9728) H_SDIO_DRV: Starting SDIO process rx task
+D (9728) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (9734) H_SDIO_DRV: --- SDIO intr received ---
+D (9739) H_SDIO_DRV: len_from_slave: 26
+D (9742) H_SDIO_DRV: buf 0 size: 512
+D (9746) H_SDIO_DRV: --- Wait for SDIO intr ---
+I (9746) H_SDIO_DRV: Received ESP_PRIV_IF type message
+I (9755) transport: Received INIT event from ESP32 peripheral
+D (9760) transport: Slave_init_evt: buf_len[12], print_len[12]
+D (9766) Slave_init_evt: 0x4ff2e4ce   12 01 0d 11 01 0d 13 01  00 14 01 14              |............|
+D (9775) transport: Init event length: 12
+I (9778) transport: EVENT: 12
+I (9781) transport: Identified slave [esp32c6]
+D (9781) H_SDIO_DRV: --- SDIO intr received ---
+I (9785) transport: EVENT: 11
+D (9790) H_SDIO_DRV: len_from_slave: 32
+I (9792) transport: capabilities: 0xd
+D (9796) H_SDIO_DRV: buf 1 size: 512
+I (9799) transport: Features supported are:
+D (9803) H_SDIO_DRV: --- Wait for SDIO intr ---
+I (9806) transport:      * WLAN
+I (9813) transport:        - HCI over SDIO
+I (9817) transport:        - BLE only
+I (9820) transport: EVENT: 13
+D (9823) transport: slave rx queue size: 20
+W (9827) transport: === ESP-Hosted Version Warning ===
+Version on Host is NEWER than version on co-processor
+RPC requests sent by host may encounter timeout errors
+or may not be supported by co-processor
+W (9845) transport: === ESP-Hosted Version Warning ===
+I (9849) transport: ESP board type is : 13 
+
+I (9854) transport: Base transport is set-up, TRANSPORT_TX_ACTIVE
+I (9859) H_API: Transport active
+I (9862) transport: Slave chip Id[12]
+I (9866) transport: raw_tp_dir[-], flow_ctrl: low[60] high[80]
+I (9871) transport: transport_delayed_init
+D (9875) RPC_WRAP: rpc_start
+D (9878) rpc_api: rpc_slaveif_start
+I (9881) esp_cli: Remove any existing deep_sleep cmd in cli
+I (9886) esp_cli: Registering command: crash
+I (9890) esp_cli: Registering command: reboot
+I (9894) esp_cli: Registering command: mem-dump
+I (9899) esp_cli: Registering command: task-dump
+I (9903) esp_cli: Registering command: cpu-dump
+I (9907) esp_cli: Registering command: heap-trace
+I (9912) esp_cli: Registering command: sock-dump
+I (9916) esp_cli: Registering command: host-power-save
+I (9921) vhci_drv: Host BT Support: Enabled
+I (9925) vhci_drv:      BT Transport Type: VHCI
+D (9928) rpc_core: rpc_tx_thread:518 rpc lib not ready
+I (9929) H_SDIO_DRV: Received INIT event
+I (9937) H_SDIO_DRV: Event type: 0x22
+I (9940) H_SDIO_DRV: Write thread started
+D (9945) rpc_core: Received Event [0x301]
+I (9948) rpc_evt: EVENT: ESP INIT
+
+D (9950) H_SDIO_DRV: --- SDIO intr received ---
+I (9951) RPC_WRAP: --- ESP Event: Slave ESP Init ---
+D (9956) H_SDIO_DRV: len_from_slave: 19
+D (9964) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (9968) H_SDIO_DRV: --- SDIO intr received ---
+D (9972) H_SDIO_DRV: len_from_slave: 27
+D (9976) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (9980) H_SDIO_DRV: --- SDIO intr received ---
+D (9984) H_SDIO_DRV: len_from_slave: 83
+D (9988) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (9992) H_SDIO_DRV: --- SDIO intr received ---
+D (9996) H_SDIO_DRV: len_from_slave: 27
+D (10000) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (10004) H_SDIO_DRV: --- SDIO intr received ---
+D (10009) H_SDIO_DRV: len_from_slave: 19
+D (10012) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (10017) H_SDIO_DRV: --- SDIO intr received ---
+D (10021) H_SDIO_DRV: len_from_slave: 19
+D (10025) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (10029) H_SDIO_DRV: --- SDIO intr received ---
+D (10033) H_SDIO_DRV: len_from_slave: 22
+D (10037) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (10041) H_SDIO_DRV: --- SDIO intr received ---
+D (10046) H_SDIO_DRV: len_from_slave: 27
+D (10049) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (10054) H_SDIO_DRV: --- SDIO intr received ---
+D (10058) H_SDIO_DRV: len_from_slave: 25
+D (10062) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (10067) H_SDIO_DRV: --- SDIO intr received ---
+D (10070) H_SDIO_DRV: len_from_slave: 27
+D (10074) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (10079) H_SDIO_DRV: --- SDIO intr received ---
+D (10083) H_SDIO_DRV: len_from_slave: 27
+D (10086) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (10091) H_SDIO_DRV: --- SDIO intr received ---
+D (10095) H_SDIO_DRV: len_from_slave: 19
+D (10099) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (10103) H_SDIO_DRV: --- SDIO intr received ---
+D (10107) H_SDIO_DRV: len_from_slave: 19
+D (10111) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (10115) H_SDIO_DRV: --- SDIO intr received ---
+D (10120) H_SDIO_DRV: len_from_slave: 19
+D (10123) H_SDIO_DRV: --- Wait for SDIO intr ---
+I (10128) NimBLE: GAP procedure initiated: stop advertising.
+
+D (10133) H_SDIO_DRV: --- SDIO intr received ---
+D (10137) H_SDIO_DRV: len_from_slave: 19
+D (10141) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (10146) H_SDIO_DRV: --- SDIO intr received ---
+D (10150) H_SDIO_DRV: len_from_slave: 19
+D (10153) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (10158) H_SDIO_DRV: --- SDIO intr received ---
+D (10162) H_SDIO_DRV: len_from_slave: 19
+D (10166) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (10171) H_SDIO_DRV: --- SDIO intr received ---
+D (10174) H_SDIO_DRV: len_from_slave: 27
+D (10178) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (10183) H_SDIO_DRV: --- SDIO intr received ---
+D (10187) H_SDIO_DRV: len_from_slave: 19
+D (10190) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (10198) H_SDIO_DRV: --- SDIO intr received ---
+D (10199) H_SDIO_DRV: len_from_slave: 19
+D (10203) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (10207) H_SDIO_DRV: --- SDIO intr received ---
+D (10211) H_SDIO_DRV: len_from_slave: 19
+D (10215) H_SDIO_DRV: --- Wait for SDIO intr ---
+I (10215) NimBLE: GAP procedure initiated: advertise;
+I (10224) NimBLE: disc_mode=2
+I (10227) NimBLE:  adv_channel_map=0 own_addr_type=0 adv_filter_policy=0 adv_itvl_min=0 adv_itvl_max=0
+I (10236) NimBLE:
+
+D (10238) H_SDIO_DRV: --- SDIO intr received ---
+D (10242) H_SDIO_DRV: len_from_slave: 19
+D (10246) H_SDIO_DRV: --- Wait for SDIO intr ---
+D (10250) H_SDIO_DRV: --- SDIO intr received ---
+D (10255) H_SDIO_DRV: len_from_slave: 19
+D (10258) H_SDIO_DRV: --- WLait for SDIO intr ---
+ittleFS mounted successfully.
+D (11863) FastLED_LCD_P4: Frame 100 sent successfully
+main.cpp(453): 60 fps
+D (13532) FastLED_LCD_P4: Frame 200 sent successfully
+D (15199) FastLED_LCD_P4: Frame 300 sent successfully
+main.cpp(453): 59 fps
+D (16870) FastLED_LCD_P4: Frame 400 sent successfully
+D (18538) FastLED_LCD_P4: Frame 500 sent successfully
+main.cpp(453): 59 fps
+D (20205) FastLED_LCD_P4: Frame 600 sent successfully

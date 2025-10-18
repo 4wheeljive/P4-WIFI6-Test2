@@ -130,6 +130,19 @@ class LCDRGBEsp32_Group {
                 fl::span<uint8_t> pin_buffer = mRectDrawBuffer.getLedsBufferBytesForPin(
                     config.data_gpios[i], false);
                 strips[i] = reinterpret_cast<CRGB*>(pin_buffer.data());
+
+                // Debug: Log first LED of each strip
+                static bool first_show = true;
+                if (first_show && i == 0) {
+                    ESP_LOGI("FastLED_LCD_P4", "Strip 0 first LED: R=%d G=%d B=%d",
+                             strips[0][0].r, strips[0][0].g, strips[0][0].b);
+                }
+            }
+            // Debug: Mark after first show
+            static bool first_show_done = false;
+            if (!first_show_done) {
+                first_show_done = true;
+                ESP_LOGI("FastLED_LCD_P4", "attachStrips() complete, calling show()");
             }
             mDriver->attachStrips(strips);
         }
@@ -143,12 +156,22 @@ class LCDRGBEsp32_Group {
 namespace fl {
 
 void LCD_RGB_Esp32::beginShowLeds(int datapin, int nleds) {
+    static int begin_count = 0;
+    begin_count++;
+    if (begin_count <= 5) {
+        ESP_LOGI("FastLED_LCD_P4", "beginShowLeds() called! begin_count=%d, datapin=%d, nleds=%d", begin_count, datapin, nleds);
+    }
     LCDRGBEsp32_Group &group = LCDRGBEsp32_Group::getInstance();
     group.onQueuingStart();
     group.addObject(datapin, nleds, false);
 }
 
 void LCD_RGB_Esp32::showPixels(uint8_t data_pin, PixelIterator& pixel_iterator) {
+    static int call_count = 0;
+    call_count++;
+    if (call_count <= 5) {
+        ESP_LOGI("FastLED_LCD_P4", "showPixels() called! call_count=%d, data_pin=%d", call_count, data_pin);
+    }
     LCDRGBEsp32_Group &group = LCDRGBEsp32_Group::getInstance();
     group.onQueuingDone();
     const Rgbw rgbw = pixel_iterator.get_rgbw();
@@ -186,6 +209,11 @@ void LCD_RGB_Esp32::showPixels(uint8_t data_pin, PixelIterator& pixel_iterator) 
 }
 
 void LCD_RGB_Esp32::endShowLeds() {
+    static int end_count = 0;
+    end_count++;
+    if (end_count <= 5) {
+        ESP_LOGI("FastLED_LCD_P4", "endShowLeds() called! end_count=%d", end_count);
+    }
     // First one to call this draws everything, every other call this frame
     // is ignored.
     LCDRGBEsp32_Group::getInstance().showPixelsOnceThisFrame();

@@ -300,11 +300,13 @@ template <typename LED_CHIPSET>
 bool LcdRgbDriver<LED_CHIPSET>::show() {
     // Check if previous transfer is still running
     if (dma_busy_) {
+        ESP_LOGW(LCD_P4_TAG, "show() called while DMA busy");
         return false;  // Busy, cannot start new transfer
     }
 
     // Take semaphore (should be available immediately if not busy)
     if (xSemaphoreTake(xfer_done_sem_, 0) != pdTRUE) {
+        ESP_LOGW(LCD_P4_TAG, "show() semaphore not available");
         return false;  // Race condition, still busy
     }
 
@@ -314,6 +316,19 @@ bool LcdRgbDriver<LED_CHIPSET>::show() {
 
     // Mark as busy before starting transfer
     dma_busy_ = true;
+
+    // Debug: Log first frame transfer
+    static bool first_frame = true;
+    if (first_frame) {
+        first_frame = false;
+        ESP_LOGI(LCD_P4_TAG, "First frame: buffer_size=%u, width=%u pixels",
+                 buffer_size_, buffer_size_ / 2);
+        ESP_LOGI(LCD_P4_TAG, "First 8 bytes of buffer: %02x %02x %02x %02x %02x %02x %02x %02x",
+                 ((uint8_t*)buffers_[back_buffer])[0], ((uint8_t*)buffers_[back_buffer])[1],
+                 ((uint8_t*)buffers_[back_buffer])[2], ((uint8_t*)buffers_[back_buffer])[3],
+                 ((uint8_t*)buffers_[back_buffer])[4], ((uint8_t*)buffers_[back_buffer])[5],
+                 ((uint8_t*)buffers_[back_buffer])[6], ((uint8_t*)buffers_[back_buffer])[7]);
+    }
 
     // Start DMA transfer using RGB panel draw_bitmap
     esp_err_t err = esp_lcd_panel_draw_bitmap(
@@ -330,13 +345,28 @@ bool LcdRgbDriver<LED_CHIPSET>::show() {
         return false;
     }
 
+    // CRITICAL: Trigger the actual refresh to send data to RGB LCD peripheral
+    // In refresh-on-demand mode, this actually starts the DMA transfer
+    err = esp_lcd_rgb_panel_refresh(panel_handle_);
+    if (err != ESP_OK) {
+        ESP_LOGE(LCD_P4_TAG, "RGB panel refresh failed: %d (%s)", err, esp_err_to_name(err));
+        dma_busy_ = false;
+        xSemaphoreGive(xfer_done_sem_);  // Release semaphore
+        return false;
+    }
+
     // Swap buffers
     front_buffer_ = back_buffer;
     frame_counter_++;
 
-    // For refresh-on-demand mode, we need to manually give the semaphore
-    // after the transfer completes (no callback in simple mode)
-    // TODO: Implement proper callback if needed
+    // Debug: Log every 100th frame
+    if (frame_counter_ % 100 == 0) {
+        ESP_LOGD(LCD_P4_TAG, "Frame %u sent successfully", frame_counter_);
+    }
+
+    // For refresh-on-demand mode, we mark transfer complete immediately
+    // since we're using synchronous refresh (no callback mechanism)
+    // TODO: Investigate async refresh with bounce buffer callback for better performance
     dma_busy_ = false;
     xSemaphoreGive(xfer_done_sem_);
 
