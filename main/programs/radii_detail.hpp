@@ -14,6 +14,7 @@ namespace radii {
 	const uint8_t center_x = WIDTH / 2;
 	const uint8_t center_y = HEIGHT / 2;
 	const uint8_t mapp = 255 / MAX_DIMENSION;
+	const uint8_t radialFactor = 255 / center_y;
 
 	uint8_t scaledSpeed = 1;
 	const float radiusBase = MAX_DIMENSION / 2;
@@ -21,7 +22,7 @@ namespace radii {
 	uint8_t hue = 0;
 	//uint8_t hueX = 15;
 
-	struct {
+	struct __attribute__((packed)) {
 		float angle;
 		float distance;
 	}
@@ -31,11 +32,15 @@ namespace radii {
 		radiiInstance = true;
 		xyFunc = xy_func;  // Store the XY function pointer
 
-		// map polar coordinates 
+		// map polar coordinates
 		for (int8_t x = -center_x; x < center_x + (WIDTH % 2); x++) {
 			for (int8_t y = -center_y; y < center_y + (HEIGHT % 2); y++) {
-				rMap[x + center_x][y + center_y].angle = 128 * (atan2(y, x) / PI);
-				rMap[x + center_x][y + center_y].distance = hypot(x, y) * mapp; //thanks Sutaburosu
+				float fx = (float)x;
+				float fy = (float)y;
+				float angle_radians = atan2f(fy, fx);
+				// Normalize to 0-255 range (instead of -128 to +128)
+				rMap[x + center_x][y + center_y].angle = 128.0f * (1.0f + angle_radians / (float)PI);
+				rMap[x + center_x][y + center_y].distance = hypotf(fx, fy) * (float)mapp; //thanks Sutaburosu
 			}
 		}
 	}
@@ -52,10 +57,10 @@ namespace radii {
 
 		uint8_t speed = cSpeedInt;
 		switch(MODE){
-			case 0: scaledSpeed = speed 	; break;
-			case 1: scaledSpeed = speed 	; break;
-			case 2: scaledSpeed = speed 	; break;
-			case 3: scaledSpeed = speed 	; break;
+			case 0: scaledSpeed = speed * 2 	; break;
+			case 1: scaledSpeed = speed 		; break;
+			case 2: scaledSpeed = speed 		; break;
+			case 3: scaledSpeed = speed 		; break;
 			case 4: scaledSpeed = (speed+2)*2 	; break;
 		}
 		static uint16_t timer;
@@ -75,17 +80,22 @@ namespace radii {
                 //float radialDimmer = radialFilterFactor(radius, distance, radialFilterFalloff);
 
 				switch (MODE) {
-		
+
 					case 0: // octopus
-						leds[xyFunc(x, y)] = CHSV(timer/2 - distance, 255, sin8(sin8((angle*4 - distance) / 4 + timer) + distance - timer*2 + angle*legs));  
+					{
+						uint8_t hue_val = (timer >> 1) - (uint8_t)distance;
+						uint8_t inner_val = (uint8_t)((angle*4.0f - distance) * 0.25f) + (uint8_t)timer;
+						uint8_t middle_val = sin8(inner_val) + (uint8_t)distance - (uint8_t)(timer << 1) + (uint8_t)(angle*legs);
+						leds[xyFunc(x, y)] = CHSV(hue_val, 255, sin8(middle_val));
+					}
 						break;
-		
+
 					case 1: // flower
 						leds[xyFunc(x, y)] = CHSV(timer + distance, 255, sin8(sin8(timer + angle*5 + distance) + timer*4 + sin8(timer*4 - distance) + angle*5));
 						break;
 
 					case 2: // lotus
-						leds[xyFunc(x, y)] = CHSV(hue,181,sin8(timer-distance+sin8(timer + angle*petals)/5));
+						leds[xyFunc(x, y)] = CHSV( hue , 181 , sin8( timer - distance + sin8( timer + angle * petals ) / 5 ) );
 						/*
 						if (debug) {
 							EVERY_N_SECONDS(5) {
@@ -97,25 +107,25 @@ namespace radii {
 						}
 						*/
 						break;
-		
+
 					case 3:  // radial waves
 						leds[xyFunc(x, y)] = CHSV(timer + distance, 255, sin8(timer*4 + sin8(timer*4 - distance) + angle*3));
 						break;
 
-					case 4: // lollipop  			
+					case 4: // lollipop
 						static uint8_t scaleX = 4 * cScale;
             			static uint8_t scaleY = 4 * cScale;
 						//float radialFilter = distance;
 						leds[xyFunc(x, y)] = CHSV( (angle*scaleX) - timer + (distance*scaleY),
-													255, 
-													constrain(distance*(255/center_y),0,255)
+													255,
+													constrain(distance*radialFactor,0,255)
 													//255*radialDimmer
-												);	
+												);
 						break;
 				}
 			}
 		}
-		
+
 		FastLED.delay(15);
 	}
 

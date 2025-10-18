@@ -14,7 +14,7 @@
 #include "fl/geometry.h"
 #include "fl/math_macros.h"
 #include "fl/namespace.h"
-#include "fl/memory.h"
+#include "fl/ptr.h"         // For FASTLED_SMART_PTR macro
 #include "fl/optional.h"
 #include "fl/type_traits.h"
 #include "fl/vector.h"

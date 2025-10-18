@@ -123,10 +123,10 @@ namespace fxWave2d {
 		
 			uint32_t total = map(fancySpeed, 0, 1000, 1000, 100);
 			
-			static TimeRamp pointTransition = TimeRamp(total, 0, 0);
+			static TimeRamp pointTransition = TimeRamp(0, total, 0);
 
 			if (button_active) {
-				pointTransition.trigger(now, total, 0, 0);
+				pointTransition.trigger(now);
 				fancyTrigger = false;
 				if (debug) Serial.println("Fancy trigger applied");
 			}

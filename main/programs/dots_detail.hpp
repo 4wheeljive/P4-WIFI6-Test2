@@ -2,6 +2,9 @@
 
 #include "bleControl.h"
 
+//FL_FAST_MATH_BEGIN
+//FL_OPTIMIZATION_LEVEL_O3_BEGIN
+
 namespace dots {
 
 	bool dotsInstance = false;
@@ -14,15 +17,15 @@ namespace dots {
 		xyFunc = xy_func;  
 	}
 
-	byte osci[4]; 
-	byte pX[4];
-	byte pY[4];
+	uint8_t osci[4]; 
+	uint8_t pX[4];
+	uint8_t pY[4];
 
-	void PixelA(uint8_t x, uint8_t y, byte color) {
+	void PixelA(uint8_t x, uint8_t y, uint8_t color) {
 		leds[xyFunc(x, y)] = CHSV(color, 255, 255);
 	}
 
-	void PixelB(uint8_t x, uint8_t y, byte color) {
+	void PixelB(uint8_t x, uint8_t y, uint8_t color) {
 		leds[xyFunc(x, y)] = CHSV(color, 255, 255);
 	}
 
@@ -40,7 +43,7 @@ namespace dots {
 	}
 
 	// give it a linear tail downwards
-	void VerticalStream(byte scale)  
+	void VerticalStream(uint8_t scale)  
 	{
 		for(uint8_t x = 0; x < WIDTH ; x++) {
 			for(uint8_t y = 1; y < HEIGHT; y++) { 
@@ -55,7 +58,7 @@ namespace dots {
 	/*
 	// create a square twister
 	// x and y for center, r for radius
-	void SpiralStream(int x, int y, int r, byte dim) {
+	void SpiralStream(int x, int y, int r, uint8_t dim) {
 		for (int d = r; d >= 0; d--) { // from the outside to the inside
 			for (int i = x - d; i <= x + d; i++) {
 				leds[xyFunc(i, y - d)] +=
@@ -80,7 +83,7 @@ namespace dots {
  
 
 	// give it a linear tail to the side
-	void HorizontalStream(byte scale) {
+	void HorizontalStream(uint8_t scale) {
 		for (int x = 1; x < WIDTH; x++) {
 			for (int y = 0; y < HEIGHT; y++) {
 				leds[xyFunc(x, y)] += leds[xyFunc(x - 1, y)];
@@ -115,3 +118,6 @@ namespace dots {
 	}
 
 } // namespace dots
+
+//FL_OPTIMIZATION_LEVEL_O3_END
+//FL_FAST_MATH_END

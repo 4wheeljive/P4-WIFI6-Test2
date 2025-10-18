@@ -30,6 +30,7 @@ from typing import Dict, List, Optional
 
 # Import board configuration
 from ci.boards import create_board
+from ci.docker.build_image import extract_architecture, generate_config_hash
 
 
 def parse_arguments() -> argparse.Namespace:
@@ -94,68 +95,6 @@ Examples:
     return args
 
 
-def get_platformio_version() -> str:
-    """
-    Get the installed PlatformIO version.
-
-    Returns:
-        Version string (e.g., '6.1.15')
-    """
-    try:
-        result = subprocess.run(
-            ["pio", "--version"],
-            capture_output=True,
-            text=True,
-            check=True,
-        )
-        # Output format: "PlatformIO Core, version 6.1.15"
-        version_line = result.stdout.strip()
-        if "version" in version_line:
-            return version_line.split("version")[-1].strip()
-        return version_line
-    except (subprocess.CalledProcessError, FileNotFoundError):
-        # If PlatformIO is not installed, return a default version
-        return "unknown"
-
-
-def generate_config_hash(platform_name: str, framework: Optional[str] = None) -> str:
-    """
-    Generate deterministic hash from board configuration.
-
-    The hash is based on:
-    - platform: Platform name (e.g., 'espressif32')
-    - framework: Framework name (e.g., 'arduino')
-    - board: Board identifier (e.g., 'esp32-s3-devkitc-1')
-    - platform_packages: Custom platform packages/URLs
-    - platformio_version: PlatformIO version for reproducibility
-
-    Args:
-        platform_name: Platform/board name (e.g., 'uno', 'esp32s3')
-        framework: Optional framework override
-
-    Returns:
-        8-character hash string
-    """
-    board = create_board(platform_name)
-    if framework:
-        board.framework = framework
-
-    # Create deterministic hash from config
-    config_data: Dict[str, Optional[str | List[str]]] = {
-        "platform": board.platform,
-        "framework": board.framework,
-        "board": board.board_name,
-        "platform_packages": sorted(board.platform_packages or [])
-        if isinstance(board.platform_packages, list)
-        else ([board.platform_packages] if board.platform_packages else []),
-        # Include PlatformIO version for full reproducibility
-        "platformio_version": get_platformio_version(),
-    }
-
-    config_json = json.dumps(config_data, sort_keys=True)
-    return hashlib.sha256(config_json.encode()).hexdigest()[:8]
-
-
 def generate_platformio_ini(platform_name: str, framework: Optional[str] = None) -> str:
     """
     Generate platformio.ini content from board configuration.
@@ -212,61 +151,6 @@ def load_dockerfile_template() -> str:
 
     with open(template_path, "r") as f:
         return f.read()
-
-
-def extract_architecture(platform_name: str) -> str:
-    """
-    Extract architecture name from platform name.
-
-    Args:
-        platform_name: Platform name (e.g., 'uno', 'esp32s3')
-
-    Returns:
-        Architecture string (e.g., 'avr', 'esp32')
-    """
-    # Common platform to architecture mappings
-    arch_map = {
-        "uno": "avr",
-        "yun": "avr",
-        "nano_every": "avr",
-        "attiny85": "avr",
-        "attiny88": "avr",
-        "attiny4313": "avr",
-        "ATtiny1604": "megaavr",
-        "ATtiny1616": "megaavr",
-        "due": "sam",
-        "digix": "sam",
-        "bluepill": "stm32",
-        "blackpill": "stm32",
-        "maple_mini": "stm32",
-        "giga_r1": "stm32",
-        "hy_tinystm103tb": "stm32",
-        "uno_r4_wifi": "renesas",
-        "rpipico": "rp2040",
-        "rpipico2": "rp2040",
-        "teensy30": "teensy",
-        "teensy31": "teensy",
-        "teensy40": "teensy",
-        "teensy41": "teensy",
-        "teensylc": "teensy",
-        "nrf52840_dk": "nrf52",
-        "xiaoblesense": "nrf52",
-        "xiaoblesense_adafruit": "nrf52",
-        "adafruit_feather_nrf52840_sense": "nrf52",
-        "esp01": "esp8266",
-        "mgm240": "efm32",
-        "sparkfun_xrp_controller": "rp2040",
-        "apollo3_red": "apollo3",
-        "apollo3_thing_explorable": "apollo3",
-        "native": "native",
-    }
-
-    # Check if platform name starts with known ESP32 variants
-    if platform_name.startswith("esp32"):
-        return "esp32"
-
-    # Look up in mapping
-    return arch_map.get(platform_name, platform_name.split("_")[0])
 
 
 def check_docker_image_exists(image_name: str) -> bool:
@@ -354,9 +238,11 @@ def build_base_image(no_cache: bool = False) -> None:
         print(f"Command: {' '.join(cmd)}")
         print()
 
-        # Run docker build
+        # Run docker build with BuildKit enabled for cache mounts
+        env = os.environ.copy()
+        env["DOCKER_BUILDKIT"] = "1"
         try:
-            subprocess.run(cmd, check=True)
+            subprocess.run(cmd, check=True, env=env)
             print()
             print(f"Successfully built base image: {base_image_name}")
             print()
@@ -370,7 +256,6 @@ def build_base_image(no_cache: bool = False) -> None:
 
 def build_docker_image(
     dockerfile_path: str,
-    platformio_ini_path: str,
     image_name: str,
     context_dir: str,
     platform_name: str,
@@ -382,10 +267,9 @@ def build_docker_image(
 
     Args:
         dockerfile_path: Path to Dockerfile
-        platformio_ini_path: Path to platformio.ini
         image_name: Name for the Docker image
         context_dir: Build context directory
-        platform_name: Platform name for labeling
+        platform_name: Platform name for labeling and runtime generation of platformio.ini
         architecture: Architecture name for labeling
         no_cache: Whether to disable Docker cache
 
@@ -397,6 +281,9 @@ def build_docker_image(
 
     if no_cache:
         cmd.append("--no-cache")
+
+    # Add build arguments for platform name (used during dependency caching)
+    cmd.extend(["--build-arg", f"PLATFORM_NAME={platform_name}"])
 
     # Add metadata labels
     cmd.extend(
@@ -416,9 +303,11 @@ def build_docker_image(
     print(f"Command: {' '.join(cmd)}")
     print()
 
-    # Run docker build
+    # Run docker build with BuildKit enabled for cache mounts
+    env = os.environ.copy()
+    env["DOCKER_BUILDKIT"] = "1"
     try:
-        subprocess.run(cmd, check=True)
+        subprocess.run(cmd, check=True, env=env)
         print()
         print(f"Successfully built Docker image: {image_name}")
     except subprocess.CalledProcessError as e:
@@ -531,12 +420,13 @@ def _main_impl() -> int:
     with tempfile.TemporaryDirectory() as temp_dir:
         temp_path = Path(temp_dir)
 
-        # Write platformio.ini to temp directory
-        platformio_ini_path = temp_path / "platformio.ini"
-        with open(platformio_ini_path, "w") as f:
-            f.write(platformio_ini_content)
+        # NOTE: We no longer write platformio.ini to the temp directory
+        # The Dockerfile now generates it dynamically from PLATFORM_NAME using build.sh
+        # This makes ci/boards.py the single source of truth
 
-        print("Generated platformio.ini:")
+        print(
+            "Platform configuration (will be generated in Docker from PLATFORM_NAME):"
+        )
         print("=" * 70)
         print(platformio_ini_content)
         print("=" * 70)
@@ -554,6 +444,23 @@ def _main_impl() -> int:
         with open(dockerfile_path, "w") as f:
             f.write(dockerfile_content)
 
+        # Copy entrypoint.sh and build.sh to temp directory
+        import shutil
+
+        entrypoint_src = Path(__file__).parent / "docker" / "entrypoint.sh"
+        if entrypoint_src.exists():
+            shutil.copy(entrypoint_src, temp_path / "entrypoint.sh")
+        else:
+            print(
+                f"Warning: entrypoint.sh not found at {entrypoint_src}", file=sys.stderr
+            )
+
+        build_script_src = Path(__file__).parent / "docker" / "build.sh"
+        if build_script_src.exists():
+            shutil.copy(build_script_src, temp_path / "build.sh")
+        else:
+            print(f"Warning: build.sh not found at {build_script_src}", file=sys.stderr)
+
         print("Using Dockerfile template:")
         print("=" * 70)
         print(dockerfile_content)
@@ -564,7 +471,6 @@ def _main_impl() -> int:
         try:
             build_docker_image(
                 str(dockerfile_path),
-                str(platformio_ini_path),
                 image_name,
                 str(temp_path),
                 platform_name,

@@ -1209,7 +1209,7 @@ class ANIMartRIX {
             show1 = { Layer1 ? render_value(animation) : 0};
             
             if (Layer2) {
-                animation.angle = polar_theta[x][y] * cAngle + (cRadialSpeed *  move.radial[1]);
+                animation.angle = polar_theta[x][y] * cAngle + (cRadialSpeed * move.radial[1]);
                 animation.offset_y = cLinearSpeed * move.linear[1];
                 animation.offset_z = 200 * cZ;
                 animation.scale_x = size * 1.1 * cScale;
@@ -1218,7 +1218,7 @@ class ANIMartRIX {
             } else {show2 = 0;}
             
             if (Layer3) {
-                animation.angle = polar_theta[x][y] * cAngle + (cRadialSpeed *  move.radial[2]);
+                animation.angle = polar_theta[x][y] * cAngle + (cRadialSpeed * move.radial[2]);
                 animation.offset_y = cLinearSpeed * move.linear[2];
                 animation.offset_z = 400 * cZ;
                 animation.scale_x = size * 1.2 * cScale;
@@ -1227,7 +1227,7 @@ class ANIMartRIX {
             } else {show3 = 0;}
 
             if (Layer4) {
-                animation.angle = polar_theta[x][y] * cAngle + (cRadialSpeed *  move.radial[3]);
+                animation.angle = polar_theta[x][y] * cAngle + (cRadialSpeed * move.radial[3]);
                 animation.offset_y = cLinearSpeed * move.linear[3];
                 animation.offset_z = 600 * cZ;
                 animation.scale_x = size * cScale;
@@ -1236,7 +1236,7 @@ class ANIMartRIX {
             } else {show4 = 0;}
             
             if (Layer5) {
-                animation.angle = polar_theta[x][y] * cAngle + (cRadialSpeed *  move.radial[4]);
+                animation.angle = polar_theta[x][y] * cAngle + (cRadialSpeed * move.radial[4]);
                 animation.offset_y = cLinearSpeed * move.linear[4];
                 animation.offset_z = 800 * cZ;
                 animation.scale_x = size * 1.1 * cScale;
@@ -1245,7 +1245,7 @@ class ANIMartRIX {
             } else {show5 = 0;}
             
             if (Layer6) {
-                animation.angle = polar_theta[x][y]  * cAngle + (cRadialSpeed *  move.radial[5]);
+                animation.angle = polar_theta[x][y] * cAngle + (cRadialSpeed * move.radial[5]);
                 animation.offset_y = cLinearSpeed * move.linear[5];
                 animation.offset_z = 1800 * cZ;
                 animation.scale_x = size * 1.2 * cScale;
@@ -1254,7 +1254,7 @@ class ANIMartRIX {
             } else {show6 = 0;}
             
             if (Layer7) {
-                animation.angle = polar_theta[x][y] * cAngle + (cRadialSpeed *  move.radial[6]);
+                animation.angle = polar_theta[x][y] * cAngle + (cRadialSpeed * move.radial[6]);
                 animation.offset_y = cLinearSpeed * move.linear[6];
                 animation.offset_z = 2800 * cZ;
                 animation.scale_x = size * cScale;
@@ -1263,8 +1263,8 @@ class ANIMartRIX {
             } else {show7 = 0;}
 
             if (Layer8) {
-                animation.angle = polar_theta[x][y] * cAngle + (cRadialSpeed *  move.radial[7]);
-                animation.offset_y = cLinearSpeed  * move.linear[7];
+                animation.angle = polar_theta[x][y] * cAngle + (cRadialSpeed * move.radial[7]);
+                animation.offset_y = cLinearSpeed * move.linear[7];
                 animation.offset_z = 3800 * cZ;
                 animation.scale_x = size * 1.1 * cScale;
                 animation.scale_y = size * 1.1 * cScale;
@@ -1272,8 +1272,8 @@ class ANIMartRIX {
             } else {show8 = 0;}
 
             if (Layer9) {
-                animation.angle = polar_theta[x][y] * cAngle + (cRadialSpeed *  move.radial[8]);
-                animation.offset_y = cLinearSpeed  * move.linear[8];
+                animation.angle = polar_theta[x][y] * cAngle + (cRadialSpeed * move.radial[8]);
+                animation.offset_y = cLinearSpeed * move.linear[8];
                 animation.offset_z = 4800 * cZ;
                 animation.scale_x = size * 1.2 * cScale;
                 animation.scale_y = size * 1.2 * cScale;
@@ -1282,7 +1282,7 @@ class ANIMartRIX {
 
             // the factors modulate the color mix and overall appearance of the animations
 
-            pixel.red = (0.8 * (show1 + show2 + show3) + (show4 + show5 + show6)) * cRed;   // red is the sum of layer 1, 2, 3
+            pixel.red = (0.9 * (show1 + show2 + show3) + (show4 + show5 + show6)) * cRed;   // red is the sum of layer 1, 2, 3
                                                                                     // I also add layer 4, 5, 6 (which modulates green) 
                                                                                     // in order to add orange/yelloW to the mix
             pixel.green = (0.8 * (show4 + show5 + show6)) * cGreen;                           // green is the sum of layer 4, 5, 6

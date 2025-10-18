@@ -2,6 +2,9 @@
 /// @brief   Shows parallel usage of WS2812 strips. Blinks once for red, twice for green, thrice for blue.
 /// @example BlinkParallel.ino
 
+// FastLED.h must be included first to trigger precompiled headers for FastLED's build system
+#include "FastLED.h"
+
 #include "fl/sketch_macros.h"
 
 #if !SKETCH_HAS_LOTS_OF_MEMORY
@@ -21,6 +24,8 @@ CRGB leds[NUM_LEDS];  // Yes, they all share a buffer.
 void setup() {
     Serial.begin(115200);
     delay(100);  // Give serial time to initialize
+
+    delay(2000);
 
     Serial.println("BlinkParallel setup starting");
     Serial.print("NUM_LEDS: ");

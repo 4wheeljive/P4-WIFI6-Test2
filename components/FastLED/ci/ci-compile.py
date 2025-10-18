@@ -4,6 +4,18 @@ FastLED Example Compiler
 
 Streamlined compiler that uses the PioCompiler to build FastLED examples for various boards.
 This replaces the previous complex compilation system with a simpler approach using the Pio compiler.
+
+ESP32 QEMU Support:
+-------------------
+When using -o/--out with ESP32 boards and a directory path or filename containing "qemu",
+the compiler automatically generates properly merged flash images for QEMU testing.
+The merged flash image includes:
+  - Bootloader at 0x1000 (ESP32) or 0x0 (ESP32-C3/S3)
+  - Partition table at 0x8000
+  - boot_app0 at 0xe000
+  - Application firmware at 0x10000
+
+Uses esptool.py when available, falls back to manual binary merge if not installed.
 """
 
 import argparse
@@ -19,9 +31,9 @@ from typing import List, Optional, cast
 from typeguard import typechecked
 
 from ci.boards import ALL, Board, create_board
-from ci.build_docker_image_pio import extract_architecture
 from ci.compiler.compiler import CacheType, SketchResult
 from ci.compiler.pio import PioCompiler
+from ci.docker.build_image import extract_architecture
 
 
 def green_text(text: str) -> str:
@@ -73,52 +85,213 @@ def handle_docker_compilation(args: argparse.Namespace) -> int:
     print(f"Examples: {', '.join(examples)}")
     print()
 
-    # Build Docker image for the platform
-    print(f"Building Docker image for platform: {board_name}")
-    build_cmd = [
-        sys.executable,
-        "-m",
-        "ci.build_docker_image_pio",
-        "--platform",
-        board_name,
-    ]
-
-    result = subprocess.run(build_cmd)
-    if result.returncode != 0:
-        print("Error: Failed to build Docker image")
-        return 1
-
     # Determine architecture for image name
     architecture = extract_architecture(board_name)
-    image_name = f"fastled-platformio-{architecture}-{board_name}"
+
+    # Generate config hash for image name BEFORE building
+    from ci.docker.build_image import generate_config_hash
+
+    try:
+        config_hash = generate_config_hash(board_name)
+        image_name = f"fastled-platformio-{architecture}-{board_name}-{config_hash}"
+    except:
+        # Fallback if hash generation fails
+        image_name = f"fastled-platformio-{architecture}-{board_name}"
+
+    # Check if Docker image exists
+    image_check = subprocess.run(
+        ["docker", "image", "inspect", image_name], capture_output=True, text=True
+    )
+
+    if image_check.returncode != 0:
+        # Image doesn't exist, build it
+        print(f"Building Docker image for platform: {board_name}")
+        build_cmd = [
+            sys.executable,
+            "ci/build_docker_image_pio.py",
+            "--platform",
+            board_name,
+            "--image-name",
+            image_name,
+        ]
+
+        result = subprocess.run(build_cmd)
+        if result.returncode != 0:
+            print("Error: Failed to build Docker image")
+            return 1
+    else:
+        print(f"✓ Using existing Docker image: {image_name}")
 
     # Get absolute path to project root
     project_root = str(Path(__file__).parent.parent.absolute())
 
+    # Container name based on platform (one container per platform)
+    container_name = f"fastled-{board_name}"
+
     print()
-    print(f"Running compilation in Docker container: {image_name}")
+    print(f"Managing Docker container: {container_name}")
+
+    # Check if container exists
+    container_check = subprocess.run(
+        ["docker", "container", "inspect", container_name],
+        capture_output=True,
+        text=True,
+    )
+
+    if container_check.returncode != 0:
+        # Container doesn't exist, create it
+        print(f"Creating new container: {container_name}")
+
+        # Use MSYS_NO_PATHCONV to prevent git-bash from mangling paths on Windows
+        env = os.environ.copy()
+        env["MSYS_NO_PATHCONV"] = "1"
+
+        # Escape paths for git-bash on Windows (use // prefix)
+        mount_target = "//host" if sys.platform == "win32" else "/host"
+
+        create_cmd = [
+            "docker",
+            "create",
+            "--name",
+            container_name,
+            "-v",
+            f"{project_root}:{mount_target}:ro",
+            "--stop-timeout",
+            "300",  # Auto-stop after 5 minutes of inactivity
+            image_name,
+            "tail",
+            "-f",
+            "/dev/null",  # Keep container running
+        ]
+
+        result = subprocess.run(create_cmd, env=env)
+        if result.returncode != 0:
+            print("Error: Failed to create container")
+            return 1
+    else:
+        print(f"✓ Using existing container: {container_name}")
+
+    # Check if container is running and paused
+    container_state = subprocess.run(
+        [
+            "docker",
+            "inspect",
+            "-f",
+            "{{.State.Running}} {{.State.Paused}}",
+            container_name,
+        ],
+        capture_output=True,
+        text=True,
+    )
+
+    state_parts = container_state.stdout.strip().split()
+    is_running = state_parts[0] == "true"
+    is_paused = state_parts[1] == "true" if len(state_parts) > 1 else False
+
+    if not is_running:
+        print(f"Starting container: {container_name}")
+        result = subprocess.run(["docker", "start", container_name])
+        if result.returncode != 0:
+            print("Error: Failed to start container")
+            return 1
+    elif is_paused:
+        print(f"Unpausing container: {container_name}")
+        result = subprocess.run(["docker", "unpause", container_name])
+        if result.returncode != 0:
+            print("Error: Failed to unpause container")
+            return 1
+
+    print()
+    print(f"Running compilation in container: {container_name}")
     print()
 
     # Build command to run inside Docker
-    # Remove --docker flag and run native compile command
-    docker_compile_cmd = f"bash compile {board_name} {' '.join(examples)}"
+    # Replicate the full entrypoint logic since docker exec bypasses the entrypoint
+    example_name = examples[0] if examples else "Blink"
 
-    # Run compilation in Docker container
-    docker_cmd = [
+    # Full entrypoint logic: sync files, compile, handle artifacts
+    entrypoint_logic = f"""
+set -e
+
+# Sync host directories to container working directory if they exist
+if command -v rsync &> /dev/null; then
+    echo "Syncing directories from host..."
+    [ -d "/host/src" ] && rsync -a --delete /host/src/ /fastled/src/
+    [ -d "/host/examples" ] && rsync -a --delete /host/examples/ /fastled/examples/
+    [ -d "/host/ci" ] && rsync -a --delete /host/ci/ /fastled/ci/
+    echo "Directory sync complete"
+else
+    echo "Warning: rsync not available, skipping directory sync"
+fi
+
+# Execute the compile command
+bash compile {board_name} {example_name}
+EXIT_CODE=$?
+
+# If /fastled/output is mounted and compilation succeeded, copy build artifacts
+if [ -d "/fastled/output" ] && [ $EXIT_CODE -eq 0 ]; then
+    echo ""
+    echo "Copying build artifacts to output directory..."
+
+    # Find and copy all build artifacts
+    if [ -d "/fastled/.pio/build" ]; then
+        # Copy all binary files
+        find /fastled/.pio/build -type f \\( -name "*.bin" -o -name "*.hex" -o -name "*.elf" -o -name "*.factory.bin" \\) \\
+            -exec cp -v {{}} /fastled/output/ \\; 2>/dev/null || true
+
+        echo "Build artifacts copied to output directory"
+    fi
+fi
+
+exit $EXIT_CODE
+"""
+
+    # Execute command in running container
+    # Ensure FASTLED_DOCKER=1 is set to skip .venv installation
+    exec_cmd = [
         "docker",
-        "run",
-        "--rm",
-        "-v",
-        f"{project_root}:/fastled",
-        "-w",
-        "/fastled",
-        image_name,
+        "exec",
+        "-e",
+        "FASTLED_DOCKER=1",
+        container_name,
         "bash",
         "-c",
-        docker_compile_cmd,
+        entrypoint_logic,
     ]
 
-    result = subprocess.run(docker_cmd)
+    print(f"Executing: bash compile {board_name} {example_name}")
+    print()
+
+    # Stream output in real-time with unbuffered I/O
+    # Use Popen to ensure proper streaming without buffering issues
+    sys.stdout.flush()
+    sys.stderr.flush()
+    process = subprocess.Popen(
+        exec_cmd,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        bufsize=1,  # Line buffered
+        universal_newlines=True,
+    )
+
+    # Stream output line by line
+    if process.stdout:
+        for line in process.stdout:
+            print(line, end="", flush=True)
+
+    returncode = process.wait()
+    result = subprocess.CompletedProcess(exec_cmd, returncode, stdout="", stderr="")
+
+    # Pause container immediately after compilation
+    # This keeps the container state but frees resources
+    print()
+    print(f"Pausing container: {container_name}")
+    subprocess.run(
+        ["docker", "pause", container_name],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+
     return result.returncode
 
 
@@ -169,13 +342,17 @@ def get_all_examples() -> List[str]:
     if not examples_dir.exists():
         return []
 
+    # Find all .ino files recursively
+    ino_files = list(examples_dir.rglob("*.ino"))
+
     examples: List[str] = []
-    for item in examples_dir.iterdir():
-        if item.is_dir():
-            # Check if it contains a .ino file with the same name
-            ino_file = item / f"{item.name}.ino"
-            if ino_file.exists():
-                examples.append(item.name)
+    for ino_file in ino_files:
+        # Get the parent directory relative to examples/
+        # For examples/Blink/Blink.ino -> "Blink"
+        # For examples/Fx/FxWave2d/FxWave2d.ino -> "Fx/FxWave2d"
+        example_dir = ino_file.parent.relative_to(examples_dir)
+        example_name = str(example_dir).replace("\\", "/")  # Normalize path separators
+        examples.append(example_name)
 
     # Sort for consistent ordering
     examples.sort()
@@ -184,6 +361,8 @@ def get_all_examples() -> List[str]:
 
 def parse_args(args: Optional[list[str]] = None) -> argparse.Namespace:
     """Parse command line arguments."""
+    print(f"DEBUG parse_args: input args = {args}")
+    print(f"DEBUG parse_args: sys.argv = {sys.argv}")
     parser = argparse.ArgumentParser(
         description="Compile FastLED examples for various boards using PioCompiler"
     )
@@ -255,6 +434,12 @@ def parse_args(args: Optional[list[str]] = None) -> argparse.Namespace:
         "Use '-o .' to save in current directory with sketch name.",
     )
     parser.add_argument(
+        "--merged-bin",
+        action="store_true",
+        help="Generate merged binary for QEMU/flashing (ESP32/ESP8266 only). "
+        "Produces a single flash image instead of separate bootloader/firmware/partition files.",
+    )
+    parser.add_argument(
         "--run",
         action="store_true",
         help="For WASM: Run Playwright tests after compilation (default is compile-only)",
@@ -263,6 +448,11 @@ def parse_args(args: Optional[list[str]] = None) -> argparse.Namespace:
         "--docker",
         action="store_true",
         help="Run compilation inside Docker container with pre-cached dependencies",
+    )
+    parser.add_argument(
+        "--extra-packages",
+        type=str,
+        help="Comma-separated list of extra PlatformIO library packages to install (e.g., 'OctoWS2811')",
     )
 
     try:
@@ -291,6 +481,12 @@ def parse_args(args: Optional[list[str]] = None) -> argparse.Namespace:
         )
         positional_examples.extend(unknown_examples)
         parsed_args.positional_examples = positional_examples
+
+    print(f"DEBUG parse_args: parsed_args.docker = {parsed_args.docker}")
+    print(f"DEBUG parse_args: parsed_args.boards = {parsed_args.boards}")
+    print(
+        f"DEBUG parse_args: parsed_args.positional_examples = {parsed_args.positional_examples}"
+    )
 
     return parsed_args
 
@@ -327,6 +523,9 @@ def compile_board_examples(
     verbose: bool,
     enable_cache: bool,
     global_cache_dir: Optional[Path] = None,
+    merged_bin: bool = False,
+    merged_bin_output: Optional[Path] = None,
+    extra_packages: Optional[List[str]] = None,
 ) -> BoardCompilationResult:
     """Compile examples for a single board using PioCompiler."""
 
@@ -343,6 +542,10 @@ def compile_board_examples(
     print(f"COMPILING BOARD: {board.board_name}")
     print(f"EXAMPLES: {', '.join(examples)}")
     print(f"GLOBAL CACHE: {resolved_cache_dir}")
+    if merged_bin:
+        print(f"MERGED-BIN MODE: Enabled")
+        if merged_bin_output:
+            print(f"MERGED-BIN OUTPUT: {merged_bin_output}")
 
     # Show other cache directories
     from ci.compiler.pio import FastLEDPaths
@@ -371,11 +574,39 @@ def compile_board_examples(
             verbose=verbose,
             global_cache_dir=resolved_cache_dir,
             additional_defines=defines,
+            additional_libs=extra_packages,
             cache_type=cache_type,
         )
 
-        # Build all examples
-        futures: List[Future[SketchResult]] = compiler.build(examples)
+        # Build all examples - use merged-bin method if requested
+        if merged_bin:
+            # Validate board supports merged binary
+            if not compiler.supports_merged_bin():
+                raise RuntimeError(
+                    f"Board {board.board_name} does not support merged binary. "
+                    f"Supported platforms: ESP32, ESP8266"
+                )
+
+            # Build with merged binary (only one example allowed in this mode)
+            if len(examples) != 1:
+                raise RuntimeError(
+                    f"Merged-bin mode requires exactly one example, got {len(examples)}"
+                )
+
+            result = compiler.build_with_merged_bin(
+                examples[0], output_path=merged_bin_output
+            )
+            futures: List[Future[SketchResult]] = []
+
+            # Wrap the result in a completed future for consistency
+            from concurrent.futures import Future as ConcurrentFuture
+
+            future: ConcurrentFuture[SketchResult] = ConcurrentFuture()
+            future.set_result(result)
+            futures.append(future)
+        else:
+            # Build all examples normally
+            futures = compiler.build(examples)
 
         # Wait for completion and collect results
         results: List[SketchResult] = []
@@ -610,6 +841,85 @@ def create_esp32_flash_image(
         return False
 
 
+def _create_flash_manual_merge(
+    build_dir: Path, board_name: str, flash_size_mb: int
+) -> bool:
+    """Create a manually merged flash image from individual binary files.
+
+    This function is used for testing and creates a properly formatted flash image
+    by merging bootloader, partitions, boot_app0, and firmware at the correct offsets.
+
+    Args:
+        build_dir: Directory containing the binary files
+        board_name: Name of the board (e.g., "esp32dev", "esp32c3", "esp32s3")
+        flash_size_mb: Flash size in MB (must be 2, 4, 8, or 16)
+
+    Returns:
+        True if successful, False otherwise
+    """
+    try:
+        if flash_size_mb not in [2, 4, 8, 16]:
+            print(
+                f"ERROR: Invalid flash size: {flash_size_mb}MB. Must be 2, 4, 8, or 16"
+            )
+            return False
+
+        flash_size = flash_size_mb * 1024 * 1024
+
+        # Determine bootloader offset based on chip type
+        # ESP32 uses 0x1000, newer chips (C3, S3, C2, C5, C6, etc.) use 0x0
+        if board_name.startswith("esp32") and not any(
+            board_name.startswith(f"esp32{x}")
+            for x in ["c3", "s3", "c2", "c5", "c6", "h2", "p4"]
+        ):
+            bootloader_offset = 0x1000  # ESP32 classic
+        else:
+            bootloader_offset = 0x0  # ESP32-C3, ESP32-S3, and newer
+
+        # Standard offsets for partition table, boot_app0, and firmware
+        partitions_offset = 0x8000
+        boot_app0_offset = 0xE000
+        firmware_offset = 0x10000
+
+        # Create flash image filled with 0xFF
+        flash_data = bytearray(b"\xff" * flash_size)
+
+        # Required files and their offsets
+        files_to_merge = [
+            ("bootloader.bin", bootloader_offset),
+            ("partitions.bin", partitions_offset),
+            ("boot_app0.bin", boot_app0_offset),
+            ("firmware.bin", firmware_offset),
+        ]
+
+        # Merge each file at its offset
+        for filename, offset in files_to_merge:
+            file_path = build_dir / filename
+            if file_path.exists():
+                file_data = file_path.read_bytes()
+                # Check if file fits
+                if offset + len(file_data) > flash_size:
+                    print(
+                        f"WARNING: {filename} at offset 0x{offset:x} exceeds flash size"
+                    )
+                    continue
+                # Write file data at the specified offset
+                flash_data[offset : offset + len(file_data)] = file_data
+            else:
+                # File not found - this is acceptable for optional files
+                pass
+
+        # Write the merged flash image
+        output_path = build_dir / "flash.bin"
+        output_path.write_bytes(flash_data)
+
+        return True
+
+    except Exception as e:
+        print(f"ERROR: Failed to create manual flash merge: {e}")
+        return False
+
+
 def copy_esp32_qemu_artifacts(
     build_dir: Path, board: Board, sketch_name: str, output_path: str
 ) -> bool:
@@ -655,13 +965,25 @@ def copy_esp32_qemu_artifacts(
 
     print(f"📁 Searching for ESP32 artifacts in: {artifact_dir}")
 
-    # Required files for ESP32 QEMU
-    required_files = {
-        "firmware.bin": firmware_name,
-        "bootloader.bin": "bootloader.bin",
-        "partitions.bin": "partitions.bin",
-        "boot_app0.bin": "boot_app0.bin",
-    }
+    # Check if merged.bin exists (from --merged-bin build)
+    merged_bin_src = artifact_dir / "merged.bin"
+    if merged_bin_src.exists() and firmware_name == "merged.bin":
+        # Use the already-created merged binary instead of copying firmware.bin
+        print(f"ℹ️  Using pre-built merged.bin from build artifacts")
+        required_files = {
+            "merged.bin": firmware_name,
+            "bootloader.bin": "bootloader.bin",
+            "partitions.bin": "partitions.bin",
+            "boot_app0.bin": "boot_app0.bin",
+        }
+    else:
+        # Required files for ESP32 QEMU
+        required_files = {
+            "firmware.bin": firmware_name,
+            "bootloader.bin": "bootloader.bin",
+            "partitions.bin": "partitions.bin",
+            "boot_app0.bin": "boot_app0.bin",
+        }
 
     # Optional files
     optional_files = {"spiffs.bin": "spiffs.bin"}
@@ -847,8 +1169,16 @@ def main() -> int:
         return 0
 
     # Handle Docker compilation mode
-    if args.docker:
+    # Skip if already running inside Docker (FASTLED_DOCKER env var is set)
+    if args.docker and not os.environ.get("FASTLED_DOCKER"):
+        print(f"DEBUG: args.docker={args.docker}, entering Docker mode")
         return handle_docker_compilation(args)
+    elif args.docker and os.environ.get("FASTLED_DOCKER"):
+        print(
+            f"DEBUG: Already in Docker (FASTLED_DOCKER={os.environ.get('FASTLED_DOCKER')}), skipping nested Docker"
+        )
+    else:
+        print(f"DEBUG: args.docker={args.docker}, running native compilation")
 
     # Determine which boards to compile for
     if args.boards:
@@ -929,6 +1259,28 @@ def main() -> int:
             print(f"ERROR: {e}")
             return 1
 
+    # Validate --merged-bin option requirements
+    if args.merged_bin:
+        if len(examples) != 1:
+            print(
+                f"ERROR: --merged-bin option requires exactly one sketch, got {len(examples)}: {examples}"
+            )
+            return 1
+
+        if len(boards) != 1:
+            print(
+                f"ERROR: --merged-bin option requires exactly one board, got {len(boards)}: {[b.board_name for b in boards]}"
+            )
+            return 1
+
+        # Check if board supports merged binary
+        board = boards[0]
+        if not board.board_name.startswith("esp"):
+            print(
+                f"ERROR: --merged-bin only supports ESP32/ESP8266 boards, got: {board.board_name}"
+            )
+            return 1
+
     # Validate -o/--out option requirements
     if args.out:
         if len(examples) != 1:
@@ -958,6 +1310,11 @@ def main() -> int:
     if args.defines:
         defines.extend(args.defines.split(","))
 
+    # Set up extra packages
+    extra_packages: Optional[List[str]] = None
+    if args.extra_packages:
+        extra_packages = [pkg.strip() for pkg in args.extra_packages.split(",")]
+
     # Start compilation
     start_time = time.time()
     print(
@@ -977,6 +1334,11 @@ def main() -> int:
         if args.global_cache:
             global_cache_dir = Path(args.global_cache)
 
+        # Determine merged-bin output path if requested
+        merged_bin_output = None
+        if args.merged_bin and args.out:
+            merged_bin_output = Path(args.out)
+
         result = compile_board_examples(
             board=board,
             examples=examples,
@@ -984,6 +1346,9 @@ def main() -> int:
             verbose=args.verbose,
             enable_cache=(args.enable_cache or args.cache) and not args.no_cache,
             global_cache_dir=global_cache_dir,
+            merged_bin=args.merged_bin,
+            merged_bin_output=merged_bin_output,
+            extra_packages=extra_packages,
         )
 
         if not result.ok:

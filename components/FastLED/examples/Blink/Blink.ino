@@ -18,14 +18,16 @@
 // Define the array of leds
 CRGB leds[NUM_LEDS];
 
-void setup() { 
+void setup() {
     //Serial.begin(9600);
     //Serial.println("BLINK setup starting");
-    
+
+    delay(2000);
+
     // Uncomment/edit one of the following lines for your leds arrangement.
     // ## Clockless types ##
     FastLED.addLeds<NEOPIXEL, DATA_PIN>(leds, NUM_LEDS);  // GRB ordering is assumed
-    
+
     //Serial.println("BLINK setup complete");
     // FastLED.addLeds<SM16824E, DATA_PIN, RGB>(leds, NUM_LEDS);  // RGB ordering (uses SM16824EController)
     // FastLED.addLeds<SM16703, DATA_PIN, RGB>(leds, NUM_LEDS);
@@ -38,6 +40,7 @@ void setup() {
     // FastLED.addLeds<UCS1903B, DATA_PIN, RGB>(leds, NUM_LEDS);
     // FastLED.addLeds<UCS1904, DATA_PIN, RGB>(leds, NUM_LEDS);
     // FastLED.addLeds<UCS2903, DATA_PIN, RGB>(leds, NUM_LEDS);
+    // FastLED.addLeds<UCS7604, DATA_PIN, GRB>(leds, NUM_LEDS);  // BETA: 16-bit RGBW chipset, ARM M0/M0+ only (SAMD21/SAMD51)
     // FastLED.addLeds<WS2812, DATA_PIN, RGB>(leds, NUM_LEDS);  // GRB ordering is typical
     // FastLED.addLeds<WS2852, DATA_PIN, RGB>(leds, NUM_LEDS);  // GRB ordering is typical
     // FastLED.addLeds<WS2812B, DATA_PIN, RGB>(leds, NUM_LEDS);  // GRB ordering is typical

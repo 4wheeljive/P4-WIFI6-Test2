@@ -273,8 +273,8 @@ float cScale = 1.f;
 float cAngle = 1.f; 
 float cTwist = 1.f;
 float cRadius = 1.0f;
-uint8_t cRadialSpeed = 1;
-uint8_t cLinearSpeed = 5;
+float cRadialSpeed = 1;
+float cLinearSpeed = 5;
 float cEdge = 1.0f;
 float cZ = 1.f; 
 uint8_t cSpeedInt = 1;
@@ -479,8 +479,8 @@ void sendReceiptString(String receivedID, String receivedValue) {
    X(float, Scale, 1.0f) \
    X(float, Angle, 1.0f) \
    X(float, Twist, 1.0f) \
-   X(uint8_t, LinearSpeed, 5) \
-   X(uint8_t, RadialSpeed, 1) \
+   X(float, LinearSpeed, 5.0f) \
+   X(float, RadialSpeed, 1.0f) \
    X(float, Radius, 1.0f) \
    X(float, Edge, 1.0f) \
    X(float, Z, 1.0f) \
@@ -997,7 +997,7 @@ void processString(String receivedID, String receivedValue ) {
 
       pService->start();
 
-      NimBLEAdvertising* pAdvertising = NimBLEDevice::getAdvertising();
+      pAdvertising = NimBLEDevice::getAdvertising();
       pAdvertising->addServiceUUID(SERVICE_UUID);
 
       // Set up advertisement data with device name for Web Bluetooth compatibility

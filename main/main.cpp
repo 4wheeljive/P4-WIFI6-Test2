@@ -30,12 +30,12 @@ who has been of tremendous help on numerous levels!
 //*********************************************************************************************************************************************
 //*********************************************************************************************************************************************
 
+#define FASTLED_ESP32_LCD_RGB_DRIVER
+
 #include <Arduino.h>
 
-#undef DISABLE_BLE
-
-#define FASTLED_ESP32_LCD_RGB_DRIVER
 //#define DISABLE_BLE
+#undef DISABLE_BLE
 
 #include <FastLED.h>
 
@@ -61,23 +61,45 @@ who has been of tremendous help on numerous levels!
 #include <Preferences.h>  
 Preferences preferences;
 
-bool debug = true;
+bool debug = false;
 
 #define BIG_BOARD
 //#undef BIG_BOARD
 
-#define PIN0 2
+#define PIN0 50
 
 //*********************************************
 
 #ifdef BIG_BOARD 
+	
+	
+	#include "matrixMap_48x64_6pin.h" 
+	#define PIN1 49
+    #define PIN2 5
+    #define PIN3 4
+	#define PIN4 3
+	#define PIN5 2
+	#define HEIGHT 48 
+    #define WIDTH 64
+    #define NUM_STRIPS 6
+    #define NUM_LEDS_PER_STRIP 512
+	
+
+	
+	/*
 	#include "matrixMap_32x48_3pin.h" 
-	#define PIN1 3
-    #define PIN2 4
-    #define HEIGHT 32 
+	#define PIN1 49
+    #define PIN2 5
+    //#define PIN3 4
+	//#define PIN4 3
+	//#define PIN5 2
+	#define HEIGHT 32 
     #define WIDTH 48
     #define NUM_STRIPS 3
     #define NUM_LEDS_PER_STRIP 512
+	*/
+	
+
 #else 
 	#include "matrixMap_24x24.h"
 	#define HEIGHT 24 
@@ -96,8 +118,8 @@ bool debug = true;
 //*********************************************
 
 #define NUM_LEDS ( WIDTH * HEIGHT )
-const uint16_t MIN_DIMENSION = MIN(WIDTH, HEIGHT);
-const uint16_t MAX_DIMENSION = MAX(WIDTH, HEIGHT);
+const uint8_t MIN_DIMENSION = MIN(WIDTH, HEIGHT);
+const uint8_t MAX_DIMENSION = MAX(WIDTH, HEIGHT);
 
 CRGB leds[NUM_LEDS];
 uint16_t ledNum = 0;
@@ -134,7 +156,7 @@ bool mappingOverride = false;
 #include "bubble.hpp"
 #include "dots.hpp"
 #include "radii.hpp"
-//#include "fxWave2d.hpp"
+#include "fxWave2d.hpp"
 #include "animartrix.hpp"
 #include "test.hpp"
 #include "synaptide.hpp"
@@ -240,11 +262,11 @@ void runAnimartrix() {
 	} 
 
 	// TODO: Verify logic...and necessity? 
-	/*static auto lastFxIndex = savedMode;
+	static auto lastFxIndex = savedMode;
 	if (cFxIndex != lastFxIndex) {
 		lastFxIndex = cFxIndex;
 		myAnimartrix.fxSet(cFxIndex);
-	}*/
+	}
 	
 	animartrixEngine.draw(millis(), leds);
 }
@@ -263,14 +285,14 @@ void setup() {
 			savedMode  = preferences.getUChar("mode");
 		preferences.end();
 
-		BRIGHTNESS = 25;
+		//BRIGHTNESS = 25;
 		//SPEED = savedSpeed;
-		PROGRAM = 6;
-		MODE = 9;
-		//BRIGHTNESS = savedBrightness;
+		//PROGRAM = 6;
+		//MODE = 9;
+		BRIGHTNESS = savedBrightness;
 		//SPEED = 5;
-		//PROGRAM = savedProgram;
-		//MODE = savedMode;
+		PROGRAM = savedProgram;
+		MODE = savedMode;
 		
 		FastLED.addLeds<WS2812B, PIN0, GRB>(leds, 0, NUM_LEDS_PER_STRIP)
 			.setCorrection(TypicalLEDStrip);
@@ -282,6 +304,21 @@ void setup() {
 		
 		#ifdef PIN2
 			FastLED.addLeds<WS2812B, PIN2, GRB>(leds, NUM_LEDS_PER_STRIP * 2, NUM_LEDS_PER_STRIP)
+				.setCorrection(TypicalLEDStrip);
+		#endif
+
+		#ifdef PIN3
+			FastLED.addLeds<WS2812B, PIN3, GRB>(leds, NUM_LEDS_PER_STRIP * 3, NUM_LEDS_PER_STRIP)
+				.setCorrection(TypicalLEDStrip);
+		#endif
+
+		#ifdef PIN4
+			FastLED.addLeds<WS2812B, PIN4, GRB>(leds, NUM_LEDS_PER_STRIP * 4, NUM_LEDS_PER_STRIP)
+				.setCorrection(TypicalLEDStrip);
+		#endif
+
+		#ifdef PIN5
+			FastLED.addLeds<WS2812B, PIN5, GRB>(leds, NUM_LEDS_PER_STRIP * 5, NUM_LEDS_PER_STRIP)
 				.setCorrection(TypicalLEDStrip);
 		#endif
 		
@@ -365,25 +402,17 @@ void updateSettings_mode(uint8_t newMode){
 
 void loop() {
 
-	if (debug) {
-		thisLoopStart = micros();
-		loopTime = thisLoopStart - lastLoopStart;
-		lastLoopStart = thisLoopStart;
-		uint8_t fps = 1000000 / loopTime;           // frames per second
-		uint8_t kpps = (fps * NUM_LEDS) / 1000; 	// kilopixels per second
-		EVERY_N_SECONDS(1) {
-			Serial.print(fps);
-			Serial.print(" fps  ---  ");
-			Serial.print(kpps);
-			Serial.println(" kpps");
+	EVERY_N_SECONDS(3) {
+		uint8_t fps = FastLED.getFPS();
+		FASTLED_DBG(fps << " fps");
+	}
+
+	if(debug) {
+		EVERY_N_SECONDS(10) {
+	 		FASTLED_DBG("Program: " << PROGRAM);
+			FASTLED_DBG("Mode: " << MODE);
 		}
 	}
-
-	EVERY_N_SECONDS(10) {
-	 	FASTLED_DBG("Program: " << PROGRAM);
-		FASTLED_DBG("Mode: " << MODE);
-	}
-
 
 	EVERY_N_SECONDS(30) {
 		if ( BRIGHTNESS != savedBrightness ) updateSettings_brightness(BRIGHTNESS);
@@ -391,7 +420,6 @@ void loop() {
 		if ( PROGRAM != savedProgram ) updateSettings_program(PROGRAM);
 		if ( MODE != savedMode ) updateSettings_mode(MODE);
 	}
-
 	
 	if (!displayOn){
 		FastLED.clear();
@@ -437,10 +465,10 @@ void loop() {
 				break;  
 			
 			case 4:
-			//	if (!fxWave2d::fxWave2dInstance) {
-			//		fxWave2d::initFxWave2d(myXYmap, xyRect);
-			//	}
-			//	fxWave2d::runFxWave2d();
+				if (!fxWave2d::fxWave2dInstance) {
+					fxWave2d::initFxWave2d(myXYmap, xyRect);
+				}
+				fxWave2d::runFxWave2d();
 				break;
 
 			case 5:    
@@ -454,7 +482,7 @@ void loop() {
 			case 6:  
 				if (animartrixFirstRun) {
 					animartrixEngine.addFx(myAnimartrix);
-					myAnimartrix.fxSet(9);  // ***********************************************************
+					myAnimartrix.fxSet(MODE);  // ***********************************************************
 					animartrixFirstRun = false;
 				}
 				runAnimartrix();
@@ -495,8 +523,6 @@ void loop() {
 	}
 		
 	FastLED.show();
-
-	
 	
 	// upon BLE disconnect
 	if (!deviceConnected && wasConnected) {
@@ -506,6 +532,5 @@ void loop() {
 		if (debug) {Serial.println("Start advertising");}
 		wasConnected = false;
 	}
-	
 
 } // loop()

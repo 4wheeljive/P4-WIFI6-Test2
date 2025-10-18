@@ -247,6 +247,33 @@ jobs:
           fi
           echo "✅ firmware.bin size: $(stat -c%s qemu-build/firmware.bin) bytes"
 
+          # Copy ELF file for backtrace decoding
+          echo "=== Copying ELF file for debugging ==="
+          if [ -f "$PIO_ARTIFACTS_DIR/firmware.elf" ]; then
+            cp "$PIO_ARTIFACTS_DIR/firmware.elf" qemu-build/
+            echo "✅ Copied firmware.elf from artifacts directory"
+          elif [ -f "$PIO_BUILD_DIR/firmware.elf" ]; then
+            cp "$PIO_BUILD_DIR/firmware.elf" qemu-build/
+            echo "✅ Copied firmware.elf from build directory"
+          else
+            ELF_FILE=$(find "$PIO_BUILD_DIR" -name "firmware.elf" 2>/dev/null | head -1)
+            if [ -n "$ELF_FILE" ]; then
+              cp "$ELF_FILE" qemu-build/firmware.elf
+              echo "✅ Found and copied firmware.elf from $ELF_FILE"
+            else
+              echo "⚠️  firmware.elf not found - backtrace decoding will not be available"
+            fi
+          fi
+
+          # Copy build_info.json for addr2line tool path lookup
+          echo "=== Copying build_info.json for backtrace decoding ==="
+          if [ -f "$PIO_BUILD_DIR/build_info.json" ]; then
+            cp "$PIO_BUILD_DIR/build_info.json" qemu-build/
+            echo "✅ Copied build_info.json from build directory"
+          else
+            echo "⚠️  build_info.json not found - will use default addr2line search"
+          fi
+
           # Verify debug-enabled build by checking for Serial output strings in firmware
           echo "=== Build verification: checking for debug strings ==="
           if strings qemu-build/firmware.bin | grep -q "${{ inputs.sketch }} setup starting"; then
@@ -377,6 +404,9 @@ jobs:
             esp32s3)
               CHIP="esp32s3"
               ;;
+            esp32p4)
+              CHIP="esp32p4"
+              ;;
             *)
               echo "Unknown platform: $PLATFORM, defaulting to esp32"
               CHIP="esp32"
@@ -397,6 +427,7 @@ jobs:
           timeout-interrupt-regex: "Test finished.*completed.*iterations|Starting loop iteration 2"
           debug: true
           chip: "${{ steps.chip_mapping.outputs.chip }}"
+          spiffs-address: "0x210000"
 
       - name: Display QEMU output
         if: always()
@@ -422,18 +453,11 @@ jobs:
             echo "No QEMU log available"
           fi
 
-      - name: Validate ${{ inputs.sketch }} output
+      - name: Save QEMU output log
+        if: always()
         run: |
-          echo "=== Validating ${{ inputs.sketch }} output in QEMU logs ==="
+          echo "=== Saving QEMU output log ==="
 
-          # Check if QEMU step succeeded
-          if [ "${{ steps.qemu.conclusion }}" != "success" ]; then
-            echo "❌ QEMU action failed with conclusion: ${{ steps.qemu.conclusion }}"
-            echo "❌ QEMU action outcome: ${{ steps.qemu.outcome }}"
-            exit 1
-          fi
-
-          # Save output to file for easier processing
           # The tobozo action creates logs.txt with the QEMU output
           if [ -f "logs.txt" ]; then
             cp logs.txt qemu_output.log
@@ -441,7 +465,6 @@ jobs:
           else
             echo "❌ No logs.txt file found from tobozo action"
             echo "Looking for alternative log sources..."
-            # Check for any log files that might contain QEMU output
             find . -name "*.log" -o -name "*.txt" | head -10
             echo "" > qemu_output.log
           fi
@@ -462,110 +485,255 @@ jobs:
                 head -5 "$logfile" | sed 's/^/      /'
               fi
             done
-            echo ""
-            echo "Possible causes:"
-            echo "  1. ${{ inputs.platform_display }} firmware failed to boot (flash mode incompatibility)"
-            echo "  2. Serial communication not properly configured"
-            echo "  3. QEMU emulation issues with the current firmware"
-            echo "  4. Bootloader/partition configuration problems"
             exit 1
           fi
 
           echo "✅ QEMU output file created with $(wc -l < qemu_output.log) lines"
+        shell: bash
 
-          # Check for crash patterns
-          if grep -q -E "(guru meditation|abort\(\)|LoadProhibited|IllegalInstruction)" qemu_output.log; then
+      - name: Display complete QEMU log
+        if: always()
+        run: |
+          echo "=== Complete QEMU Serial Output ($(wc -l < qemu_output.log) lines) ==="
+          cat qemu_output.log
+          echo ""
+          echo "=== End of QEMU output ==="
+        shell: bash
+
+      - name: Validate ${{ inputs.sketch }} output
+        run: |
+          echo "=== Validating ${{ inputs.sketch }} output ==="
+
+          # Check if QEMU step succeeded
+          if [ "${{ steps.qemu.conclusion }}" != "success" ]; then
+            echo "❌ QEMU action failed with conclusion: ${{ steps.qemu.conclusion }}"
+            echo "❌ QEMU action outcome: ${{ steps.qemu.outcome }}"
+            exit 1
+          fi
+
+          # Verify log file exists
+          if [ ! -f qemu_output.log ]; then
+            echo "❌ qemu_output.log not found"
+            exit 1
+          fi
+
+          # Check for crash patterns (including stack traces and register dumps)
+          if grep -q -E "(guru meditation|abort\(\)|LoadProhibited|IllegalInstruction|Core.*register dump|MEPC|MSTATUS)" qemu_output.log; then
             echo "❌ ${{ inputs.platform_display }} crashed during execution"
-            echo "Crash indicators found in QEMU log"
             echo ""
             echo "=== Crash Details ==="
-            # Show which patterns matched
-            echo "Matched crash patterns:"
-            grep -n -E "(guru meditation|abort\(\)|LoadProhibited|IllegalInstruction)" qemu_output.log | head -20
+
+            # Show all abort() calls with PC addresses
+            echo "=== Abort Calls ==="
+            grep -n "abort() was called" qemu_output.log | head -20
             echo ""
-            echo "=== Context around crash (20 lines before and after first match) ==="
-            # Get line number of first crash
-            CRASH_LINE=$(grep -n -E "(guru meditation|abort\(\)|LoadProhibited|IllegalInstruction)" qemu_output.log | head -1 | cut -d: -f1)
-            if [ -n "$CRASH_LINE" ]; then
-              # Show context around the crash
-              START_LINE=$((CRASH_LINE - 20))
-              if [ $START_LINE -lt 1 ]; then
-                START_LINE=1
+
+            # Show register dumps if present
+            if grep -q "register dump" qemu_output.log; then
+              echo "=== Register Dump ==="
+              grep -A 15 "register dump" qemu_output.log | head -50
+              echo ""
+            fi
+
+            # Show stack memory if present
+            if grep -q "Stack memory" qemu_output.log; then
+              echo "=== Stack Memory ==="
+              grep -A 10 "Stack memory" qemu_output.log | head -30
+              echo ""
+            fi
+
+            # Decode PC addresses and backtrace if present
+            echo "=== Decoded Backtrace ==="
+
+            # Find the ELF file for addr2line
+            ELF_FILE=""
+            if [ -f "trusted/qemu-build/firmware.elf" ]; then
+              ELF_FILE="trusted/qemu-build/firmware.elf"
+            elif [ -f "trusted/.build/pio/${{ inputs.platform }}/.pio/build/${{ inputs.platform }}/firmware.elf" ]; then
+              ELF_FILE="trusted/.build/pio/${{ inputs.platform }}/.pio/build/${{ inputs.platform }}/firmware.elf"
+            fi
+
+            # Find build_info.json for addr2line tool path
+            BUILD_INFO_FILE=""
+            if [ -f "trusted/qemu-build/build_info.json" ]; then
+              BUILD_INFO_FILE="trusted/qemu-build/build_info.json"
+            elif [ -f "trusted/.build/pio/${{ inputs.platform }}/build_info.json" ]; then
+              BUILD_INFO_FILE="trusted/.build/pio/${{ inputs.platform }}/build_info.json"
+            fi
+
+            if [ -n "$ELF_FILE" ] && [ -f "$ELF_FILE" ]; then
+              echo "Using ELF file: $ELF_FILE"
+              if [ -n "$BUILD_INFO_FILE" ]; then
+                echo "Using build_info.json: $BUILD_INFO_FILE"
               fi
-              END_LINE=$((CRASH_LINE + 20))
-              sed -n "${START_LINE},${END_LINE}p" qemu_output.log
+
+              # Use the Python decode script with build_info.json for toolchain detection
+              cd trusted
+              # Use relative path from trusted directory
+              RELATIVE_ELF="${ELF_FILE#trusted/}"
+              DECODE_CMD="uv run python ci/decode_esp32_backtrace.py"
+              if [ -n "$BUILD_INFO_FILE" ]; then
+                # Use relative path from trusted directory
+                RELATIVE_BUILD_INFO="${BUILD_INFO_FILE#trusted/}"
+                DECODE_CMD="$DECODE_CMD --build-info $RELATIVE_BUILD_INFO"
+              fi
+              DECODE_CMD="$DECODE_CMD $RELATIVE_ELF"
+
+              if $DECODE_CMD < ../qemu_output.log; then
+                echo "✅ Successfully decoded backtrace using Python script"
+              else
+                echo "⚠️  Python decode script failed, trying manual decode..."
+
+                # Fallback: Find appropriate addr2line tool from PlatformIO packages
+                ADDR2LINE=""
+                if [ "${{ inputs.platform }}" = "esp32c3" ]; then
+                  # Try PlatformIO-installed RISC-V toolchain first
+                  if [ -f "$HOME/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-addr2line" ]; then
+                    ADDR2LINE="$HOME/.platformio/packages/toolchain-riscv32-esp/bin/riscv32-esp-elf-addr2line"
+                  else
+                    ADDR2LINE="riscv32-esp-elf-addr2line"
+                  fi
+                elif [ "${{ inputs.platform }}" = "esp32s3" ] || [ "${{ inputs.platform }}" = "esp32dev" ]; then
+                  # Try PlatformIO-installed Xtensa toolchain first
+                  if [ -f "$HOME/.platformio/packages/toolchain-xtensa-esp32s3/bin/xtensa-esp32s3-elf-addr2line" ]; then
+                    ADDR2LINE="$HOME/.platformio/packages/toolchain-xtensa-esp32s3/bin/xtensa-esp32s3-elf-addr2line"
+                  elif [ -f "$HOME/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-addr2line" ]; then
+                    ADDR2LINE="$HOME/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-addr2line"
+                  else
+                    ADDR2LINE="xtensa-esp32-elf-addr2line"
+                  fi
+                fi
+
+                if [ -n "$ADDR2LINE" ] && ([ -f "$ADDR2LINE" ] || command -v $ADDR2LINE >/dev/null 2>&1); then
+                  # Decode abort() PC addresses
+                  grep "abort() was called at PC" ../qemu_output.log | while read line; do
+                    PC=$(echo "$line" | grep -oP '0x[0-9a-fA-F]+' | head -1)
+                    if [ -n "$PC" ]; then
+                      echo "PC $PC:"
+                      $ADDR2LINE -e "$ELF_FILE" -f -C "$PC" 2>/dev/null || echo "  (failed to decode)"
+                    fi
+                  done
+
+                  # Decode backtrace addresses if present
+                  if grep -q -E "(Backtrace|backtrace)" ../qemu_output.log; then
+                    echo ""
+                    echo "Backtrace symbols:"
+                    grep -A 10 -E "(Backtrace|backtrace)" ../qemu_output.log | grep -oP '0x[0-9a-fA-F]{8}' | while read addr; do
+                      echo "  $addr:"
+                      $ADDR2LINE -e "$ELF_FILE" -f -C "$addr" 2>/dev/null | sed 's/^/    /' || echo "    (failed to decode)"
+                    done
+                  fi
+                else
+                  echo "⚠️  addr2line not found - cannot decode addresses"
+                  echo "Toolchain searched: $ADDR2LINE"
+                  echo "Raw backtrace:"
+                  grep -A 10 -E "(Backtrace|backtrace)" ../qemu_output.log | head -30
+                fi
+              fi
+              cd ..
+            else
+              echo "⚠️  ELF file not found - cannot decode addresses"
+              if grep -q -E "(Backtrace|backtrace)" qemu_output.log; then
+                echo "Raw backtrace:"
+                grep -A 10 -E "(Backtrace|backtrace)" qemu_output.log | head -30
+              fi
             fi
             echo ""
-            echo "=== End of crash context ==="
+
+            # Show RMT exhaustion errors if present
+            if grep -q "RMT CHANNEL EXHAUSTION" qemu_output.log; then
+              echo "=== RMT Channel Exhaustion Details ==="
+              grep -B 5 -A 10 "RMT CHANNEL EXHAUSTION" qemu_output.log
+              echo ""
+            fi
+
+            echo "=== Context around crash ==="
+            CRASH_LINE=$(grep -n -E "(guru meditation|abort\(\)|LoadProhibited|IllegalInstruction|register dump)" qemu_output.log | head -1 | cut -d: -f1)
+            if [ -n "$CRASH_LINE" ]; then
+              START_LINE=$((CRASH_LINE - 20))
+              [ $START_LINE -lt 1 ] && START_LINE=1
+              END_LINE=$((CRASH_LINE + 50))
+              sed -n "${START_LINE},${END_LINE}p" qemu_output.log
+            fi
             exit 1
           fi
 
-          # Validate debug output is present (now using Serial.print instead of FL_WARN)
-          if grep -q "${{ inputs.sketch }} setup starting" qemu_output.log; then
-            echo "✅ Debug output detected"
-            echo "Setup messages found:"
-            grep "${{ inputs.sketch }} setup starting\|Initialized.*LED strips\|Setup complete" qemu_output.log | head -10
+          # Determine expected pattern based on sketch
+          SKETCH_PATTERN=""
+          if echo "${{ inputs.sketch }}" | grep -q "Parlio"; then
+            SKETCH_PATTERN="FastLED ESP32-P4 PARLIO"
+          elif echo "${{ inputs.sketch }}" | grep -q "LCD_I80"; then
+            SKETCH_PATTERN="LCD_I80\|LCD I80"
           else
-            echo "❌ No debug output detected"
+            SKETCH_PATTERN="${{ inputs.sketch }} setup starting"
+          fi
+
+          # Validate sketch startup message is present
+          if ! grep -q -E "$SKETCH_PATTERN" qemu_output.log; then
+            echo "❌ Expected pattern not found: $SKETCH_PATTERN"
             echo "Expected Serial.print messages not found in QEMU log"
             echo ""
-            echo "=== Full QEMU output (first 200 lines) ==="
-            head -200 qemu_output.log
-            echo ""
-            echo "=== End of QEMU output preview ==="
-            echo "Total lines in log: $(wc -l < qemu_output.log)"
-            exit 1
-          fi
-
-          # Validate sketch startup
-          if grep -q "${{ inputs.sketch }} setup starting" qemu_output.log; then
-            echo "✅ ${{ inputs.sketch }} setup started"
-          else
-            echo "❌ ${{ inputs.sketch }} startup message not found"
-            exit 1
-          fi
-
-          # Check for LED strip initialization
-          if grep -q "Initialized 4 LED strips" qemu_output.log; then
-            echo "✅ 4 LED strips initialized"
-          else
-            echo "⚠️  LED strip initialization message not found"
-          fi
-
-          # Check for loop execution
-          if grep -q "Starting loop iteration" qemu_output.log; then
-            echo "✅ Loop execution detected"
-          else
-            echo "⚠️  No loop execution messages found"
-          fi
-
-          # Check for test completion
-          if grep -q "Test finished.*completed.*iterations" qemu_output.log; then
-            echo "✅ Test completion detected"
-          else
-            echo "⚠️  Test completion not detected (may need more time)"
-          fi
-
-          # Validate boot success - check for ESP32 boot indicators or our application output
-          if grep -q -E "(rst:|boot:|ESP32|${{ inputs.sketch }}|ets_main\.c|cpu_start\.c)" qemu_output.log; then
-            echo "✅ ${{ inputs.platform_display }} boot/application output detected"
-          else
-            echo "❌ No ${{ inputs.platform_display }} boot indicators or application output found"
-            echo "Output content preview:"
-            head -10 qemu_output.log | cat -A
-            echo "Full output:"
+            echo "=== Full QEMU output ==="
             cat qemu_output.log
             exit 1
           fi
 
-          echo "=== ${{ inputs.sketch }} validation complete ==="
+          echo "✅ Found expected pattern: $SKETCH_PATTERN"
+
+          # Show matching lines from log
+          echo ""
+          echo "=== Matching setup/initialization messages ==="
+          grep -E "$SKETCH_PATTERN\|Initialized.*LED strips\|Setup complete\|Ready!\|Starting loop iteration" qemu_output.log || echo "(no additional messages)"
+
+          # Check for LED strip initialization (optional)
+          if grep -q "Initialized.*LED strips\|Ready!" qemu_output.log; then
+            echo "✅ LED strip/driver initialization detected"
+          else
+            echo "⚠️  LED strip initialization message not found (may be normal for this sketch)"
+          fi
+
+          # Check for loop execution (optional)
+          if grep -q "Starting loop iteration" qemu_output.log; then
+            echo "✅ Loop execution detected"
+          else
+            echo "⚠️  No loop iteration messages found (sketch may not output loop iterations)"
+          fi
+
+          # Check for test completion (optional)
+          if grep -q "Test finished.*completed.*iterations" qemu_output.log; then
+            echo "✅ Test completion detected"
+          else
+            echo "⚠️  Test completion not detected (may need more time or sketch doesn't output completion)"
+          fi
+
+          # Validate ESP32 boot indicators
+          if ! grep -q -E "(rst:|boot:|ESP32|${{ inputs.sketch }}|ets_main\.c|cpu_start\.c)" qemu_output.log; then
+            echo "❌ No ${{ inputs.platform_display }} boot indicators or application output found"
+            echo ""
+            echo "=== Full QEMU output ==="
+            cat qemu_output.log
+            exit 1
+          fi
+
+          echo "✅ ${{ inputs.platform_display }} boot/application output detected"
+          echo ""
+          echo "=== Validation complete ==="
         shell: bash
+      - name: Generate artifact name
+        id: artifact_name
+        if: always()
+        run: |
+          SKETCH_NAME="${{ inputs.sketch }}"
+          ARTIFACT_SKETCH="${SKETCH_NAME////-}"
+          echo "sketch=$ARTIFACT_SKETCH" >> $GITHUB_OUTPUT
+        shell: bash
+
 
       - name: Upload QEMU logs on failure
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ inputs.platform }}-qemu-failure-${{ inputs.sketch }}-${{ github.sha }}
+          name: ${{ inputs.platform }}-qemu-failure-${{ steps.artifact_name.outputs.sketch }}-${{ github.sha }}
           path: |
             qemu_output.log
             trusted/qemu-build/
@@ -575,7 +743,7 @@ jobs:
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ inputs.platform }}-qemu-success-${{ inputs.sketch }}-${{ github.sha }}
+          name: ${{ inputs.platform }}-qemu-success-${{ steps.artifact_name.outputs.sketch }}-${{ github.sha }}
           path: qemu_output.log
 
       - name: Summary

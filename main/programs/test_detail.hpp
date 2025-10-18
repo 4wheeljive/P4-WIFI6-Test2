@@ -131,7 +131,7 @@ namespace test {
 	void runTest() {
 
         static uint8_t deltaValue;
-        float t = ( millis() + deltaValue) * cSpeed / 50;
+        float t = ( millis() + deltaValue) * cSpeed / 50.0f;
 
         EaseType ease_sat = getEaseType(cEaseSat);
         EaseType ease_lum = getEaseType(cEaseLum);
@@ -140,7 +140,7 @@ namespace test {
             for (uint8_t x  = 0; x < WIDTH; x++) {
 
             leds[xyFunc(x, y)] = ColorFromPalette(CopperFireColors_p, 
-                ((sin8((x * 16) + sin8(y * 5 - t * 5.)) + cos8(y / 2 * 10)) + 1) + t)
+                ((sin8((x * 16) + sin8( y * 5 - t * 5.0f )) + cos8( y * 5 )) + 1) + t)
                 .colorBoost(ease_sat, ease_lum);
             }
         }

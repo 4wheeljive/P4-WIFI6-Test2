@@ -1,27 +1,30 @@
-# FastLED PlatformIO Base Image - Minimal Alpine Build
-# UV-based build system with minimal dependencies
+# syntax=docker/dockerfile:1.7
 
-# Pre-built Alpine image with GCC toolchain
-FROM frolvlad/alpine-gxx
+# FastLED PlatformIO Base Image - Debian Slim Build
+# UV-based build system with glibc for compatibility
+
+# Use Python 3.11 on Debian Bookworm (slim variant for smaller size)
+FROM python:3.11-slim-bookworm
 
 # Install essential dependencies:
-# - curl: to install UV
+# - build-essential: gcc, g++, make and other build tools
 # - git: required by PlatformIO for platform/library management
-# - build-base: minimal GCC toolchain for compilation (equivalent to build-essential)
-# - bash: for running install script and general shell operations
+# - curl: to install UV
 # - wget & unzip: for downloading FastLED project (removed after use)
-RUN apk add --no-cache \
-    curl \
-    git \
-    bash \
-    wget \
-    unzip
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        build-essential \
+        git \
+        curl \
+        wget \
+        unzip \
+        rsync \
+        bash \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install UV (handles all Python/package management) and Python in one step
-# This ensures the PATH from the install script is available immediately
-RUN curl -LsSf https://astral.sh/uv/install.sh | sh && \
-    export PATH="/root/.local/bin:${PATH}" && \
-    uv python install 3.11 --default
+# Install UV (handles all Python/package management)
+# Python is already installed from the base image
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Add UV to PATH for subsequent layers
 ENV PATH="/root/.local/bin:${PATH}"
@@ -29,26 +32,28 @@ ENV PATH="/root/.local/bin:${PATH}"
 # Set environment variable to indicate running inside Docker
 ENV FASTLED_DOCKER=1
 
-# Download and extract FastLED project from GitHub (master branch)
+# Download and extract FastLED project from GitHub (latest release)
 # This contains src/, examples/, install, pyproject.toml, ci/, etc.
-RUN wget -q https://github.com/FastLED/FastLED/archive/refs/heads/master.zip -O /tmp/fastled.zip && \
+# Using latest release instead of master to avoid build breakage from unstable code
+RUN RELEASE_URL=$(wget -qO- https://api.github.com/repos/FastLED/FastLED/releases/latest | grep "zipball_url" | cut -d '"' -f 4) && \
+    wget -q "$RELEASE_URL" -O /tmp/fastled.zip && \
     unzip -q /tmp/fastled.zip -d /tmp && \
-    mv /tmp/FastLED-master /fastled && \
+    mv /tmp/FastLED-* /fastled && \
     rm -rf /tmp/fastled.zip
 
 
 # Set working directory to FastLED project root
 WORKDIR /fastled
 
-# Create virtual environment and install PlatformIO
-RUN uv venv .venv && \
-    uv pip install platformio==6.1.18
+RUN bash install
 
 # Add venv binaries to PATH so 'pio' command is available
 ENV PATH="/fastled/.venv/bin:${PATH}"
 
 # Disable PlatformIO update checks for faster builds
 RUN pio settings set check_platformio_interval 0
+
+RUN platformio update
 
 # Metadata labels
 LABEL maintainer="FastLED Team"

@@ -5,7 +5,7 @@
 
 // Feature-based detection: compile RGB LCD driver if platform supports it
 // The lcd_driver_rgb.h header will provide compile-time errors if headers are missing
-#if __has_include("esp_lcd_panel_rgb.h")
+#if defined(CONFIG_IDF_TARGET_ESP32P4) && __has_include("esp_lcd_panel_rgb.h")
 
 #define FASTLED_INTERNAL
 #include "FastLED.h"
@@ -196,5 +196,5 @@ template class LcdRgbDriver<WS2812ChipsetTiming>;
 
 } // namespace fl
 
-#endif  // __has_include("esp_lcd_panel_rgb.h")
+#endif  // CONFIG_IDF_TARGET_ESP32P4
 #endif  // ESP32
